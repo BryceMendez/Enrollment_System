@@ -121,19 +121,7 @@
     <None Include="Resources\BackButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\image_2025-04-18_232648886-removebg-preview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\image_2025-04-18_233122621-removebg-preview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\image_2025-04-18_233533612-removebg-preview.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\uclogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\image_2025-04-19_003228068-removebg-preview.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

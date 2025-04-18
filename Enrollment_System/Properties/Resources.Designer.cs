@@ -73,46 +73,6 @@ namespace Enrollment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap image_2025_04_18_232648886_removebg_preview {
-            get {
-                object obj = ResourceManager.GetObject("image_2025-04-18_232648886-removebg-preview", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap image_2025_04_18_233122621_removebg_preview {
-            get {
-                object obj = ResourceManager.GetObject("image_2025-04-18_233122621-removebg-preview", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap image_2025_04_18_233533612_removebg_preview {
-            get {
-                object obj = ResourceManager.GetObject("image_2025-04-18_233533612-removebg-preview", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap image_2025_04_19_003228068_removebg_preview {
-            get {
-                object obj = ResourceManager.GetObject("image_2025-04-19_003228068-removebg-preview", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap uclogo {
             get {
                 object obj = ResourceManager.GetObject("uclogo", resourceCulture);
