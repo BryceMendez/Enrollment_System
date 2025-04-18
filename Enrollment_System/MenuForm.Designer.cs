@@ -30,13 +30,11 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            
+            this.StudentEnrollmentButton = new System.Windows.Forms.Button();
+            this.StudentEntryButton = new System.Windows.Forms.Button();
+            this.SubjectEntryButton = new System.Windows.Forms.Button();
+            this.SubjectScheduleEntryButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            
             this.SuspendLayout();
             // 
             // label1
@@ -56,10 +54,10 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Gainsboro;
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.StudentEnrollmentButton);
+            this.groupBox1.Controls.Add(this.StudentEntryButton);
+            this.groupBox1.Controls.Add(this.SubjectEntryButton);
+            this.groupBox1.Controls.Add(this.SubjectScheduleEntryButton);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.groupBox1.Location = new System.Drawing.Point(129, 109);
@@ -68,65 +66,65 @@
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             // 
-            // button4
+            // StudentEnrollmentButton
             // 
-            this.button4.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(29, 246);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(190, 50);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Enroll Now!";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.StudentEnrollmentButton.BackColor = System.Drawing.Color.MidnightBlue;
+            this.StudentEnrollmentButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.StudentEnrollmentButton.Location = new System.Drawing.Point(29, 246);
+            this.StudentEnrollmentButton.Name = "StudentEnrollmentButton";
+            this.StudentEnrollmentButton.Size = new System.Drawing.Size(190, 50);
+            this.StudentEnrollmentButton.TabIndex = 9;
+            this.StudentEnrollmentButton.Text = "Enroll Now!";
+            this.StudentEnrollmentButton.UseVisualStyleBackColor = false;
+            this.StudentEnrollmentButton.Click += new System.EventHandler(this.StudentEnrollmentButton_Click);
             // 
-            // button3
+            // StudentEntryButton
             // 
-            this.button3.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(29, 175);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(190, 50);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Student Entry";
-            this.button3.UseVisualStyleBackColor = false;
+            this.StudentEntryButton.BackColor = System.Drawing.Color.MidnightBlue;
+            this.StudentEntryButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.StudentEntryButton.Location = new System.Drawing.Point(29, 175);
+            this.StudentEntryButton.Name = "StudentEntryButton";
+            this.StudentEntryButton.Size = new System.Drawing.Size(190, 50);
+            this.StudentEntryButton.TabIndex = 8;
+            this.StudentEntryButton.Text = "Student Entry";
+            this.StudentEntryButton.UseVisualStyleBackColor = false;
+            this.StudentEntryButton.Click += new System.EventHandler(this.StudentEntryButton_Click);
             // 
-            // button2
+            // SubjectEntryButton
             // 
-            this.button2.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(29, 102);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(190, 50);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Subject  Entry";
-            this.button2.UseVisualStyleBackColor = false;
+            this.SubjectEntryButton.BackColor = System.Drawing.Color.MidnightBlue;
+            this.SubjectEntryButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SubjectEntryButton.Location = new System.Drawing.Point(29, 102);
+            this.SubjectEntryButton.Name = "SubjectEntryButton";
+            this.SubjectEntryButton.Size = new System.Drawing.Size(190, 50);
+            this.SubjectEntryButton.TabIndex = 7;
+            this.SubjectEntryButton.Text = "Subject  Entry";
+            this.SubjectEntryButton.UseVisualStyleBackColor = false;
+            this.SubjectEntryButton.Click += new System.EventHandler(this.SubjectEntryButton_Click);
             // 
-            // button1
+            // SubjectScheduleEntryButton
             // 
-            this.button1.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(29, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 50);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Subject Schedule Entry";
-            this.button1.UseVisualStyleBackColor = false;
-            
+            this.SubjectScheduleEntryButton.BackColor = System.Drawing.Color.MidnightBlue;
+            this.SubjectScheduleEntryButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SubjectScheduleEntryButton.Location = new System.Drawing.Point(29, 30);
+            this.SubjectScheduleEntryButton.Name = "SubjectScheduleEntryButton";
+            this.SubjectScheduleEntryButton.Size = new System.Drawing.Size(190, 50);
+            this.SubjectScheduleEntryButton.TabIndex = 6;
+            this.SubjectScheduleEntryButton.Text = "Subject Schedule Entry";
+            this.SubjectScheduleEntryButton.UseVisualStyleBackColor = false;
+            this.SubjectScheduleEntryButton.Click += new System.EventHandler(this.SubjectScheduleEntryButton_Click);
             // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(515, 488);
-            
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            
             this.Name = "MenuForm";
             this.Text = "MenuForm";
+            this.Load += new System.EventHandler(this.MenuForm_Load_1);
             this.groupBox1.ResumeLayout(false);
-           
             this.ResumeLayout(false);
 
         }
@@ -134,9 +132,9 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button SubjectScheduleEntryButton;
+        private System.Windows.Forms.Button StudentEnrollmentButton;
+        private System.Windows.Forms.Button StudentEntryButton;
+        private System.Windows.Forms.Button SubjectEntryButton;
     }
 }

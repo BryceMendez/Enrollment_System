@@ -46,6 +46,7 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.BackButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -257,12 +258,23 @@
             this.label8.Text = "Student Entry";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
+            // BackButton
+            // 
+            this.BackButton.Image = global::Enrollment_System.Properties.Resources.BackButton;
+            this.BackButton.Location = new System.Drawing.Point(436, 355);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(75, 44);
+            this.BackButton.TabIndex = 32;
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
             // StudentEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(541, 422);
+            this.Controls.Add(this.BackButton);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CancelButton);
@@ -298,5 +310,6 @@
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button BackButton;
     }
 }
