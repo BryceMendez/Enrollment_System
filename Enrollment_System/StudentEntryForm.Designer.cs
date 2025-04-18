@@ -46,13 +46,7 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -198,7 +192,7 @@
             this.SaveButton.BackColor = System.Drawing.Color.MidnightBlue;
             this.SaveButton.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SaveButton.Location = new System.Drawing.Point(646, 108);
+            this.SaveButton.Location = new System.Drawing.Point(396, 96);
             this.SaveButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(115, 42);
@@ -212,7 +206,7 @@
             this.CancelButton.BackColor = System.Drawing.Color.MidnightBlue;
             this.CancelButton.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CancelButton.Location = new System.Drawing.Point(646, 172);
+            this.CancelButton.Location = new System.Drawing.Point(396, 156);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(115, 42);
@@ -239,7 +233,7 @@
             this.groupBox1.Controls.Add(this.LastNameTextBox);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(300, 108);
+            this.groupBox1.Location = new System.Drawing.Point(30, 96);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
@@ -253,7 +247,7 @@
             this.label8.BackColor = System.Drawing.Color.MidnightBlue;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(242, 0);
+            this.label8.Location = new System.Drawing.Point(-1, 0);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.MaximumSize = new System.Drawing.Size(1200, 1133);
             this.label8.Name = "label8";
@@ -263,74 +257,12 @@
             this.label8.Text = "Student Entry";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(246, 450);
-            this.groupBox2.TabIndex = 33;
-            this.groupBox2.TabStop = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(29, 331);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(190, 50);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Enroll Now!";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(29, 256);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(190, 50);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Student Entry";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(29, 178);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(190, 50);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Subject  Entry";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.Location = new System.Drawing.Point(29, 100);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(190, 50);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Subject Schedule Entry";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
             // StudentEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(784, 450);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(541, 422);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CancelButton);
@@ -341,7 +273,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,10 +298,5 @@
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button5;
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.YearLabel = new System.Windows.Forms.Label();
@@ -60,15 +60,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectChoosedDataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -77,7 +71,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(242, 0);
+            this.label1.Location = new System.Drawing.Point(-1, -3);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(230, 15, 200, 15);
             this.label1.Size = new System.Drawing.Size(811, 70);
@@ -98,7 +92,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(271, 85);
+            this.groupBox1.Location = new System.Drawing.Point(19, 85);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(370, 202);
             this.groupBox1.TabIndex = 1;
@@ -223,15 +217,15 @@
             // 
             // StartTimeColumn
             // 
-            dataGridViewCellStyle1.Format = "hh:mm tt";
-            this.StartTimeColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "hh:mm tt";
+            this.StartTimeColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.StartTimeColumn.HeaderText = "Start Time";
             this.StartTimeColumn.Name = "StartTimeColumn";
             // 
             // EndTimeColumn
             // 
-            dataGridViewCellStyle2.Format = "hh:mm tt";
-            this.EndTimeColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "hh:mm tt";
+            this.EndTimeColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.EndTimeColumn.HeaderText = "End Time";
             this.EndTimeColumn.Name = "EndTimeColumn";
             this.EndTimeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -262,7 +256,7 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.SubjectChoosedDataGridView);
             this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(271, 315);
+            this.groupBox2.Location = new System.Drawing.Point(19, 304);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(755, 265);
             this.groupBox2.TabIndex = 3;
@@ -345,73 +339,12 @@
             // button1
             // 
             this.button1.Image = global::Enrollment_System.Properties.Resources.BackButton;
-            this.button1.Location = new System.Drawing.Point(951, 586);
+            this.button1.Location = new System.Drawing.Point(699, 585);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 42);
             this.button1.TabIndex = 32;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Controls.Add(this.button7);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox3.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(246, 640);
-            this.groupBox3.TabIndex = 35;
-            this.groupBox3.TabStop = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(29, 372);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(190, 50);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Enroll Now!";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.Location = new System.Drawing.Point(29, 296);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(190, 50);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Student Entry";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button6.Location = new System.Drawing.Point(29, 217);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(190, 50);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Subject  Entry";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button7.Location = new System.Drawing.Point(29, 136);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(190, 50);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "Subject Schedule Entry";
-            this.button7.UseVisualStyleBackColor = false;
             // 
             // StudentEnrollmentEntry
             // 
@@ -419,8 +352,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1052, 640);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(807, 640);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -435,7 +367,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.SubjectChoosedDataGridView)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -472,10 +403,5 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
     }
 }

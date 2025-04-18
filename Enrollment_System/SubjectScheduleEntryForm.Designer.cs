@@ -58,14 +58,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -293,7 +287,7 @@
             this.label13.BackColor = System.Drawing.Color.MidnightBlue;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label13.Location = new System.Drawing.Point(235, 0);
+            this.label13.Location = new System.Drawing.Point(-5, -2);
             this.label13.Name = "label13";
             this.label13.Padding = new System.Windows.Forms.Padding(200, 15, 200, 15);
             this.label13.Size = new System.Drawing.Size(789, 72);
@@ -305,7 +299,7 @@
             this.SaveButton.BackColor = System.Drawing.Color.MidnightBlue;
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SaveButton.Location = new System.Drawing.Point(274, 414);
+            this.SaveButton.Location = new System.Drawing.Point(30, 413);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(105, 47);
             this.SaveButton.TabIndex = 26;
@@ -318,7 +312,7 @@
             this.ClearButton.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClearButton.Location = new System.Drawing.Point(385, 414);
+            this.ClearButton.Location = new System.Drawing.Point(152, 413);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(105, 47);
             this.ClearButton.TabIndex = 27;
@@ -343,7 +337,7 @@
             this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(274, 92);
+            this.groupBox1.Location = new System.Drawing.Point(30, 92);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(402, 302);
             this.groupBox1.TabIndex = 28;
@@ -362,7 +356,7 @@
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Location = new System.Drawing.Point(706, 92);
+            this.groupBox2.Location = new System.Drawing.Point(467, 92);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(284, 302);
             this.groupBox2.TabIndex = 29;
@@ -371,81 +365,19 @@
             // button1
             // 
             this.button1.Image = global::Enrollment_System.Properties.Resources.BackButton;
-            this.button1.Location = new System.Drawing.Point(915, 414);
+            this.button1.Location = new System.Drawing.Point(676, 413);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 44);
             this.button1.TabIndex = 31;
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(251, 478);
-            this.groupBox3.TabIndex = 32;
-            this.groupBox3.TabStop = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(29, 369);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(190, 50);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Enroll Now!";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(29, 286);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(190, 50);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Student Entry";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(29, 205);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(190, 50);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Subject  Entry";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.Location = new System.Drawing.Point(29, 122);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(190, 50);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Subject Schedule Entry";
-            this.button5.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // SubjectScheduleEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1019, 478);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(783, 478);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -460,7 +392,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -498,10 +429,5 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button5;
     }
 }
