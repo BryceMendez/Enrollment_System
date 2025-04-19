@@ -66,7 +66,7 @@ namespace Enrollment_System
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void MenuForm_Load_1(object sender, EventArgs e)
         {
 
         }

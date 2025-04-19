@@ -154,5 +154,11 @@ namespace Enrollment_System
 
         }
 
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            MenuForm mainMenu = new MenuForm();
+            mainMenu.Show();
+            this.Hide();
+        }
     }
 }
