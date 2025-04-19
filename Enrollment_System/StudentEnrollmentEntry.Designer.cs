@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.YearLabel = new System.Windows.Forms.Label();
@@ -204,6 +204,7 @@
             this.SubjectChoosedDataGridView.Name = "SubjectChoosedDataGridView";
             this.SubjectChoosedDataGridView.Size = new System.Drawing.Size(738, 202);
             this.SubjectChoosedDataGridView.TabIndex = 2;
+            this.SubjectChoosedDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SubjectChoosedDataGridView_CellContentClick);
             // 
             // EDPCodeColumn
             // 
@@ -217,15 +218,15 @@
             // 
             // StartTimeColumn
             // 
-            dataGridViewCellStyle3.Format = "hh:mm tt";
-            this.StartTimeColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Format = "hh:mm tt";
+            this.StartTimeColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.StartTimeColumn.HeaderText = "Start Time";
             this.StartTimeColumn.Name = "StartTimeColumn";
             // 
             // EndTimeColumn
             // 
-            dataGridViewCellStyle4.Format = "hh:mm tt";
-            this.EndTimeColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Format = "hh:mm tt";
+            this.EndTimeColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.EndTimeColumn.HeaderText = "End Time";
             this.EndTimeColumn.Name = "EndTimeColumn";
             this.EndTimeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;

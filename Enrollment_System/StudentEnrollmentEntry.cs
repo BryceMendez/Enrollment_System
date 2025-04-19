@@ -36,5 +36,10 @@ namespace Enrollment_System
         {
 
         }
+
+        private void SubjectChoosedDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
