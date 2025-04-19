@@ -60,7 +60,7 @@
             this.groupBox1.Controls.Add(this.SubjectScheduleEntryButton);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.groupBox1.Location = new System.Drawing.Point(129, 109);
+            this.groupBox1.Location = new System.Drawing.Point(130, 118);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(246, 323);
             this.groupBox1.TabIndex = 17;
