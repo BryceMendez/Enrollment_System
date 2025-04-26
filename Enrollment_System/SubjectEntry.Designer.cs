@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CourseCodeComboBox = new System.Windows.Forms.ComboBox();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
-            this.OfferingComboBox = new System.Windows.Forms.ComboBox();
-            this.CurriculumTextBox = new System.Windows.Forms.TextBox();
-            this.UnitTextBox = new System.Windows.Forms.TextBox();
+            this.OfferingsComboBox = new System.Windows.Forms.ComboBox();
+            this.CurriculumYearTextBox = new System.Windows.Forms.TextBox();
+            this.UnitsTextBox = new System.Windows.Forms.TextBox();
             this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.SubjectCodeTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -49,8 +49,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.PrerequisiteRadioButton = new System.Windows.Forms.RadioButton();
-            this.CorequisiteRadioButton = new System.Windows.Forms.RadioButton();
+            this.PreRequisiteRadioButton = new System.Windows.Forms.RadioButton();
+            this.CoRequisiteRadioButton = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.SubjectCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,8 +58,8 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RequisiteSubjectCodeTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.BackButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -73,9 +73,9 @@
             this.groupBox1.BackColor = System.Drawing.Color.Gainsboro;
             this.groupBox1.Controls.Add(this.CourseCodeComboBox);
             this.groupBox1.Controls.Add(this.CategoryComboBox);
-            this.groupBox1.Controls.Add(this.OfferingComboBox);
-            this.groupBox1.Controls.Add(this.CurriculumTextBox);
-            this.groupBox1.Controls.Add(this.UnitTextBox);
+            this.groupBox1.Controls.Add(this.OfferingsComboBox);
+            this.groupBox1.Controls.Add(this.CurriculumYearTextBox);
+            this.groupBox1.Controls.Add(this.UnitsTextBox);
             this.groupBox1.Controls.Add(this.DescriptionTextBox);
             this.groupBox1.Controls.Add(this.SubjectCodeTextBox);
             this.groupBox1.Controls.Add(this.label8);
@@ -112,30 +112,30 @@
             this.CategoryComboBox.Size = new System.Drawing.Size(121, 25);
             this.CategoryComboBox.TabIndex = 13;
             // 
-            // OfferingComboBox
+            // OfferingsComboBox
             // 
-            this.OfferingComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.OfferingComboBox.FormattingEnabled = true;
-            this.OfferingComboBox.Location = new System.Drawing.Point(162, 148);
-            this.OfferingComboBox.Name = "OfferingComboBox";
-            this.OfferingComboBox.Size = new System.Drawing.Size(121, 25);
-            this.OfferingComboBox.TabIndex = 12;
+            this.OfferingsComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.OfferingsComboBox.FormattingEnabled = true;
+            this.OfferingsComboBox.Location = new System.Drawing.Point(162, 148);
+            this.OfferingsComboBox.Name = "OfferingsComboBox";
+            this.OfferingsComboBox.Size = new System.Drawing.Size(121, 25);
+            this.OfferingsComboBox.TabIndex = 12;
             // 
-            // CurriculumTextBox
+            // CurriculumYearTextBox
             // 
-            this.CurriculumTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CurriculumTextBox.Location = new System.Drawing.Point(162, 273);
-            this.CurriculumTextBox.Name = "CurriculumTextBox";
-            this.CurriculumTextBox.Size = new System.Drawing.Size(106, 22);
-            this.CurriculumTextBox.TabIndex = 10;
+            this.CurriculumYearTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CurriculumYearTextBox.Location = new System.Drawing.Point(162, 273);
+            this.CurriculumYearTextBox.Name = "CurriculumYearTextBox";
+            this.CurriculumYearTextBox.Size = new System.Drawing.Size(106, 22);
+            this.CurriculumYearTextBox.TabIndex = 10;
             // 
-            // UnitTextBox
+            // UnitsTextBox
             // 
-            this.UnitTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.UnitTextBox.Location = new System.Drawing.Point(162, 108);
-            this.UnitTextBox.Name = "UnitTextBox";
-            this.UnitTextBox.Size = new System.Drawing.Size(57, 22);
-            this.UnitTextBox.TabIndex = 9;
+            this.UnitsTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.UnitsTextBox.Location = new System.Drawing.Point(162, 108);
+            this.UnitsTextBox.Name = "UnitsTextBox";
+            this.UnitsTextBox.Size = new System.Drawing.Size(57, 22);
+            this.UnitsTextBox.TabIndex = 9;
             // 
             // DescriptionTextBox
             // 
@@ -241,81 +241,81 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox3.Controls.Add(this.PrerequisiteRadioButton);
-            this.groupBox3.Controls.Add(this.CorequisiteRadioButton);
+            this.groupBox3.Controls.Add(this.PreRequisiteRadioButton);
+            this.groupBox3.Controls.Add(this.CoRequisiteRadioButton);
             this.groupBox3.Location = new System.Drawing.Point(352, 9);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(139, 60);
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             // 
-            // PrerequisiteRadioButton
+            // PreRequisiteRadioButton
             // 
-            this.PrerequisiteRadioButton.AutoSize = true;
-            this.PrerequisiteRadioButton.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PrerequisiteRadioButton.Location = new System.Drawing.Point(46, 11);
-            this.PrerequisiteRadioButton.Name = "PrerequisiteRadioButton";
-            this.PrerequisiteRadioButton.Size = new System.Drawing.Size(96, 21);
-            this.PrerequisiteRadioButton.TabIndex = 8;
-            this.PrerequisiteRadioButton.TabStop = true;
-            this.PrerequisiteRadioButton.Text = "Pre-requisite";
-            this.PrerequisiteRadioButton.UseVisualStyleBackColor = true;
+            this.PreRequisiteRadioButton.AutoSize = true;
+            this.PreRequisiteRadioButton.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PreRequisiteRadioButton.Location = new System.Drawing.Point(46, 11);
+            this.PreRequisiteRadioButton.Name = "PreRequisiteRadioButton";
+            this.PreRequisiteRadioButton.Size = new System.Drawing.Size(96, 21);
+            this.PreRequisiteRadioButton.TabIndex = 8;
+            this.PreRequisiteRadioButton.TabStop = true;
+            this.PreRequisiteRadioButton.Text = "Pre-requisite";
+            this.PreRequisiteRadioButton.UseVisualStyleBackColor = true;
             // 
-            // CorequisiteRadioButton
+            // CoRequisiteRadioButton
             // 
-            this.CorequisiteRadioButton.AutoSize = true;
-            this.CorequisiteRadioButton.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CorequisiteRadioButton.Location = new System.Drawing.Point(46, 38);
-            this.CorequisiteRadioButton.Name = "CorequisiteRadioButton";
-            this.CorequisiteRadioButton.Size = new System.Drawing.Size(96, 21);
-            this.CorequisiteRadioButton.TabIndex = 9;
-            this.CorequisiteRadioButton.TabStop = true;
-            this.CorequisiteRadioButton.Text = "Co-Requisite";
-            this.CorequisiteRadioButton.UseVisualStyleBackColor = true;
+            this.CoRequisiteRadioButton.AutoSize = true;
+            this.CoRequisiteRadioButton.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CoRequisiteRadioButton.Location = new System.Drawing.Point(46, 38);
+            this.CoRequisiteRadioButton.Name = "CoRequisiteRadioButton";
+            this.CoRequisiteRadioButton.Size = new System.Drawing.Size(96, 21);
+            this.CoRequisiteRadioButton.TabIndex = 9;
+            this.CoRequisiteRadioButton.TabStop = true;
+            this.CoRequisiteRadioButton.Text = "Co-Requisite";
+            this.CoRequisiteRadioButton.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SubjectCode,
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Location = new System.Drawing.Point(24, 77);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowHeadersWidth = 60;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.Size = new System.Drawing.Size(467, 67);
@@ -359,30 +359,30 @@
             this.label9.TabIndex = 7;
             this.label9.Text = "Subject Code";
             // 
-            // button1
+            // SaveButton
             // 
-            this.button1.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(436, 298);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 41);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SaveButton.BackColor = System.Drawing.Color.MidnightBlue;
+            this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SaveButton.Location = new System.Drawing.Point(436, 298);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(103, 41);
+            this.SaveButton.TabIndex = 13;
+            this.SaveButton.Text = "Save";
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // CancelButton
             // 
-            this.button2.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(436, 354);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 42);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = false;
+            this.CancelButton.BackColor = System.Drawing.Color.MidnightBlue;
+            this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CancelButton.Location = new System.Drawing.Point(436, 354);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(103, 42);
+            this.CancelButton.TabIndex = 14;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -415,8 +415,8 @@
             this.ClientSize = new System.Drawing.Size(562, 650);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "SubjectEntry";
@@ -445,13 +445,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RadioButton CorequisiteRadioButton;
-        private System.Windows.Forms.RadioButton PrerequisiteRadioButton;
+        private System.Windows.Forms.RadioButton CoRequisiteRadioButton;
+        private System.Windows.Forms.RadioButton PreRequisiteRadioButton;
         private System.Windows.Forms.ComboBox CourseCodeComboBox;
         private System.Windows.Forms.ComboBox CategoryComboBox;
-        private System.Windows.Forms.ComboBox OfferingComboBox;
-        private System.Windows.Forms.TextBox CurriculumTextBox;
-        private System.Windows.Forms.TextBox UnitTextBox;
+        private System.Windows.Forms.ComboBox OfferingsComboBox;
+        private System.Windows.Forms.TextBox CurriculumYearTextBox;
+        private System.Windows.Forms.TextBox UnitsTextBox;
         private System.Windows.Forms.TextBox DescriptionTextBox;
         private System.Windows.Forms.TextBox SubjectCodeTextBox;
         private System.Windows.Forms.TextBox RequisiteSubjectCodeTextBox;
@@ -460,8 +460,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button BackButton;

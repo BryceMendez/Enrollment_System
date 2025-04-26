@@ -14,132 +14,146 @@ namespace Enrollment_System
 {
     public partial class SubjectScheduleEntryForm : Form
     {
+        // SQL Server connection string
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True";
+
         public SubjectScheduleEntryForm()
         {
             InitializeComponent();
         }
 
-        private void SubjectScheduleEntry_Load(object sender, EventArgs e)
+        private void SubjectScheduleEntryForm_Load(object sender, EventArgs e)
         {
+            // Time picker formatting remains the same
+            StartTimeDateTimePicker.Format = DateTimePickerFormat.Time;
+            StartTimeDateTimePicker.ShowUpDown = true;
+            StartTimeDateTimePicker.Format = DateTimePickerFormat.Custom;
+            StartTimeDateTimePicker.CustomFormat = "HH:mm tt";
 
+            EndTimeDateTimePicker.Format = DateTimePickerFormat.Time;
+            EndTimeDateTimePicker.ShowUpDown = true;
+            EndTimeDateTimePicker.Format = DateTimePickerFormat.Custom;
+            EndTimeDateTimePicker.CustomFormat = "HH:mm tt";
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
+            using (SqlConnection thisConnection = new SqlConnection(connectionString))
+            {
+                // Check for duplicate schedule
+                string checkSql = "SELECT COUNT(*) FROM SUBJECTSCHEDFILE WHERE SSFEDPCODE = @edpCode";
+                thisConnection.Open();
 
+                using (SqlCommand checkCommand = new SqlCommand(checkSql, thisConnection))
+                {
+                    checkCommand.Parameters.AddWithValue("@edpCode", SubjectEdpCodeTextBox.Text.Trim());
+                    int count = (int)checkCommand.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        MessageBox.Show("SUBJECT SCHEDULE ALREADY EXISTS...");
+                        return;
+                    }
+                }
+
+                // Insert new schedule
+                try
+                {
+                    string insertSql = @"INSERT INTO SUBJECTSCHEDFILE 
+                                    (SSFEDPCODE, SSFSUBJCODE, SSFSTARTTIME, SSFENDTIME, 
+                                     SSFDAYS, SSFROOM, SSFSECTION, SSFSCHOOLYEAR, 
+                                     SSFMAXSIZE, SSFCLASSSIZE) 
+                                    VALUES 
+                                    (@edpCode, @subjCode, @startTime, @endTime, 
+                                     @days, @room, @section, @schoolYear, 
+                                     @maxSize, @classSize)";
+
+                    using (SqlCommand insertCommand = new SqlCommand(insertSql, thisConnection))
+                    {
+                        // Convert times to TimeSpan
+                        TimeSpan startTime = StartTimeDateTimePicker.Value.TimeOfDay;
+                        TimeSpan endTime = EndTimeDateTimePicker.Value.TimeOfDay;
+
+                        // Add parameters
+                        insertCommand.Parameters.AddWithValue("@edpCode", SubjectEdpCodeTextBox.Text);
+                        insertCommand.Parameters.AddWithValue("@subjCode", SubjectCodeTextBox.Text);
+                        insertCommand.Parameters.AddWithValue("@startTime", startTime);
+                        insertCommand.Parameters.AddWithValue("@endTime", endTime);
+                        insertCommand.Parameters.AddWithValue("@days", DaysTextBox.Text);
+                        insertCommand.Parameters.AddWithValue("@room", RoomTextBox.Text);
+                        insertCommand.Parameters.AddWithValue("@section", SectionTextBox.Text);
+                        insertCommand.Parameters.AddWithValue("@schoolYear", SchoolYearTextBox.Text);
+                        insertCommand.Parameters.AddWithValue("@maxSize", 50);
+                        insertCommand.Parameters.AddWithValue("@classSize", 0);
+
+                        int rowsAffected = insertCommand.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("SUBJECT SCHEDULE ADDED!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to add schedule");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
         }
-
 
         private void SubjectCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Han Song\OneDrive\Documents\Malalay.mdf"";Integrated Security=True;Connect Timeout=30";
-
-                SqlConnection myConnection = new SqlConnection(connectionString);
-                myConnection.Open();
-
-                string commandText = "SELECT * FROM SUBJECTFILE";
-                SqlCommand myCommand = myConnection.CreateCommand();
-                myCommand.CommandText = commandText;
-
-                SqlDataReader myReader = myCommand.ExecuteReader();
-
-                bool flag = false;
-                while (myReader.Read())
+                using (SqlConnection thisConnection = new SqlConnection(connectionString))
                 {
-                    if (myReader["SFSUBJCODE"].ToString().Trim() == SubjectCodeTextBox.Text.Trim())
-                    {
-                        flag = true;
-                        DescriptionLabel.Text = myReader["SFSUBJDESC"].ToString();
-                        break;
-                    }
-                    else
-                    {
-                        continue;
-                    }
+                    thisConnection.Open();
+                    string sql = "SELECT SFSUBJDESC FROM SUBJECTFILE WHERE SFSUBJCODE = @subjCode";
 
+                    using (SqlCommand thisCommand = new SqlCommand(sql, thisConnection))
+                    {
+                        thisCommand.Parameters.AddWithValue("@subjCode", SubjectCodeTextBox.Text.Trim());
 
+                        object result = thisCommand.ExecuteScalar();
+                        if (result != null)
+                        {
+                            DescriptionLabel.Text = result.ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Subject Code Not Found");
+                        }
+                    }
                 }
-
-
-
-
-                MessageBox.Show("Pressed Enter");
             }
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        // The rest of your methods remain the same (BackButton, ClearButton, FormClosing)
+        private void BackButton_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Han Song\OneDrive\Documents\Malalay.mdf"";Integrated Security=True;Connect Timeout=30";
-
-            SqlConnection myConnection = new SqlConnection(connectionString);
-
-            string sql = "SELECT * FROM SUBJECTFILE";
-
-            SqlDataAdapter thisAdapter = new SqlDataAdapter(sql, myConnection);
-
-            SqlCommandBuilder thisBuilder = new SqlCommandBuilder(thisAdapter);
-
-            DataSet thisDataSet = new DataSet();
-
-            thisAdapter.Fill(thisDataSet, "SubjectFile");
-
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            MenuForm menuForm = new MenuForm();
+            menuForm.Show();
+            this.Hide();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-
+            SubjectEdpCodeTextBox.Text = "";
+            SubjectCodeTextBox.Text = "";
+            DescriptionLabel.Text = "";
+            DaysTextBox.Text = "";
+            SectionTextBox.Text = "";
+            RoomTextBox.Text = "";
+            SchoolYearTextBox.Text = "";
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void SubjectScheduleEntryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SubjectScheduleEntryForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SaveButton_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            MenuForm mainMenu = new MenuForm();
-            mainMenu.Show();
-            this.Hide();
+            Application.Exit();
         }
     }
 }

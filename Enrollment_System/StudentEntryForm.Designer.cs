@@ -35,7 +35,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.IdNumberTextBox = new System.Windows.Forms.TextBox();
+            this.IDNumberTextBox = new System.Windows.Forms.TextBox();
             this.FirstNameTextBox = new System.Windows.Forms.TextBox();
             this.MiddleNameTextBox = new System.Windows.Forms.TextBox();
             this.LastNameTextBox = new System.Windows.Forms.TextBox();
@@ -123,14 +123,14 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Remarks";
             // 
-            // IdNumberTextBox
+            // IDNumberTextBox
             // 
-            this.IdNumberTextBox.Location = new System.Drawing.Point(132, 25);
-            this.IdNumberTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.IdNumberTextBox.Name = "IdNumberTextBox";
-            this.IdNumberTextBox.Size = new System.Drawing.Size(140, 22);
-            this.IdNumberTextBox.TabIndex = 7;
-            this.IdNumberTextBox.TextChanged += new System.EventHandler(this.IdNumTextBox_TextChanged);
+            this.IDNumberTextBox.Location = new System.Drawing.Point(132, 25);
+            this.IDNumberTextBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.IDNumberTextBox.Name = "IDNumberTextBox";
+            this.IDNumberTextBox.Size = new System.Drawing.Size(140, 22);
+            this.IDNumberTextBox.TabIndex = 7;
+            this.IDNumberTextBox.TextChanged += new System.EventHandler(this.IdNumTextBox_TextChanged);
             // 
             // FirstNameTextBox
             // 
@@ -219,7 +219,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox1.Controls.Add(this.IdNumberTextBox);
+            this.groupBox1.Controls.Add(this.IDNumberTextBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.FirstNameTextBox);
             this.groupBox1.Controls.Add(this.label7);
@@ -299,7 +299,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox IdNumberTextBox;
+        private System.Windows.Forms.TextBox IDNumberTextBox;
         private System.Windows.Forms.TextBox FirstNameTextBox;
         private System.Windows.Forms.TextBox MiddleNameTextBox;
         private System.Windows.Forms.TextBox LastNameTextBox;

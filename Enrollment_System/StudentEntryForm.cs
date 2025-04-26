@@ -14,10 +14,11 @@ namespace Enrollment_System
             InitializeComponent();
             // Read the connection string when the form loads
             // Make sure the name "EnrollmentDBConnection" matches the name in App.config
-            RemarksComboBox.Items.Add("Regular");
-            RemarksComboBox.Items.Add("Irregular");
+            RemarksComboBox.Items.Add("New");
+            RemarksComboBox.Items.Add("Old");
             RemarksComboBox.Items.Add("Transferee");
-            RemarksComboBox.Items.Add("Shifter");
+            RemarksComboBox.Items.Add("Shiftee");
+            RemarksComboBox.Items.Add("Cross Enrollee");
             RemarksComboBox.SelectedIndex = 0;
 
 
@@ -36,68 +37,70 @@ namespace Enrollment_System
         private void SaveButton_Click(object sender, EventArgs e)
         {
 
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Han Song\OneDrive\Documents\Malalay.mdf"";Integrated Security=True;Connect Timeout=30";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Bryce Mendez\Documents\MENDEZ.mdf;Integrated Security=True;Connect Timeout=30";
 
             SqlConnection myConnection = new SqlConnection(connectionString);
-
             string sql = "SELECT * FROM STUDENTFILE";
+            myConnection.Open();
+            SqlCommand thisCommand = myConnection.CreateCommand();
+            thisCommand.CommandText = sql;
+            SqlDataReader thisDataReader = thisCommand.ExecuteReader();
 
-            SqlDataAdapter thisAdapter = new SqlDataAdapter(sql, myConnection);
-
-            SqlCommandBuilder thisBuilder = new SqlCommandBuilder(thisAdapter);
-
-            DataSet thisDataSet = new DataSet();
-            thisAdapter.Fill(thisDataSet, "StudentFile");
-
-
-
-
-
-            try
+            int approve = 1;
+            while (thisDataReader.Read())
             {
-                if (IdNumberTextBox.Text.Equals("") ||
-                    LastNameTextBox.Text.Equals("") ||
-                    FirstNameTextBox.Text.Equals("") ||
-                    CourseTextBox.Text.Equals("") ||
-                    YearTextBox.Text.Equals("") ||
-                    RemarksComboBox.Text.Equals(""))
+                if (thisDataReader["STFSTUDID"].ToString().Trim() == IDNumberTextBox.Text.Trim())
                 {
-                    MessageBox.Show("Please Fill Up ");
+                    approve = 0;
+                    break;
                 }
-                else
-                {
-
-                    DataRow thisRow = thisDataSet.Tables["StudentFile"].NewRow();
-                    thisRow["STFSTUDID"] = Convert.ToInt64(IdNumberTextBox.Text);
-                    thisRow["STFSTUDLNAME"] = (LastNameTextBox.Text);
-                    thisRow["STFSTUDFNAME"] = (FirstNameTextBox.Text);
-                    thisRow["STFSTUDCOURSE"] = (CourseTextBox.Text);
-                    thisRow["STFSTUDYEAR"] = (YearTextBox.Text);
-                    thisRow["STFSTUDREMARKS"] = (RemarksComboBox.Text);
-                    //thisRow["STFSTUDSTATUS"] = (RemarksComboBox.Text);
-
-
-                    thisDataSet.Tables["StudentFile"].Rows.Add(thisRow);
-                    thisAdapter.Update(thisDataSet, "StudentFile");
-
-
-                    MessageBox.Show("Entries Recorded!");
-
-
-                }
-
-
             }
-            catch (Exception ex) { MessageBox.Show("Database Error: " + ex.Message); }
+            myConnection.Close();
 
+            if (approve == 1)
+            {
+                try
+                {
+                    if (IDNumberTextBox.Text.Equals("") ||
+                        LastNameTextBox.Text.Equals("") ||
+                        FirstNameTextBox.Text.Equals("") ||
+                        CourseTextBox.Text.Equals("") ||
+                        YearTextBox.Text.Equals("") ||
+                        RemarksComboBox.Text.Equals(""))
+                    {
+                        MessageBox.Show("Please Fill Up All Fields");
+                    }
+                    else
+                    {
+                        SqlDataAdapter thisAdapter = new SqlDataAdapter(sql, myConnection);
+                        SqlCommandBuilder thisBuilder = new SqlCommandBuilder(thisAdapter);
 
+                        DataSet thisDataSet = new DataSet();
+                        thisAdapter.Fill(thisDataSet, "StudentFile");
 
+                        DataRow thisRow = thisDataSet.Tables["StudentFile"].NewRow();
+                        thisRow["STFSTUDID"] = Convert.ToInt64(IDNumberTextBox.Text);
+                        thisRow["STFSTUDLNAME"] = LastNameTextBox.Text;
+                        thisRow["STFSTUDFNAME"] = FirstNameTextBox.Text;
+                        thisRow["STFSTUDCOURSE"] = CourseTextBox.Text;
+                        thisRow["STFSTUDYEAR"] = YearTextBox.Text;
+                        thisRow["STFSTUDREMARKS"] = RemarksComboBox.Text;
 
+                        thisDataSet.Tables["StudentFile"].Rows.Add(thisRow);
+                        thisAdapter.Update(thisDataSet, "StudentFile");
 
-
-
-
-
+                        MessageBox.Show("Student Record Added!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Database Error: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Student ID Already Exists...");
+            }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -115,7 +118,7 @@ namespace Enrollment_System
         // Helper method to clear form fields
         private void ClearForm()
         {
-            IdNumberTextBox.Clear();
+            IDNumberTextBox.Clear();
             FirstNameTextBox.Clear();
             MiddleNameTextBox.Clear();
             LastNameTextBox.Clear();
@@ -126,7 +129,7 @@ namespace Enrollment_System
             else
                 RemarksComboBox.SelectedIndex = -1; // Or clear selection if list is empty
 
-            IdNumberTextBox.Focus(); // Set focus back to the first field
+            IDNumberTextBox.Focus(); // Set focus back to the first field
         }
 
         private void Form1_Load(object sender, EventArgs e)
