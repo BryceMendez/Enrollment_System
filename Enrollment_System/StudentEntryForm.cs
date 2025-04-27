@@ -12,33 +12,19 @@ namespace Enrollment_System
         public StudentEntryForm()
         {
             InitializeComponent();
-            // Read the connection string when the form loads
-            // Make sure the name "EnrollmentDBConnection" matches the name in App.config
             RemarksComboBox.Items.Add("New");
             RemarksComboBox.Items.Add("Old");
             RemarksComboBox.Items.Add("Transferee");
             RemarksComboBox.Items.Add("Shiftee");
             RemarksComboBox.Items.Add("Cross Enrollee");
             RemarksComboBox.SelectedIndex = 0;
+        } 
 
-
-        }
-
-        // --- Keep your existing empty event handlers if needed ---
-        private void IdNumTextBox_TextChanged(object sender, EventArgs e) { }
-        private void FNameTextBox_TextChanged(object sender, EventArgs e) { }
-        private void MNameTextBox_TextChanged(object sender, EventArgs e) { }
-        private void LNameTextBox_TextChanged(object sender, EventArgs e) { }
-        private void CourseTextBox_TextChanged(object sender, EventArgs e) { }
-        private void YearTextBox_TextChanged(object sender, EventArgs e) { }
-        private void RemarksComboBox_SelectedIndexChanged(object sender, EventArgs e) { }
-        // --- ---
-
+        //SAVE BUTTON
         private void SaveButton_Click(object sender, EventArgs e)
         {
 
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Bryce Mendez\Documents\MENDEZ.mdf;Integrated Security=True;Connect Timeout=30";
-
             SqlConnection myConnection = new SqlConnection(connectionString);
             string sql = "SELECT * FROM STUDENTFILE";
             myConnection.Open();
@@ -74,10 +60,8 @@ namespace Enrollment_System
                     {
                         SqlDataAdapter thisAdapter = new SqlDataAdapter(sql, myConnection);
                         SqlCommandBuilder thisBuilder = new SqlCommandBuilder(thisAdapter);
-
                         DataSet thisDataSet = new DataSet();
                         thisAdapter.Fill(thisDataSet, "StudentFile");
-
                         DataRow thisRow = thisDataSet.Tables["StudentFile"].NewRow();
                         thisRow["STFSTUDID"] = Convert.ToInt64(IDNumberTextBox.Text);
                         thisRow["STFSTUDLNAME"] = LastNameTextBox.Text;
@@ -85,10 +69,8 @@ namespace Enrollment_System
                         thisRow["STFSTUDCOURSE"] = CourseTextBox.Text;
                         thisRow["STFSTUDYEAR"] = YearTextBox.Text;
                         thisRow["STFSTUDREMARKS"] = RemarksComboBox.Text;
-
                         thisDataSet.Tables["StudentFile"].Rows.Add(thisRow);
                         thisAdapter.Update(thisDataSet, "StudentFile");
-
                         MessageBox.Show("Student Record Added!");
                     }
                 }
@@ -103,19 +85,13 @@ namespace Enrollment_System
             }
         }
 
+        //CANCEL BUTTON
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            // Optional: Ask for confirmation before closing
-            // if (MessageBox.Show("Are you sure you want to cancel and close?", "Confirm Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            // {
-            //    this.Close(); // Close the current form
-            // }
-
-            // Or just clear the form:
             ClearForm();
         }
 
-        // Helper method to clear form fields
+        //CLEAR FORM
         private void ClearForm()
         {
             IDNumberTextBox.Clear();
@@ -132,31 +108,7 @@ namespace Enrollment_System
             IDNumberTextBox.Focus(); // Set focus back to the first field
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //BACK BUTTON
         private void BackButton_Click(object sender, EventArgs e)
         {
             MenuForm mainMenu = new MenuForm();

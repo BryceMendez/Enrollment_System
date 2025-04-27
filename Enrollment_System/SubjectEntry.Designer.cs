@@ -51,12 +51,12 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.PreRequisiteRadioButton = new System.Windows.Forms.RadioButton();
             this.CoRequisiteRadioButton = new System.Windows.Forms.RadioButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.SubjectDataGridView = new System.Windows.Forms.DataGridView();
             this.SubjectCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RequisiteSubjectCodeTextBox = new System.Windows.Forms.TextBox();
+            this.SubjectRequisiteTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
@@ -65,7 +65,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SubjectDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -92,12 +92,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Subject Information";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // CourseCodeComboBox
             // 
             this.CourseCodeComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CourseCodeComboBox.FormattingEnabled = true;
+            this.CourseCodeComboBox.Items.AddRange(new object[] {
+            "BSIT",
+            "BSIS"});
             this.CourseCodeComboBox.Location = new System.Drawing.Point(162, 231);
             this.CourseCodeComboBox.Name = "CourseCodeComboBox";
             this.CourseCodeComboBox.Size = new System.Drawing.Size(121, 25);
@@ -107,6 +109,9 @@
             // 
             this.CategoryComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.CategoryComboBox.FormattingEnabled = true;
+            this.CategoryComboBox.Items.AddRange(new object[] {
+            "Lecture",
+            "Laboratory"});
             this.CategoryComboBox.Location = new System.Drawing.Point(162, 189);
             this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(121, 25);
@@ -116,6 +121,10 @@
             // 
             this.OfferingsComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.OfferingsComboBox.FormattingEnabled = true;
+            this.OfferingsComboBox.Items.AddRange(new object[] {
+            "1st Semester",
+            "2nd Semester",
+            "Summer"});
             this.OfferingsComboBox.Location = new System.Drawing.Point(162, 148);
             this.OfferingsComboBox.Name = "OfferingsComboBox";
             this.OfferingsComboBox.Size = new System.Drawing.Size(121, 25);
@@ -227,8 +236,8 @@
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Gainsboro;
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Controls.Add(this.RequisiteSubjectCodeTextBox);
+            this.groupBox2.Controls.Add(this.SubjectDataGridView);
+            this.groupBox2.Controls.Add(this.SubjectRequisiteTextBox);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(25, 415);
@@ -273,16 +282,16 @@
             this.CoRequisiteRadioButton.Text = "Co-Requisite";
             this.CoRequisiteRadioButton.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // SubjectDataGridView
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.SubjectDataGridView.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.AliceBlue;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.SubjectDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.SubjectDataGridView.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.SubjectDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.SubjectDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -290,8 +299,8 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SubjectDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.SubjectDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SubjectCode,
             this.Column1,
             this.Column2,
@@ -303,11 +312,11 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 77);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.SubjectDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.SubjectDataGridView.Location = new System.Drawing.Point(24, 77);
+            this.SubjectDataGridView.Margin = new System.Windows.Forms.Padding(5);
+            this.SubjectDataGridView.Name = "SubjectDataGridView";
+            this.SubjectDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -315,12 +324,11 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.RowHeadersWidth = 60;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.Size = new System.Drawing.Size(467, 67);
-            this.dataGridView1.TabIndex = 12;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.SubjectDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.SubjectDataGridView.RowHeadersWidth = 60;
+            this.SubjectDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.SubjectDataGridView.Size = new System.Drawing.Size(467, 67);
+            this.SubjectDataGridView.TabIndex = 12;
             // 
             // SubjectCode
             // 
@@ -342,12 +350,13 @@
             this.Column3.HeaderText = "Co/Pre-Requisite";
             this.Column3.Name = "Column3";
             // 
-            // RequisiteSubjectCodeTextBox
+            // SubjectRequisiteTextBox
             // 
-            this.RequisiteSubjectCodeTextBox.Location = new System.Drawing.Point(108, 29);
-            this.RequisiteSubjectCodeTextBox.Name = "RequisiteSubjectCodeTextBox";
-            this.RequisiteSubjectCodeTextBox.Size = new System.Drawing.Size(136, 22);
-            this.RequisiteSubjectCodeTextBox.TabIndex = 11;
+            this.SubjectRequisiteTextBox.Location = new System.Drawing.Point(108, 29);
+            this.SubjectRequisiteTextBox.Name = "SubjectRequisiteTextBox";
+            this.SubjectRequisiteTextBox.Size = new System.Drawing.Size(136, 22);
+            this.SubjectRequisiteTextBox.TabIndex = 11;
+            this.SubjectRequisiteTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SubjectRequisiteTextBox_KeyPress);
             // 
             // label9
             // 
@@ -364,13 +373,13 @@
             this.SaveButton.BackColor = System.Drawing.Color.MidnightBlue;
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SaveButton.Location = new System.Drawing.Point(436, 298);
+            this.SaveButton.Location = new System.Drawing.Point(436, 297);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(103, 41);
             this.SaveButton.TabIndex = 13;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = false;
-            this.SaveButton.Click += new System.EventHandler(this.button1_Click);
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click_1);
             // 
             // CancelButton
             // 
@@ -383,6 +392,7 @@
             this.CancelButton.TabIndex = 14;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = false;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click_1);
             // 
             // label1
             // 
@@ -421,14 +431,13 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "SubjectEntry";
             this.Text = "SubjectEntry";
-            this.Load += new System.EventHandler(this.SubjectEntry_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SubjectDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -454,8 +463,8 @@
         private System.Windows.Forms.TextBox UnitsTextBox;
         private System.Windows.Forms.TextBox DescriptionTextBox;
         private System.Windows.Forms.TextBox SubjectCodeTextBox;
-        private System.Windows.Forms.TextBox RequisiteSubjectCodeTextBox;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox SubjectRequisiteTextBox;
+        private System.Windows.Forms.DataGridView SubjectDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubjectCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;

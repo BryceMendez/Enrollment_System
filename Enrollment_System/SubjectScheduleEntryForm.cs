@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace Enrollment_System
 {
+    //YOU CAN SCRACTH THIS SHIT CAUSE IT DOESNT WORK
     public partial class SubjectScheduleEntryForm : Form
     {
         // SQL Server connection string
@@ -36,7 +37,47 @@ namespace Enrollment_System
             EndTimeDateTimePicker.CustomFormat = "HH:mm tt";
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void SubjectCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                using (SqlConnection thisConnection = new SqlConnection(connectionString))
+                {
+                    thisConnection.Open();
+                    string sql = "SELECT SFSUBJDESC FROM SUBJECTFILE WHERE SFSUBJCODE = @subjCode";
+
+                    using (SqlCommand thisCommand = new SqlCommand(sql, thisConnection))
+                    {
+                        thisCommand.Parameters.AddWithValue("@subjCode", SubjectCodeTextBox.Text.Trim());
+
+                        object result = thisCommand.ExecuteScalar();
+                        if (result != null)
+                        {
+                            DescriptionLabel.Text = result.ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Subject Code Not Found");
+                        }
+                    }
+                }
+            }
+        }
+
+        // The rest of your methods remain the same (BackButton, ClearButton, FormClosing)
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            MenuForm menuForm = new MenuForm();
+            menuForm.Show();
+            this.Hide();
+        }
+
+        private void SubjectScheduleEntryForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void SaveButton_Click_1(object sender, EventArgs e)
         {
             using (SqlConnection thisConnection = new SqlConnection(connectionString))
             {
@@ -105,42 +146,7 @@ namespace Enrollment_System
             }
         }
 
-        private void SubjectCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                using (SqlConnection thisConnection = new SqlConnection(connectionString))
-                {
-                    thisConnection.Open();
-                    string sql = "SELECT SFSUBJDESC FROM SUBJECTFILE WHERE SFSUBJCODE = @subjCode";
-
-                    using (SqlCommand thisCommand = new SqlCommand(sql, thisConnection))
-                    {
-                        thisCommand.Parameters.AddWithValue("@subjCode", SubjectCodeTextBox.Text.Trim());
-
-                        object result = thisCommand.ExecuteScalar();
-                        if (result != null)
-                        {
-                            DescriptionLabel.Text = result.ToString();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Subject Code Not Found");
-                        }
-                    }
-                }
-            }
-        }
-
-        // The rest of your methods remain the same (BackButton, ClearButton, FormClosing)
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            MenuForm menuForm = new MenuForm();
-            menuForm.Show();
-            this.Hide();
-        }
-
-        private void ClearButton_Click(object sender, EventArgs e)
+        private void ClearButton_Click_1(object sender, EventArgs e)
         {
             SubjectEdpCodeTextBox.Text = "";
             SubjectCodeTextBox.Text = "";
@@ -149,11 +155,6 @@ namespace Enrollment_System
             SectionTextBox.Text = "";
             RoomTextBox.Text = "";
             SchoolYearTextBox.Text = "";
-        }
-
-        private void SubjectScheduleEntryForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

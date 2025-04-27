@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Enrollment_System
@@ -16,128 +10,57 @@ namespace Enrollment_System
         public SubjectEntry()
         {
             InitializeComponent();
-
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        //SAVE BUTTON
+        private void SaveButton_Click_1(object sender, EventArgs e)
         {
             string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Bryce Mendez\Documents\MENDEZ.mdf;Integrated Security=True;Connect Timeout=30";
-
             using (SqlConnection thisConnection = new SqlConnection(connectionString))
             {
-                try
+                string sql = "SELECT * FROM SubjectFile";
+                SqlDataAdapter thisAdapter = new SqlDataAdapter(sql, thisConnection);
+                SqlCommandBuilder thisBuilder = new SqlCommandBuilder(thisAdapter);
+                DataSet thisDataSet = new DataSet();
+                thisAdapter.Fill(thisDataSet, "SubjectFile");
+                DataColumn[] keys = new DataColumn[2];
+                keys[0] = thisDataSet.Tables["SubjectFile"].Columns["SFSUBJCODE"];
+                keys[1] = thisDataSet.Tables["SubjectFile"].Columns["SFSUBJCOURSECODE"];
+                thisDataSet.Tables["SubjectFile"].PrimaryKey = keys;
+                String[] valuesToSearch = new String[2];
+                valuesToSearch[0] = SubjectCodeTextBox.Text;
+                valuesToSearch[1] = CourseCodeComboBox.Text;
+                DataRow findRow = thisDataSet.Tables["SubjectFile"].Rows.Find(valuesToSearch);
+
+                if (findRow == null)
                 {
-                    thisConnection.Open();
-
-                    // Check if subject already exists for this course
-                    string checkSql = @"SELECT COUNT(*) FROM SUBJECTFILE 
-                          WHERE SFSUBJCODE = @subjectCode
-                          AND SFSUBJCOURSECODE = @courseCode";
-
-                    using (SqlCommand checkCommand = new SqlCommand(checkSql, thisConnection))
-                    {
-                        checkCommand.Parameters.AddWithValue("@subjectCode", SubjectCodeTextBox.Text.Trim());
-                        checkCommand.Parameters.AddWithValue("@courseCode", CourseCodeComboBox.Text.Trim());
-
-                        int count = (int)checkCommand.ExecuteScalar();
-
-                        if (count > 0)
-                        {
-                            MessageBox.Show("This subject code already exists for the selected course.");
-                            return;
-                        }
-                    }
-
-                    // Validate all required fields
-                    if (string.IsNullOrWhiteSpace(SubjectCodeTextBox.Text) ||
-                        string.IsNullOrWhiteSpace(DescriptionTextBox.Text) ||
-                        string.IsNullOrWhiteSpace(UnitsTextBox.Text) ||
-                        string.IsNullOrWhiteSpace(CategoryComboBox.Text) ||
-                        string.IsNullOrWhiteSpace(OfferingsComboBox.Text) ||
-                        string.IsNullOrWhiteSpace(CourseCodeComboBox.Text) ||
-                        string.IsNullOrWhiteSpace(CurriculumYearTextBox.Text))
-                    {
-                        MessageBox.Show("Please fill in all required fields.");
-                        return;
-                    }
-
-                    // Insert main subject record
-                    string insertSubjectSql = @"INSERT INTO SUBJECTFILE 
-                                  (SFSUBJCODE, SFSUBJDESC, SFSUBJUNITS, SFSUBJCATEGORY, 
-                                   SFSUBJREGOFRNG, SFSUBJCOURSECODE, SFSUBJCURRCODE)
-                                  VALUES (@code, @desc, @units, @category, @offering, @courseCode, @currCode)";
-
-                    using (SqlCommand insertCommand = new SqlCommand(insertSubjectSql, thisConnection))
-                    {
-                        insertCommand.Parameters.AddWithValue("@code", SubjectCodeTextBox.Text.Trim());
-                        insertCommand.Parameters.AddWithValue("@desc", DescriptionTextBox.Text.Trim());
-                        insertCommand.Parameters.AddWithValue("@units", Convert.ToInt16(UnitsTextBox.Text));
-                        insertCommand.Parameters.AddWithValue("@category", CategoryComboBox.Text.Substring(0, 3));
-                        insertCommand.Parameters.AddWithValue("@offering", Convert.ToInt16(OfferingsComboBox.Text.Substring(0, 1)));
-                        insertCommand.Parameters.AddWithValue("@courseCode", CourseCodeComboBox.Text.Trim());
-                        insertCommand.Parameters.AddWithValue("@currCode", CurriculumYearTextBox.Text.Trim());
-
-                        int rowsAffected = insertCommand.ExecuteNonQuery();
-
-                        if (rowsAffected == 0)
-                        {
-                            MessageBox.Show("Failed to add subject.");
-                            return;
-                        }
-                    }
-
-                    // Handle prerequisite/co-requisite if specified
-                    if (!string.IsNullOrWhiteSpace(RequisiteSubjectCodeTextBox.Text) &&
-                        (PreRequisiteRadioButton.Checked || CoRequisiteRadioButton.Checked))
-                    {
-                        string insertRequisiteSql = @"INSERT INTO SubjectPreqFile 
-                                        (SUBJCODE, SUBJPRECODE, SUBJCATEGORY)
-                                        VALUES (@subjCode, @subjPreCode, @subjCategory)";
-
-                        using (SqlCommand requisiteCommand = new SqlCommand(insertRequisiteSql, thisConnection))
-                        {
-                            requisiteCommand.Parameters.AddWithValue("@subjCode", SubjectCodeTextBox.Text.Trim());
-                            requisiteCommand.Parameters.AddWithValue("@subjPreCode", RequisiteSubjectCodeTextBox.Text.Trim());
-                            requisiteCommand.Parameters.AddWithValue("@subjCategory",
-                                PreRequisiteRadioButton.Checked ? "PR" : "CO");
-
-                            requisiteCommand.ExecuteNonQuery();
-                        }
-                    }
-
-                    MessageBox.Show("Subject added successfully!");
-                     // Optional: Add method to clear form fields after successful save
+                    DataRow thisRow = thisDataSet.Tables["SubjectFile"].NewRow();
+                    thisRow["SFSUBJCODE"] = SubjectCodeTextBox.Text;
+                    thisRow["SFSUBJDESC"] = DescriptionTextBox.Text;
+                    thisRow["SFSUBJUNITS"] = Convert.ToInt16(UnitsTextBox.Text);
+                    thisRow["SFSUBJREGOFRNG"] = OfferingsComboBox.Text.Substring(0, 1);
+                    thisRow["SFSUBJCATEGORY"] = CategoryComboBox.Text.Substring(0, 3);
+                    thisRow["SFSUBJSTATUS"] = "AC";
+                    thisRow["SFSUBJCOURSECODE"] = CourseCodeComboBox.Text;
+                    thisRow["SFSUBJCURRCODE"] = CurriculumYearTextBox.Text;
+                    thisDataSet.Tables["SubjectFile"].Rows.Add(thisRow);
+                    thisAdapter.Update(thisDataSet, "SubjectFile");
+                    MessageBox.Show("Entries Recorded!");
                 }
-                catch (FormatException)
+                else
                 {
-                    MessageBox.Show("Please enter valid numbers for Units and Offerings fields.");
-                }
-                catch (SqlException sqlEx) when (sqlEx.Number == 2627)
-                {
-                    MessageBox.Show("Error: This subject code already exists for the selected course.");
-                }
-                catch (SqlException sqlEx)
-                {
-                    MessageBox.Show($"Database error: {sqlEx.Message}");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
+                    MessageBox.Show("Duplicate Entry");
                 }
             }
         }
-        
 
+        //CANCEL BUTTON
+        private void CancelButton_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //BACK BUTTON
         private void BackButton_Click(object sender, EventArgs e)
         {
             MenuForm mainMenu = new MenuForm();
@@ -145,44 +68,52 @@ namespace Enrollment_System
             this.Hide();
         }
 
-        private void SubjectEntry_Load(object sender, EventArgs e)
+        //REQUISITE TEXT BOX
+        private void SubjectRequisiteTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Load UI elements first
-            CategoryComboBox.Items.AddRange(new[] { "Lecture", "Laboratory" });
-            OfferingsComboBox.Items.AddRange(new[] { "1st Semester", "2nd Semester", "Summer" });
-            CourseCodeComboBox.Items.AddRange(new[] { "BSIT", "BSIS" });
-            // Then load data asynchronously
-            Task.Run(() => {
-                this.Invoke((MethodInvoker)delegate {
-                 
-                    LoadSubjects();
-                });
-            });
-        }
-
-        private void LoadSubjects()
-        {
-            try
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Bryce Mendez\Documents\MENDEZ.mdf;Integrated Security=True;Connect Timeout=30";
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                string connectionString = @"your_connection_string_here";
+                using (SqlConnection thisConnection = new SqlConnection(connectionString))
                 {
-                    string sql = "SELECT SFSUBJCODE AS [Subject Code], SFSUBJDESC AS Description, " +
-                                "SFSUBJUNITS AS Units FROM SUBJECTFILE";
-                    using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+                    thisConnection.Open();
+                    string commandText = "SELECT * FROM SUBJECTFILE";
+                    using (SqlCommand thisCommand = new SqlCommand(commandText, thisConnection))
                     {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        dataGridView1.DataSource = dt;
+                        using (SqlDataReader thisReader = thisCommand.ExecuteReader())
+                        {
+                            bool found = false;
+
+                            while (thisReader.Read())
+                            {
+                                if (thisReader["SFSUBJCODE"].ToString().Trim() == SubjectRequisiteTextBox.Text.Trim())
+                                {
+                                    found = true;
+
+                                    SubjectDataGridView.Rows[0].Cells["SubjectCodeColumn"].Value = thisReader["SFSUBJCODE"].ToString();
+                                    SubjectDataGridView.Rows[0].Cells["DescriptionColumn"].Value = thisReader["SFSUBJDESC"].ToString();
+                                    SubjectDataGridView.Rows[0].Cells["UnitsColumn"].Value = thisReader["SFSUBJUNITS"].ToString();
+
+                                    if (PreRequisiteRadioButton.Checked)
+                                    {
+                                        SubjectDataGridView.Rows[0].Cells["CoPreColumn"].Value = "Pre-Requisite";
+                                    }
+                                    else if (CoRequisiteRadioButton.Checked)
+                                    {
+                                        SubjectDataGridView.Rows[0].Cells["CoPreColumn"].Value = "Co-Requisite";
+                                    }
+                                    break;
+                                }
+                            }
+
+                            if (!found)
+                            {
+                                MessageBox.Show("Subject Not Found");
+                            }
+                        }
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading subjects: {ex.Message}");
-            }
         }
-
-
     }
 }

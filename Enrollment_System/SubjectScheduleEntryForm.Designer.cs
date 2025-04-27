@@ -52,10 +52,10 @@
             this.SaveButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.EndTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.StartTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BackButton = new System.Windows.Forms.Button();
-            this.StartTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.EndTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -133,7 +133,6 @@
             this.label1.Size = new System.Drawing.Size(108, 17);
             this.label1.TabIndex = 11;
             this.label1.Text = "Subject EDP Code";
-            
             // 
             // label2
             // 
@@ -269,7 +268,7 @@
             this.SaveButton.TabIndex = 26;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = false;
-            
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click_1);
             // 
             // ClearButton
             // 
@@ -282,6 +281,7 @@
             this.ClearButton.TabIndex = 27;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = false;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click_1);
             // 
             // groupBox1
             // 
@@ -304,6 +304,21 @@
             this.groupBox1.Size = new System.Drawing.Size(402, 302);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
+            // 
+            // EndTimeDateTimePicker
+            // 
+            this.EndTimeDateTimePicker.Location = new System.Drawing.Point(155, 200);
+            this.EndTimeDateTimePicker.Name = "EndTimeDateTimePicker";
+            this.EndTimeDateTimePicker.Size = new System.Drawing.Size(87, 21);
+            this.EndTimeDateTimePicker.TabIndex = 19;
+            // 
+            // StartTimeDateTimePicker
+            // 
+            this.StartTimeDateTimePicker.CustomFormat = "hh : mm";
+            this.StartTimeDateTimePicker.Location = new System.Drawing.Point(155, 150);
+            this.StartTimeDateTimePicker.Name = "StartTimeDateTimePicker";
+            this.StartTimeDateTimePicker.Size = new System.Drawing.Size(87, 21);
+            this.StartTimeDateTimePicker.TabIndex = 19;
             // 
             // groupBox2
             // 
@@ -333,21 +348,6 @@
             this.BackButton.TabIndex = 31;
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
-            // 
-            // StartTimeDateTimePicker
-            // 
-            this.StartTimeDateTimePicker.CustomFormat = "hh : mm";
-            this.StartTimeDateTimePicker.Location = new System.Drawing.Point(155, 150);
-            this.StartTimeDateTimePicker.Name = "StartTimeDateTimePicker";
-            this.StartTimeDateTimePicker.Size = new System.Drawing.Size(128, 21);
-            this.StartTimeDateTimePicker.TabIndex = 19;
-            // 
-            // EndTimeDateTimePicker
-            // 
-            this.EndTimeDateTimePicker.Location = new System.Drawing.Point(155, 200);
-            this.EndTimeDateTimePicker.Name = "EndTimeDateTimePicker";
-            this.EndTimeDateTimePicker.Size = new System.Drawing.Size(125, 21);
-            this.EndTimeDateTimePicker.TabIndex = 19;
             // 
             // SubjectScheduleEntryForm
             // 
