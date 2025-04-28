@@ -363,6 +363,7 @@
             this.Name = "StudentEnrollmentEntry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentEnrollmentEntryForm";
+            this.Load += new System.EventHandler(this.StudentEnrollmentEntry_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectChoosedDataGridView)).EndInit();

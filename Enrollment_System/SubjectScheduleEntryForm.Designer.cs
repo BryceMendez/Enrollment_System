@@ -75,6 +75,8 @@
             this.SubjectCodeTextBox.Name = "SubjectCodeTextBox";
             this.SubjectCodeTextBox.Size = new System.Drawing.Size(128, 25);
             this.SubjectCodeTextBox.TabIndex = 1;
+            this.SubjectCodeTextBox.TextChanged += new System.EventHandler(this.SubjectCodeTextBox_TextChanged);
+            this.SubjectCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SubjectCodeTextBox_KeyPress);
             // 
             // DaysTextBox
             // 

@@ -43,5 +43,10 @@ namespace Enrollment_System
         {
 
         }
+
+        private void StudentEnrollmentEntry_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

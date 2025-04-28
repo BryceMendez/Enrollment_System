@@ -15,7 +15,7 @@ namespace Enrollment_System
         //SAVE BUTTON
         private void SaveButton_Click_1(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Bryce Mendez\Documents\MENDEZ.mdf;Integrated Security=True;Connect Timeout=30";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
             using (SqlConnection thisConnection = new SqlConnection(connectionString))
             {
                 string sql = "SELECT * FROM SubjectFile";
@@ -54,10 +54,21 @@ namespace Enrollment_System
             }
         }
 
-        //CANCEL BUTTON
+        //CLEAR BUTTON
         private void CancelButton_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            SubjectCodeTextBox.Text = "";
+            DescriptionTextBox.Text = "";
+            UnitsTextBox.Text = "";
+            CurriculumYearTextBox.Text = "";
+            SubjectRequisiteTextBox.Text = "";
+            OfferingsComboBox.SelectedIndex = -1;
+            CategoryComboBox.SelectedIndex = -1;
+            CourseCodeComboBox.SelectedIndex = -1;
+            PreRequisiteRadioButton.Checked = false;
+            CoRequisiteRadioButton.Checked = false;
+            SubjectRequisiteTextBox.Text = "";
+            SubjectDataGridView.Rows.Clear();
         }
 
         //BACK BUTTON
@@ -73,7 +84,7 @@ namespace Enrollment_System
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                string connectionString = @"your_connection_string_here";
+                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
                 using (SqlConnection thisConnection = new SqlConnection(connectionString))
                 {
                     thisConnection.Open();
@@ -97,16 +108,18 @@ namespace Enrollment_System
                                     if (PreRequisiteRadioButton.Checked)
                                     {
                                         SubjectDataGridView.Rows[0].Cells["CoPreColumn"].Value = "Pre-Requisite";
-                                    }
-                                    else if (CoRequisiteRadioButton.Checked)
-                                    {
-                                        SubjectDataGridView.Rows[0].Cells["CoPreColumn"].Value = "Co-Requisite";
+                                        if (CoRequisiteRadioButton.Checked)
+                                        {
+                                            SubjectDataGridView.Rows[0].Cells["CoPreColumn"].Value = "Co-Requisite";
+                                        }
                                     }
                                     break;
                                 }
+                                else
+                                    continue;                          
                             }
 
-                            if (!found)
+                            if (found == false)
                             {
                                 MessageBox.Show("Subject Not Found");
                             }
@@ -114,6 +127,21 @@ namespace Enrollment_System
                     }
                 }
             }
+        }
+
+        private void SubjectEntry_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SubjectDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void SubjectRequisiteTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

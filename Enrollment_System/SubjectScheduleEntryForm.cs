@@ -16,7 +16,7 @@ namespace Enrollment_System
     public partial class SubjectScheduleEntryForm : Form
     {
         // SQL Server connection string
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=True";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
 
         public SubjectScheduleEntryForm()
         {
@@ -155,6 +155,11 @@ namespace Enrollment_System
             SectionTextBox.Text = "";
             RoomTextBox.Text = "";
             SchoolYearTextBox.Text = "";
+        }
+
+        private void SubjectCodeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
