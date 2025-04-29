@@ -24,7 +24,7 @@ namespace Enrollment_System
         private void SaveButton_Click(object sender, EventArgs e)
         {
 
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
             SqlConnection myConnection = new SqlConnection(connectionString);
             string sql = "SELECT * FROM STUDENTFILE";
             myConnection.Open();
@@ -117,6 +117,26 @@ namespace Enrollment_System
         }
 
         private void StudentEntryForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }

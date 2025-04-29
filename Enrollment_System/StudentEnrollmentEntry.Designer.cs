@@ -41,6 +41,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SubjectChoosedDataGridView = new System.Windows.Forms.DataGridView();
+            this.EDPCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubjectCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DaysColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RoomColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.TotalUnitsLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -51,13 +58,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
-            this.EDPCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubjectCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DaysColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RoomColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectChoosedDataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -208,6 +208,42 @@
             this.SubjectChoosedDataGridView.TabIndex = 2;
             this.SubjectChoosedDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SubjectChoosedDataGridView_CellContentClick);
             // 
+            // EDPCodeColumn
+            // 
+            this.EDPCodeColumn.HeaderText = "EDP Code";
+            this.EDPCodeColumn.Name = "EDPCodeColumn";
+            // 
+            // SubjectCodeColumn
+            // 
+            this.SubjectCodeColumn.HeaderText = "Subject Code";
+            this.SubjectCodeColumn.Name = "SubjectCodeColumn";
+            // 
+            // StartTimeColumn
+            // 
+            this.StartTimeColumn.HeaderText = "Start Time";
+            this.StartTimeColumn.Name = "StartTimeColumn";
+            // 
+            // EndTimeColumn
+            // 
+            this.EndTimeColumn.HeaderText = "End Time";
+            this.EndTimeColumn.Name = "EndTimeColumn";
+            this.EndTimeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // DaysColumn
+            // 
+            this.DaysColumn.HeaderText = "Days";
+            this.DaysColumn.Name = "DaysColumn";
+            // 
+            // RoomColumn
+            // 
+            this.RoomColumn.HeaderText = "Room";
+            this.RoomColumn.Name = "RoomColumn";
+            // 
+            // UnitsColumn
+            // 
+            this.UnitsColumn.HeaderText = "Units";
+            this.UnitsColumn.Name = "UnitsColumn";
+            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Gainsboro;
@@ -286,6 +322,7 @@
             this.button2.TabIndex = 33;
             this.button2.Text = "Save";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -308,42 +345,6 @@
             this.BackButton.TabIndex = 32;
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
-            // 
-            // EDPCodeColumn
-            // 
-            this.EDPCodeColumn.HeaderText = "EDP Code";
-            this.EDPCodeColumn.Name = "EDPCodeColumn";
-            // 
-            // SubjectCodeColumn
-            // 
-            this.SubjectCodeColumn.HeaderText = "Subject Code";
-            this.SubjectCodeColumn.Name = "SubjectCodeColumn";
-            // 
-            // StartTimeColumn
-            // 
-            this.StartTimeColumn.HeaderText = "Start Time";
-            this.StartTimeColumn.Name = "StartTimeColumn";
-            // 
-            // EndTimeColumn
-            // 
-            this.EndTimeColumn.HeaderText = "End Time";
-            this.EndTimeColumn.Name = "EndTimeColumn";
-            this.EndTimeColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // DaysColumn
-            // 
-            this.DaysColumn.HeaderText = "Days";
-            this.DaysColumn.Name = "DaysColumn";
-            // 
-            // RoomColumn
-            // 
-            this.RoomColumn.HeaderText = "Room";
-            this.RoomColumn.Name = "RoomColumn";
-            // 
-            // UnitsColumn
-            // 
-            this.UnitsColumn.HeaderText = "Units";
-            this.UnitsColumn.Name = "UnitsColumn";
             // 
             // StudentEnrollmentEntry
             // 

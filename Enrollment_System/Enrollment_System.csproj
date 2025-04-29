@@ -123,5 +123,20 @@
   <ItemGroup>
     <None Include="Resources\uclogo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectEntryButtons.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectScheduleEntryButtons.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EnrollmentButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StudentEntry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StudentEntryButtons1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
