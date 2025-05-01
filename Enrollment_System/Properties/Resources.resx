@@ -127,8 +127,8 @@
   <data name="SaveButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SaveButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="EnrollmentButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EnrollmentButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="StudentEntryButtons1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StudentEntryButtons1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SE" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,11 +136,14 @@
   <data name="SubjectEntryButtons" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SubjectEntryButtons.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SubjectEntryButtonClicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SubjectEntryButtonClicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="EnrollmentButtonClicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EnrollmentButtonClicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SubjectScheduleEntryButtonClicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SubjectScheduleEntryButtonClicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SubjectEntryButtonClicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SubjectEntryButtonClicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sses" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sses.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,10 +157,10 @@
   <data name="CancelButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CancelButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="StudentEntryButtons1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\StudentEntryButtons1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="EnrollmentButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EnrollmentButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="EnrollmentButtonClicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EnrollmentButtonClicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SubjectEntryBackgroundImage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SubjectEntryBackgroundImage1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

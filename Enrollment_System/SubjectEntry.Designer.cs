@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CourseCodeComboBox = new System.Windows.Forms.ComboBox();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.OfferingsComboBox = new System.Windows.Forms.ComboBox();
@@ -68,9 +68,9 @@
             this.CourseCodeComboBox.Items.AddRange(new object[] {
             "BSIT",
             "BSIS"});
-            this.CourseCodeComboBox.Location = new System.Drawing.Point(441, 218);
+            this.CourseCodeComboBox.Location = new System.Drawing.Point(579, 243);
             this.CourseCodeComboBox.Name = "CourseCodeComboBox";
-            this.CourseCodeComboBox.Size = new System.Drawing.Size(121, 21);
+            this.CourseCodeComboBox.Size = new System.Drawing.Size(107, 21);
             this.CourseCodeComboBox.TabIndex = 14;
             // 
             // CategoryComboBox
@@ -80,9 +80,9 @@
             this.CategoryComboBox.Items.AddRange(new object[] {
             "Lecture",
             "Laboratory"});
-            this.CategoryComboBox.Location = new System.Drawing.Point(441, 131);
+            this.CategoryComboBox.Location = new System.Drawing.Point(560, 152);
             this.CategoryComboBox.Name = "CategoryComboBox";
-            this.CategoryComboBox.Size = new System.Drawing.Size(121, 21);
+            this.CategoryComboBox.Size = new System.Drawing.Size(126, 21);
             this.CategoryComboBox.TabIndex = 13;
             // 
             // OfferingsComboBox
@@ -93,7 +93,7 @@
             "1st Semester",
             "2nd Semester",
             "Summer"});
-            this.OfferingsComboBox.Location = new System.Drawing.Point(214, 265);
+            this.OfferingsComboBox.Location = new System.Drawing.Point(347, 290);
             this.OfferingsComboBox.Name = "OfferingsComboBox";
             this.OfferingsComboBox.Size = new System.Drawing.Size(121, 21);
             this.OfferingsComboBox.TabIndex = 12;
@@ -101,15 +101,15 @@
             // CurriculumYearTextBox
             // 
             this.CurriculumYearTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CurriculumYearTextBox.Location = new System.Drawing.Point(474, 265);
+            this.CurriculumYearTextBox.Location = new System.Drawing.Point(602, 291);
             this.CurriculumYearTextBox.Name = "CurriculumYearTextBox";
-            this.CurriculumYearTextBox.Size = new System.Drawing.Size(88, 20);
+            this.CurriculumYearTextBox.Size = new System.Drawing.Size(84, 20);
             this.CurriculumYearTextBox.TabIndex = 10;
             // 
             // UnitsTextBox
             // 
             this.UnitsTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.UnitsTextBox.Location = new System.Drawing.Point(214, 220);
+            this.UnitsTextBox.Location = new System.Drawing.Point(347, 244);
             this.UnitsTextBox.Name = "UnitsTextBox";
             this.UnitsTextBox.Size = new System.Drawing.Size(57, 20);
             this.UnitsTextBox.TabIndex = 9;
@@ -117,7 +117,7 @@
             // DescriptionTextBox
             // 
             this.DescriptionTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.DescriptionTextBox.Location = new System.Drawing.Point(214, 176);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(347, 200);
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(203, 20);
             this.DescriptionTextBox.TabIndex = 8;
@@ -125,7 +125,7 @@
             // SubjectCodeTextBox
             // 
             this.SubjectCodeTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SubjectCodeTextBox.Location = new System.Drawing.Point(214, 132);
+            this.SubjectCodeTextBox.Location = new System.Drawing.Point(347, 153);
             this.SubjectCodeTextBox.Name = "SubjectCodeTextBox";
             this.SubjectCodeTextBox.Size = new System.Drawing.Size(106, 20);
             this.SubjectCodeTextBox.TabIndex = 7;
@@ -139,7 +139,7 @@
             this.groupBox2.Controls.Add(this.SubjectRequisiteTextBox);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(255, 372);
+            this.groupBox2.Location = new System.Drawing.Point(155, 377);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(618, 196);
             this.groupBox2.TabIndex = 1;
@@ -173,46 +173,46 @@
             // SubjectDataGridView
             // 
             this.SubjectDataGridView.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SubjectDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SubjectDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.SubjectDataGridView.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.SubjectDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.SubjectDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SubjectDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SubjectDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.SubjectDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SubjectCodeColumn,
             this.DescriptionColumn,
             this.UnitsColumn,
             this.CoPreColumn});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SubjectDataGridView.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SubjectDataGridView.DefaultCellStyle = dataGridViewCellStyle7;
             this.SubjectDataGridView.Location = new System.Drawing.Point(70, 77);
             this.SubjectDataGridView.Margin = new System.Windows.Forms.Padding(5);
             this.SubjectDataGridView.Name = "SubjectDataGridView";
             this.SubjectDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SubjectDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SubjectDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.SubjectDataGridView.RowHeadersWidth = 60;
             this.SubjectDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.SubjectDataGridView.Size = new System.Drawing.Size(461, 87);
@@ -262,7 +262,7 @@
             this.EnrollmentButton.FlatAppearance.BorderSize = 0;
             this.EnrollmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EnrollmentButton.Image = global::Enrollment_System.Properties.Resources.EnrollmentButton;
-            this.EnrollmentButton.Location = new System.Drawing.Point(571, 36);
+            this.EnrollmentButton.Location = new System.Drawing.Point(892, 29);
             this.EnrollmentButton.Name = "EnrollmentButton";
             this.EnrollmentButton.Size = new System.Drawing.Size(103, 24);
             this.EnrollmentButton.TabIndex = 40;
@@ -275,7 +275,7 @@
             this.SubjectScheduleEntryButton.FlatAppearance.BorderSize = 0;
             this.SubjectScheduleEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubjectScheduleEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectScheduleEntryButtons;
-            this.SubjectScheduleEntryButton.Location = new System.Drawing.Point(351, 32);
+            this.SubjectScheduleEntryButton.Location = new System.Drawing.Point(671, 25);
             this.SubjectScheduleEntryButton.Name = "SubjectScheduleEntryButton";
             this.SubjectScheduleEntryButton.Size = new System.Drawing.Size(202, 33);
             this.SubjectScheduleEntryButton.TabIndex = 39;
@@ -287,7 +287,7 @@
             this.SubjectEntryButton.FlatAppearance.BorderSize = 0;
             this.SubjectEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubjectEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectEntryButtonClicked;
-            this.SubjectEntryButton.Location = new System.Drawing.Point(183, 29);
+            this.SubjectEntryButton.Location = new System.Drawing.Point(513, 25);
             this.SubjectEntryButton.Name = "SubjectEntryButton";
             this.SubjectEntryButton.Size = new System.Drawing.Size(152, 38);
             this.SubjectEntryButton.TabIndex = 38;
@@ -300,7 +300,7 @@
             this.StudentEntryButton.FlatAppearance.BorderSize = 0;
             this.StudentEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StudentEntryButton.Image = global::Enrollment_System.Properties.Resources.StudentEntryButtonNotClicked;
-            this.StudentEntryButton.Location = new System.Drawing.Point(32, 32);
+            this.StudentEntryButton.Location = new System.Drawing.Point(363, 28);
             this.StudentEntryButton.Name = "StudentEntryButton";
             this.StudentEntryButton.Size = new System.Drawing.Size(127, 32);
             this.StudentEntryButton.TabIndex = 37;
@@ -315,7 +315,7 @@
             this.ClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClearButton.Image = global::Enrollment_System.Properties.Resources.CancelButton;
-            this.ClearButton.Location = new System.Drawing.Point(611, 276);
+            this.ClearButton.Location = new System.Drawing.Point(737, 188);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(117, 42);
             this.ClearButton.TabIndex = 14;
@@ -330,7 +330,7 @@
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.SaveButton.Image = global::Enrollment_System.Properties.Resources.SaveButton;
-            this.SaveButton.Location = new System.Drawing.Point(611, 229);
+            this.SaveButton.Location = new System.Drawing.Point(737, 132);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(117, 41);
             this.SaveButton.TabIndex = 13;
@@ -339,10 +339,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Enrollment_System.Properties.Resources.SubjectEntryBackgroundImage;
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -2);
+            this.pictureBox1.Image = global::Enrollment_System.Properties.Resources.SubjectEntryBackgroundImage1;
+            this.pictureBox1.Location = new System.Drawing.Point(-4, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1101, 640);
+            this.pictureBox1.Size = new System.Drawing.Size(1115, 640);
             this.pictureBox1.TabIndex = 33;
             this.pictureBox1.TabStop = false;
             // 
@@ -351,7 +351,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1097, 634);
+            this.ClientSize = new System.Drawing.Size(1110, 634);
             this.Controls.Add(this.EnrollmentButton);
             this.Controls.Add(this.SubjectScheduleEntryButton);
             this.Controls.Add(this.SubjectEntryButton);
