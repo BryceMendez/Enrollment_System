@@ -118,49 +118,37 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SubjectEntryButtons.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SubjectScheduleEntryButtons.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\EnrollmentButton.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\StudentEntry.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\StudentEntryButtons1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SE.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sses.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\SaveButton.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CancelButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SubjectEntryBackgroundImage.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\StudentEntryButtonNotClicked.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SubjectScheduleEntryButtonClicked.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SubjectEntryButtonClicked.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\EnrollmentButtonClicked.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SubjectEntryBackgroundImage1.png" />
+    <None Include="Resources\StudentEntryBackgroundImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectEntryButtonClicked1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectScheduleEntryButtonNotClicked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectEntryButtonNotClicked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectScheduleEntryButtonClicked1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectEntryBackgroundImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StudentEnrollmentBackgroundImage1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

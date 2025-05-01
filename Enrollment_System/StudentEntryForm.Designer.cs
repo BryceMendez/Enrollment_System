@@ -37,12 +37,12 @@ namespace Enrollment_System
             this.CourseTextBox = new System.Windows.Forms.TextBox();
             this.YearTextBox = new System.Windows.Forms.TextBox();
             this.RemarksComboBox = new System.Windows.Forms.ComboBox();
-            this.SaveButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
             this.EnrollmentButton = new System.Windows.Forms.Button();
             this.SubjectScheduleEntryButton = new System.Windows.Forms.Button();
             this.SubjectEntryButton = new System.Windows.Forms.Button();
             this.StudentEntryButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -112,21 +112,56 @@ namespace Enrollment_System
             this.RemarksComboBox.TabIndex = 13;
             this.RemarksComboBox.Text = "- Choose -";
             // 
-            // SaveButton
+            // EnrollmentButton
             // 
-            this.SaveButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SaveButton.FlatAppearance.BorderSize = 0;
-            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveButton.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.SaveButton.Image = global::Enrollment_System.Properties.Resources.SaveButton;
-            this.SaveButton.Location = new System.Drawing.Point(135, 529);
-            this.SaveButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(117, 39);
-            this.SaveButton.TabIndex = 14;
-            this.SaveButton.UseVisualStyleBackColor = false;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.EnrollmentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.EnrollmentButton.FlatAppearance.BorderSize = 0;
+            this.EnrollmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EnrollmentButton.Image = global::Enrollment_System.Properties.Resources.EnrollmentButtonNotClicked;
+            this.EnrollmentButton.Location = new System.Drawing.Point(935, 41);
+            this.EnrollmentButton.Name = "EnrollmentButton";
+            this.EnrollmentButton.Size = new System.Drawing.Size(103, 24);
+            this.EnrollmentButton.TabIndex = 28;
+            this.EnrollmentButton.UseVisualStyleBackColor = false;
+            this.EnrollmentButton.Click += new System.EventHandler(this.EnrollmentButton_Click);
+            // 
+            // SubjectScheduleEntryButton
+            // 
+            this.SubjectScheduleEntryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SubjectScheduleEntryButton.FlatAppearance.BorderSize = 0;
+            this.SubjectScheduleEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SubjectScheduleEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectScheduleEntryButtonNotClicked;
+            this.SubjectScheduleEntryButton.Location = new System.Drawing.Point(707, 37);
+            this.SubjectScheduleEntryButton.Name = "SubjectScheduleEntryButton";
+            this.SubjectScheduleEntryButton.Size = new System.Drawing.Size(202, 33);
+            this.SubjectScheduleEntryButton.TabIndex = 27;
+            this.SubjectScheduleEntryButton.UseVisualStyleBackColor = false;
+            this.SubjectScheduleEntryButton.Click += new System.EventHandler(this.SubjectScheduleEntryButton_Click);
+            // 
+            // SubjectEntryButton
+            // 
+            this.SubjectEntryButton.FlatAppearance.BorderSize = 0;
+            this.SubjectEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SubjectEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectEntryButtonNotClicked;
+            this.SubjectEntryButton.Location = new System.Drawing.Point(559, 37);
+            this.SubjectEntryButton.Name = "SubjectEntryButton";
+            this.SubjectEntryButton.Size = new System.Drawing.Size(132, 33);
+            this.SubjectEntryButton.TabIndex = 26;
+            this.SubjectEntryButton.UseVisualStyleBackColor = false;
+            this.SubjectEntryButton.Click += new System.EventHandler(this.SubjectEntryButton_Click);
+            // 
+            // StudentEntryButton
+            // 
+            this.StudentEntryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.StudentEntryButton.FlatAppearance.BorderSize = 0;
+            this.StudentEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StudentEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectEntryButtonClicked1;
+            this.StudentEntryButton.Location = new System.Drawing.Point(385, 37);
+            this.StudentEntryButton.Name = "StudentEntryButton";
+            this.StudentEntryButton.Size = new System.Drawing.Size(151, 37);
+            this.StudentEntryButton.TabIndex = 25;
+            this.StudentEntryButton.UseVisualStyleBackColor = false;
+            this.StudentEntryButton.Click += new System.EventHandler(this.StudentEntryButton_Click);
             // 
             // CancelButton
             // 
@@ -144,60 +179,25 @@ namespace Enrollment_System
             this.CancelButton.UseVisualStyleBackColor = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // EnrollmentButton
+            // SaveButton
             // 
-            this.EnrollmentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.EnrollmentButton.FlatAppearance.BorderSize = 0;
-            this.EnrollmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EnrollmentButton.Image = global::Enrollment_System.Properties.Resources.EnrollmentButton;
-            this.EnrollmentButton.Location = new System.Drawing.Point(935, 41);
-            this.EnrollmentButton.Name = "EnrollmentButton";
-            this.EnrollmentButton.Size = new System.Drawing.Size(103, 24);
-            this.EnrollmentButton.TabIndex = 28;
-            this.EnrollmentButton.UseVisualStyleBackColor = false;
-            this.EnrollmentButton.Click += new System.EventHandler(this.EnrollmentButton_Click);
-            // 
-            // SubjectScheduleEntryButton
-            // 
-            this.SubjectScheduleEntryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.SubjectScheduleEntryButton.FlatAppearance.BorderSize = 0;
-            this.SubjectScheduleEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SubjectScheduleEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectScheduleEntryButtons;
-            this.SubjectScheduleEntryButton.Location = new System.Drawing.Point(707, 37);
-            this.SubjectScheduleEntryButton.Name = "SubjectScheduleEntryButton";
-            this.SubjectScheduleEntryButton.Size = new System.Drawing.Size(202, 33);
-            this.SubjectScheduleEntryButton.TabIndex = 27;
-            this.SubjectScheduleEntryButton.UseVisualStyleBackColor = false;
-            this.SubjectScheduleEntryButton.Click += new System.EventHandler(this.SubjectScheduleEntryButton_Click);
-            // 
-            // SubjectEntryButton
-            // 
-            this.SubjectEntryButton.FlatAppearance.BorderSize = 0;
-            this.SubjectEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SubjectEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectEntryButtons;
-            this.SubjectEntryButton.Location = new System.Drawing.Point(559, 37);
-            this.SubjectEntryButton.Name = "SubjectEntryButton";
-            this.SubjectEntryButton.Size = new System.Drawing.Size(132, 33);
-            this.SubjectEntryButton.TabIndex = 26;
-            this.SubjectEntryButton.UseVisualStyleBackColor = false;
-            this.SubjectEntryButton.Click += new System.EventHandler(this.SubjectEntryButton_Click);
-            // 
-            // StudentEntryButton
-            // 
-            this.StudentEntryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.StudentEntryButton.FlatAppearance.BorderSize = 0;
-            this.StudentEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StudentEntryButton.Image = global::Enrollment_System.Properties.Resources.StudentEntryButtons1;
-            this.StudentEntryButton.Location = new System.Drawing.Point(379, 33);
-            this.StudentEntryButton.Name = "StudentEntryButton";
-            this.StudentEntryButton.Size = new System.Drawing.Size(157, 41);
-            this.StudentEntryButton.TabIndex = 25;
-            this.StudentEntryButton.UseVisualStyleBackColor = false;
-            this.StudentEntryButton.Click += new System.EventHandler(this.StudentEntryButton_Click);
+            this.SaveButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SaveButton.FlatAppearance.BorderSize = 0;
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButton.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.SaveButton.Image = global::Enrollment_System.Properties.Resources.SaveButton;
+            this.SaveButton.Location = new System.Drawing.Point(135, 529);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(117, 39);
+            this.SaveButton.TabIndex = 14;
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Enrollment_System.Properties.Resources.StudentEntry;
+            this.pictureBox1.Image = global::Enrollment_System.Properties.Resources.StudentEntryBackgroundImage;
             this.pictureBox1.Location = new System.Drawing.Point(-3, -2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1078, 644);

@@ -51,7 +51,7 @@
             // 
             // SubjectEdpCodeTextBox
             // 
-            this.SubjectEdpCodeTextBox.Location = new System.Drawing.Point(440, 230);
+            this.SubjectEdpCodeTextBox.Location = new System.Drawing.Point(440, 174);
             this.SubjectEdpCodeTextBox.Multiline = true;
             this.SubjectEdpCodeTextBox.Name = "SubjectEdpCodeTextBox";
             this.SubjectEdpCodeTextBox.Size = new System.Drawing.Size(128, 23);
@@ -59,7 +59,7 @@
             // 
             // SubjectCodeTextBox
             // 
-            this.SubjectCodeTextBox.Location = new System.Drawing.Point(440, 278);
+            this.SubjectCodeTextBox.Location = new System.Drawing.Point(440, 226);
             this.SubjectCodeTextBox.Multiline = true;
             this.SubjectCodeTextBox.Name = "SubjectCodeTextBox";
             this.SubjectCodeTextBox.Size = new System.Drawing.Size(128, 25);
@@ -68,7 +68,7 @@
             // 
             // DaysTextBox
             // 
-            this.DaysTextBox.Location = new System.Drawing.Point(440, 484);
+            this.DaysTextBox.Location = new System.Drawing.Point(440, 426);
             this.DaysTextBox.Multiline = true;
             this.DaysTextBox.Name = "DaysTextBox";
             this.DaysTextBox.Size = new System.Drawing.Size(125, 27);
@@ -76,7 +76,7 @@
             // 
             // SectionTextBox
             // 
-            this.SectionTextBox.Location = new System.Drawing.Point(816, 226);
+            this.SectionTextBox.Location = new System.Drawing.Point(816, 174);
             this.SectionTextBox.Multiline = true;
             this.SectionTextBox.Name = "SectionTextBox";
             this.SectionTextBox.Size = new System.Drawing.Size(109, 27);
@@ -84,7 +84,7 @@
             // 
             // RoomTextBox
             // 
-            this.RoomTextBox.Location = new System.Drawing.Point(816, 278);
+            this.RoomTextBox.Location = new System.Drawing.Point(816, 226);
             this.RoomTextBox.Multiline = true;
             this.RoomTextBox.Name = "RoomTextBox";
             this.RoomTextBox.Size = new System.Drawing.Size(109, 25);
@@ -92,7 +92,7 @@
             // 
             // SchoolYearTextBox
             // 
-            this.SchoolYearTextBox.Location = new System.Drawing.Point(816, 327);
+            this.SchoolYearTextBox.Location = new System.Drawing.Point(816, 271);
             this.SchoolYearTextBox.Multiline = true;
             this.SchoolYearTextBox.Name = "SchoolYearTextBox";
             this.SchoolYearTextBox.Size = new System.Drawing.Size(109, 25);
@@ -100,7 +100,7 @@
             // 
             // MaxSizeTextBox
             // 
-            this.MaxSizeTextBox.Location = new System.Drawing.Point(816, 376);
+            this.MaxSizeTextBox.Location = new System.Drawing.Point(816, 322);
             this.MaxSizeTextBox.Multiline = true;
             this.MaxSizeTextBox.Name = "MaxSizeTextBox";
             this.MaxSizeTextBox.Size = new System.Drawing.Size(68, 25);
@@ -108,7 +108,7 @@
             // 
             // ClassSizeTextBox
             // 
-            this.ClassSizeTextBox.Location = new System.Drawing.Point(816, 436);
+            this.ClassSizeTextBox.Location = new System.Drawing.Point(816, 374);
             this.ClassSizeTextBox.Multiline = true;
             this.ClassSizeTextBox.Name = "ClassSizeTextBox";
             this.ClassSizeTextBox.Size = new System.Drawing.Size(68, 27);
@@ -118,7 +118,7 @@
             // 
             this.DescriptionLabel.AutoSize = true;
             this.DescriptionLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DescriptionLabel.Location = new System.Drawing.Point(437, 336);
+            this.DescriptionLabel.Location = new System.Drawing.Point(437, 280);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(90, 16);
             this.DescriptionLabel.TabIndex = 15;
@@ -126,7 +126,7 @@
             // 
             // EndTimeDateTimePicker
             // 
-            this.EndTimeDateTimePicker.Location = new System.Drawing.Point(440, 436);
+            this.EndTimeDateTimePicker.Location = new System.Drawing.Point(440, 381);
             this.EndTimeDateTimePicker.Name = "EndTimeDateTimePicker";
             this.EndTimeDateTimePicker.Size = new System.Drawing.Size(87, 20);
             this.EndTimeDateTimePicker.TabIndex = 19;
@@ -134,7 +134,7 @@
             // StartTimeDateTimePicker
             // 
             this.StartTimeDateTimePicker.CustomFormat = "hh : mm";
-            this.StartTimeDateTimePicker.Location = new System.Drawing.Point(440, 381);
+            this.StartTimeDateTimePicker.Location = new System.Drawing.Point(440, 327);
             this.StartTimeDateTimePicker.Name = "StartTimeDateTimePicker";
             this.StartTimeDateTimePicker.Size = new System.Drawing.Size(87, 20);
             this.StartTimeDateTimePicker.TabIndex = 19;
@@ -144,7 +144,7 @@
             this.EnrollmentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.EnrollmentButton.FlatAppearance.BorderSize = 0;
             this.EnrollmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EnrollmentButton.Image = global::Enrollment_System.Properties.Resources.EnrollmentButton;
+            this.EnrollmentButton.Image = global::Enrollment_System.Properties.Resources.EnrollmentButtonNotClicked;
             this.EnrollmentButton.Location = new System.Drawing.Point(965, 31);
             this.EnrollmentButton.Name = "EnrollmentButton";
             this.EnrollmentButton.Size = new System.Drawing.Size(103, 24);
@@ -157,10 +157,10 @@
             this.SubjectScheduleEntryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.SubjectScheduleEntryButton.FlatAppearance.BorderSize = 0;
             this.SubjectScheduleEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SubjectScheduleEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectScheduleEntryButtonClicked;
-            this.SubjectScheduleEntryButton.Location = new System.Drawing.Point(723, 24);
+            this.SubjectScheduleEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectScheduleEntryButtonClicked1;
+            this.SubjectScheduleEntryButton.Location = new System.Drawing.Point(718, 24);
             this.SubjectScheduleEntryButton.Name = "SubjectScheduleEntryButton";
-            this.SubjectScheduleEntryButton.Size = new System.Drawing.Size(222, 39);
+            this.SubjectScheduleEntryButton.Size = new System.Drawing.Size(225, 39);
             this.SubjectScheduleEntryButton.TabIndex = 40;
             this.SubjectScheduleEntryButton.UseVisualStyleBackColor = false;
             this.SubjectScheduleEntryButton.Click += new System.EventHandler(this.SubjectScheduleEntryButton_Click);
@@ -169,7 +169,7 @@
             // 
             this.SubjectEntryButton.FlatAppearance.BorderSize = 0;
             this.SubjectEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SubjectEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectEntryButtons;
+            this.SubjectEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectEntryButtonNotClicked;
             this.SubjectEntryButton.Location = new System.Drawing.Point(571, 27);
             this.SubjectEntryButton.Name = "SubjectEntryButton";
             this.SubjectEntryButton.Size = new System.Drawing.Size(132, 33);
@@ -198,7 +198,7 @@
             this.ClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClearButton.Image = global::Enrollment_System.Properties.Resources.CancelButton;
-            this.ClearButton.Location = new System.Drawing.Point(631, 568);
+            this.ClearButton.Location = new System.Drawing.Point(622, 516);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(121, 38);
             this.ClearButton.TabIndex = 27;
@@ -213,7 +213,7 @@
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.SaveButton.Image = global::Enrollment_System.Properties.Resources.SaveButton;
-            this.SaveButton.Location = new System.Drawing.Point(506, 568);
+            this.SaveButton.Location = new System.Drawing.Point(497, 516);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(119, 38);
             this.SaveButton.TabIndex = 26;
@@ -222,7 +222,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Enrollment_System.Properties.Resources.sses;
+            this.pictureBox1.Image = global::Enrollment_System.Properties.Resources.SubjectScheduleEntryBackgroundImage2;
             this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1102, 638);

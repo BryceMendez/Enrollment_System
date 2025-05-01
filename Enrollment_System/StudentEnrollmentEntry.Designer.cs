@@ -187,9 +187,9 @@
             this.EnrollmentButton.FlatAppearance.BorderSize = 0;
             this.EnrollmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EnrollmentButton.Image = global::Enrollment_System.Properties.Resources.EnrollmentButtonClicked;
-            this.EnrollmentButton.Location = new System.Drawing.Point(951, 24);
+            this.EnrollmentButton.Location = new System.Drawing.Point(941, 23);
             this.EnrollmentButton.Name = "EnrollmentButton";
-            this.EnrollmentButton.Size = new System.Drawing.Size(123, 39);
+            this.EnrollmentButton.Size = new System.Drawing.Size(125, 40);
             this.EnrollmentButton.TabIndex = 39;
             this.EnrollmentButton.UseVisualStyleBackColor = false;
             this.EnrollmentButton.Click += new System.EventHandler(this.EnrollmentButton_Click);
@@ -199,7 +199,7 @@
             this.SubjectScheduleEntryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.SubjectScheduleEntryButton.FlatAppearance.BorderSize = 0;
             this.SubjectScheduleEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SubjectScheduleEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectScheduleEntryButtons;
+            this.SubjectScheduleEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectScheduleEntryButtonNotClicked;
             this.SubjectScheduleEntryButton.Location = new System.Drawing.Point(721, 27);
             this.SubjectScheduleEntryButton.Name = "SubjectScheduleEntryButton";
             this.SubjectScheduleEntryButton.Size = new System.Drawing.Size(202, 33);
@@ -211,7 +211,7 @@
             // 
             this.SubjectEntryButton.FlatAppearance.BorderSize = 0;
             this.SubjectEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SubjectEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectEntryButtons;
+            this.SubjectEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectEntryButtonNotClicked;
             this.SubjectEntryButton.Location = new System.Drawing.Point(574, 28);
             this.SubjectEntryButton.Name = "SubjectEntryButton";
             this.SubjectEntryButton.Size = new System.Drawing.Size(132, 33);
@@ -262,7 +262,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Enrollment_System.Properties.Resources.SE;
+            this.pictureBox2.Image = global::Enrollment_System.Properties.Resources.StudentEnrollmentBackgroundImage;
             this.pictureBox2.Location = new System.Drawing.Point(-1, -2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(1095, 639);
