@@ -118,12 +118,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BackButton.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\uclogo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\SubjectEntryButtons.png" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +131,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\StudentEntryButtons1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sses.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SaveButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CancelButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectEntryBackgroundImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StudentEntryButtonNotClicked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectScheduleEntryButtonClicked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectEntryButtonClicked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EnrollmentButtonClicked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

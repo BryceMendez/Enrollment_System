@@ -116,29 +116,36 @@ namespace Enrollment_System
             this.Hide();
         }
 
-        private void StudentEntryForm_Load(object sender, EventArgs e)
+        private void StudentEntryButton_Click(object sender, EventArgs e)
         {
-
+            StudentEntryForm studentEntryForm = new StudentEntryForm();
+            studentEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            studentEntryForm.Show();
+            this.Hide();
         }
 
-        private void label8_Click(object sender, EventArgs e)
+        private void SubjectScheduleEntryButton_Click(object sender, EventArgs e)
         {
-
+            SubjectScheduleEntryForm subjectScheduleEntryForm = new SubjectScheduleEntryForm();
+            subjectScheduleEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            subjectScheduleEntryForm.Show();
+            this.Hide();
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
+        private void SubjectEntryButton_Click(object sender, EventArgs e)
         {
-
+            SubjectEntry subjectEntryForm = new SubjectEntry();
+            subjectEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            subjectEntryForm.Show();
+            this.Hide();
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        private void EnrollmentButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
+            StudentEnrollmentEntry studentEnroll = new StudentEnrollmentEntry();
+            studentEnroll.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            studentEnroll.Show();
+            this.Hide();
         }
     }
 }

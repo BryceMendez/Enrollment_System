@@ -63,9 +63,9 @@ namespace Enrollment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BackButton {
+        internal static System.Drawing.Bitmap CancelButton {
             get {
-                object obj = ResourceManager.GetObject("BackButton", resourceCulture);
+                object obj = ResourceManager.GetObject("CancelButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,59 @@ namespace Enrollment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EnrollmentButtonClicked {
+            get {
+                object obj = ResourceManager.GetObject("EnrollmentButtonClicked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SaveButton {
+            get {
+                object obj = ResourceManager.GetObject("SaveButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SE {
+            get {
+                object obj = ResourceManager.GetObject("SE", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sses {
+            get {
+                object obj = ResourceManager.GetObject("sses", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap StudentEntry {
             get {
                 object obj = ResourceManager.GetObject("StudentEntry", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StudentEntryButtonNotClicked {
+            get {
+                object obj = ResourceManager.GetObject("StudentEntryButtonNotClicked", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,6 +153,26 @@ namespace Enrollment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SubjectEntryBackgroundImage {
+            get {
+                object obj = ResourceManager.GetObject("SubjectEntryBackgroundImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SubjectEntryButtonClicked {
+            get {
+                object obj = ResourceManager.GetObject("SubjectEntryButtonClicked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SubjectEntryButtons {
             get {
                 object obj = ResourceManager.GetObject("SubjectEntryButtons", resourceCulture);
@@ -113,9 +183,9 @@ namespace Enrollment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SubjectScheduleEntryButtons {
+        internal static System.Drawing.Bitmap SubjectScheduleEntryButtonClicked {
             get {
-                object obj = ResourceManager.GetObject("SubjectScheduleEntryButtons", resourceCulture);
+                object obj = ResourceManager.GetObject("SubjectScheduleEntryButtonClicked", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +193,9 @@ namespace Enrollment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap uclogo {
+        internal static System.Drawing.Bitmap SubjectScheduleEntryButtons {
             get {
-                object obj = ResourceManager.GetObject("uclogo", resourceCulture);
+                object obj = ResourceManager.GetObject("SubjectScheduleEntryButtons", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

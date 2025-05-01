@@ -24,7 +24,9 @@ namespace Enrollment_System
         private void label5_Click(object sender, EventArgs e) { }
         private void label6_Click(object sender, EventArgs e) { }
         private void SubjectChoosedDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-        private void StudentEnrollmentEntry_Load(object sender, EventArgs e) { }
+        private void StudentEnrollmentEntry_Load(object sender, EventArgs e) {
+        }
+        
         private void EDPCodeTextBox_TextChanged(object sender, EventArgs e) { }
         private void StudentEnrollmentEntry_KeyPress(object sender, KeyPressEventArgs e) { }
         private void IDNumberTextBox_TextChanged(object sender, EventArgs e) { }
@@ -308,9 +310,36 @@ namespace Enrollment_System
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void SubjectScheduleEntryButton_Click(object sender, EventArgs e)
         {
+            SubjectScheduleEntryForm subjectScheduleEntryForm = new SubjectScheduleEntryForm();
+            subjectScheduleEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            subjectScheduleEntryForm.Show();
+            this.Hide();
+        }
 
+        private void SubjectEntryButton_Click(object sender, EventArgs e)
+        {
+            SubjectEntry subjectEntryForm = new SubjectEntry();
+            subjectEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            subjectEntryForm.Show();
+            this.Hide();
+        }
+
+        private void StudentEntryButton_Click(object sender, EventArgs e)
+        {
+            StudentEntryForm studentEntryForm = new StudentEntryForm();
+            studentEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            studentEntryForm.Show();
+            this.Hide();
+        }
+
+        private void EnrollmentButton_Click(object sender, EventArgs e)
+        {
+            StudentEnrollmentEntry studentEnroll = new StudentEnrollmentEntry();
+            studentEnroll.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            studentEnroll.Show();
+            this.Hide();
         }
     }
 }

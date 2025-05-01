@@ -20,6 +20,8 @@
             base.Dispose(disposing);
         }
 
+
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -28,18 +30,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.YearLabel = new System.Windows.Forms.Label();
             this.CourseLabel = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
             this.EDPCodeTextBox = new System.Windows.Forms.TextBox();
             this.IDNumberTextBox = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.TotalUnitsLabel = new System.Windows.Forms.Label();
             this.SubjectChoosedDataGridView = new System.Windows.Forms.DataGridView();
             this.EDPCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubjectCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,59 +44,24 @@
             this.DaysColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RoomColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnitsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.TotalUnitsLabel = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.DateEnrolledDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
             this.EncoderTextBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.BackButton = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.DateEnrolledDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.EnrollmentButton = new System.Windows.Forms.Button();
+            this.SubjectScheduleEntryButton = new System.Windows.Forms.Button();
+            this.SubjectEntryButton = new System.Windows.Forms.Button();
+            this.StudentEntryButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectChoosedDataGridView)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.MidnightBlue;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(-1, -3);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(230, 15, 200, 15);
-            this.label1.Size = new System.Drawing.Size(811, 70);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Student Enrollment Entry";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox1.Controls.Add(this.YearLabel);
-            this.groupBox1.Controls.Add(this.CourseLabel);
-            this.groupBox1.Controls.Add(this.NameLabel);
-            this.groupBox1.Controls.Add(this.EDPCodeTextBox);
-            this.groupBox1.Controls.Add(this.IDNumberTextBox);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(19, 85);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(370, 202);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
             // 
             // YearLabel
             // 
             this.YearLabel.BackColor = System.Drawing.Color.White;
             this.YearLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.YearLabel.Location = new System.Drawing.Point(263, 104);
+            this.YearLabel.Location = new System.Drawing.Point(951, 228);
             this.YearLabel.Name = "YearLabel";
             this.YearLabel.Size = new System.Drawing.Size(87, 23);
             this.YearLabel.TabIndex = 12;
@@ -109,7 +70,7 @@
             // 
             this.CourseLabel.BackColor = System.Drawing.Color.White;
             this.CourseLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CourseLabel.Location = new System.Drawing.Point(104, 104);
+            this.CourseLabel.Location = new System.Drawing.Point(786, 228);
             this.CourseLabel.Name = "CourseLabel";
             this.CourseLabel.Size = new System.Drawing.Size(93, 23);
             this.CourseLabel.TabIndex = 11;
@@ -118,75 +79,37 @@
             // 
             this.NameLabel.BackColor = System.Drawing.Color.White;
             this.NameLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.NameLabel.Location = new System.Drawing.Point(104, 62);
+            this.NameLabel.Location = new System.Drawing.Point(786, 176);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(137, 23);
             this.NameLabel.TabIndex = 10;
             // 
             // EDPCodeTextBox
             // 
-            this.EDPCodeTextBox.Location = new System.Drawing.Point(104, 144);
+            this.EDPCodeTextBox.Location = new System.Drawing.Point(786, 279);
             this.EDPCodeTextBox.Name = "EDPCodeTextBox";
-            this.EDPCodeTextBox.Size = new System.Drawing.Size(137, 22);
+            this.EDPCodeTextBox.Size = new System.Drawing.Size(137, 20);
             this.EDPCodeTextBox.TabIndex = 9;
             this.EDPCodeTextBox.TextChanged += new System.EventHandler(this.EDPCodeTextBox_TextChanged);
             this.EDPCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EDPCodeTextBox_KeyPress);
             // 
             // IDNumberTextBox
             // 
-            this.IDNumberTextBox.Location = new System.Drawing.Point(104, 20);
+            this.IDNumberTextBox.Location = new System.Drawing.Point(786, 129);
             this.IDNumberTextBox.Name = "IDNumberTextBox";
-            this.IDNumberTextBox.Size = new System.Drawing.Size(137, 22);
+            this.IDNumberTextBox.Size = new System.Drawing.Size(137, 20);
             this.IDNumberTextBox.TabIndex = 5;
             this.IDNumberTextBox.TextChanged += new System.EventHandler(this.IDNumberTextBox_TextChanged);
             this.IDNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IDNumberTextBox_KeyPress);
             // 
-            // label6
+            // TotalUnitsLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 149);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 17);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "EDP Code:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(205, 110);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 17);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Year:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 114);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 17);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Course:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 17);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Name: ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "ID Number: ";
+            this.TotalUnitsLabel.BackColor = System.Drawing.Color.White;
+            this.TotalUnitsLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TotalUnitsLabel.Location = new System.Drawing.Point(976, 557);
+            this.TotalUnitsLabel.Name = "TotalUnitsLabel";
+            this.TotalUnitsLabel.Size = new System.Drawing.Size(78, 22);
+            this.TotalUnitsLabel.TabIndex = 15;
             // 
             // SubjectChoosedDataGridView
             // 
@@ -202,7 +125,7 @@
             this.DaysColumn,
             this.RoomColumn,
             this.UnitsColumn});
-            this.SubjectChoosedDataGridView.Location = new System.Drawing.Point(11, 19);
+            this.SubjectChoosedDataGridView.Location = new System.Drawing.Point(316, 347);
             this.SubjectChoosedDataGridView.Name = "SubjectChoosedDataGridView";
             this.SubjectChoosedDataGridView.Size = new System.Drawing.Size(738, 202);
             this.SubjectChoosedDataGridView.TabIndex = 2;
@@ -244,107 +167,107 @@
             this.UnitsColumn.HeaderText = "Units";
             this.UnitsColumn.Name = "UnitsColumn";
             // 
-            // groupBox2
+            // EncoderTextBox
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox2.Controls.Add(this.TotalUnitsLabel);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.DateEnrolledDateTimePicker);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.EncoderTextBox);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.SubjectChoosedDataGridView);
-            this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(19, 304);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(755, 265);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            // 
-            // TotalUnitsLabel
-            // 
-            this.TotalUnitsLabel.BackColor = System.Drawing.Color.White;
-            this.TotalUnitsLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.TotalUnitsLabel.Location = new System.Drawing.Point(639, 232);
-            this.TotalUnitsLabel.Name = "TotalUnitsLabel";
-            this.TotalUnitsLabel.Size = new System.Drawing.Size(104, 22);
-            this.TotalUnitsLabel.TabIndex = 15;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(564, 238);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 17);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "Total Units:";
+            this.EncoderTextBox.Location = new System.Drawing.Point(414, 559);
+            this.EncoderTextBox.Name = "EncoderTextBox";
+            this.EncoderTextBox.Size = new System.Drawing.Size(119, 20);
+            this.EncoderTextBox.TabIndex = 10;
             // 
             // DateEnrolledDateTimePicker
             // 
-            this.DateEnrolledDateTimePicker.Location = new System.Drawing.Point(315, 232);
+            this.DateEnrolledDateTimePicker.Location = new System.Drawing.Point(633, 559);
             this.DateEnrolledDateTimePicker.Name = "DateEnrolledDateTimePicker";
-            this.DateEnrolledDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.DateEnrolledDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.DateEnrolledDateTimePicker.TabIndex = 12;
             // 
-            // label8
+            // EnrollmentButton
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(261, 238);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 17);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Date:";
+            this.EnrollmentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.EnrollmentButton.FlatAppearance.BorderSize = 0;
+            this.EnrollmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EnrollmentButton.Image = global::Enrollment_System.Properties.Resources.EnrollmentButtonClicked;
+            this.EnrollmentButton.Location = new System.Drawing.Point(951, 24);
+            this.EnrollmentButton.Name = "EnrollmentButton";
+            this.EnrollmentButton.Size = new System.Drawing.Size(123, 39);
+            this.EnrollmentButton.TabIndex = 39;
+            this.EnrollmentButton.UseVisualStyleBackColor = false;
+            this.EnrollmentButton.Click += new System.EventHandler(this.EnrollmentButton_Click);
             // 
-            // EncoderTextBox
+            // SubjectScheduleEntryButton
             // 
-            this.EncoderTextBox.Location = new System.Drawing.Point(92, 233);
-            this.EncoderTextBox.Name = "EncoderTextBox";
-            this.EncoderTextBox.Size = new System.Drawing.Size(119, 22);
-            this.EncoderTextBox.TabIndex = 10;
+            this.SubjectScheduleEntryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SubjectScheduleEntryButton.FlatAppearance.BorderSize = 0;
+            this.SubjectScheduleEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SubjectScheduleEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectScheduleEntryButtons;
+            this.SubjectScheduleEntryButton.Location = new System.Drawing.Point(721, 27);
+            this.SubjectScheduleEntryButton.Name = "SubjectScheduleEntryButton";
+            this.SubjectScheduleEntryButton.Size = new System.Drawing.Size(202, 33);
+            this.SubjectScheduleEntryButton.TabIndex = 38;
+            this.SubjectScheduleEntryButton.UseVisualStyleBackColor = false;
+            this.SubjectScheduleEntryButton.Click += new System.EventHandler(this.SubjectScheduleEntryButton_Click);
             // 
-            // label7
+            // SubjectEntryButton
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 236);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 17);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Encoded By:";
+            this.SubjectEntryButton.FlatAppearance.BorderSize = 0;
+            this.SubjectEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SubjectEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectEntryButtons;
+            this.SubjectEntryButton.Location = new System.Drawing.Point(574, 28);
+            this.SubjectEntryButton.Name = "SubjectEntryButton";
+            this.SubjectEntryButton.Size = new System.Drawing.Size(132, 33);
+            this.SubjectEntryButton.TabIndex = 37;
+            this.SubjectEntryButton.UseVisualStyleBackColor = false;
+            this.SubjectEntryButton.Click += new System.EventHandler(this.SubjectEntryButton_Click);
             // 
-            // button2
+            // StudentEntryButton
             // 
-            this.button2.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(19, 586);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(103, 41);
-            this.button2.TabIndex = 33;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.StudentEntryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.StudentEntryButton.FlatAppearance.BorderSize = 0;
+            this.StudentEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StudentEntryButton.Image = global::Enrollment_System.Properties.Resources.StudentEntryButtonNotClicked;
+            this.StudentEntryButton.Location = new System.Drawing.Point(434, 28);
+            this.StudentEntryButton.Name = "StudentEntryButton";
+            this.StudentEntryButton.Size = new System.Drawing.Size(123, 32);
+            this.StudentEntryButton.TabIndex = 36;
+            this.StudentEntryButton.UseVisualStyleBackColor = false;
+            this.StudentEntryButton.Click += new System.EventHandler(this.StudentEntryButton_Click);
             // 
-            // button3
+            // CancelButton
             // 
-            this.button3.BackColor = System.Drawing.Color.MidnightBlue;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(128, 585);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(103, 42);
-            this.button3.TabIndex = 34;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = false;
+            this.CancelButton.BackColor = System.Drawing.Color.MidnightBlue;
+            this.CancelButton.FlatAppearance.BorderSize = 0;
+            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CancelButton.Image = global::Enrollment_System.Properties.Resources.CancelButton;
+            this.CancelButton.Location = new System.Drawing.Point(533, 162);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(115, 42);
+            this.CancelButton.TabIndex = 34;
+            this.CancelButton.UseVisualStyleBackColor = false;
             // 
-            // BackButton
+            // SaveButton
             // 
-            this.BackButton.Image = global::Enrollment_System.Properties.Resources.BackButton;
-            this.BackButton.Location = new System.Drawing.Point(699, 585);
-            this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(75, 42);
-            this.BackButton.TabIndex = 32;
-            this.BackButton.UseVisualStyleBackColor = true;
-            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            this.SaveButton.BackColor = System.Drawing.Color.MidnightBlue;
+            this.SaveButton.FlatAppearance.BorderSize = 0;
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SaveButton.Image = global::Enrollment_System.Properties.Resources.SaveButton;
+            this.SaveButton.Location = new System.Drawing.Point(533, 115);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(115, 41);
+            this.SaveButton.TabIndex = 33;
+            this.SaveButton.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Enrollment_System.Properties.Resources.SE;
+            this.pictureBox2.Location = new System.Drawing.Point(-1, -2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1095, 639);
+            this.pictureBox2.TabIndex = 35;
+            this.pictureBox2.TabStop = false;
             // 
             // StudentEnrollmentEntry
             // 
@@ -352,52 +275,46 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(807, 640);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.BackButton);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1091, 629);
+            this.Controls.Add(this.EnrollmentButton);
+            this.Controls.Add(this.SubjectScheduleEntryButton);
+            this.Controls.Add(this.SubjectEntryButton);
+            this.Controls.Add(this.StudentEntryButton);
+            this.Controls.Add(this.YearLabel);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.EDPCodeTextBox);
+            this.Controls.Add(this.CourseLabel);
+            this.Controls.Add(this.TotalUnitsLabel);
+            this.Controls.Add(this.NameLabel);
+            this.Controls.Add(this.DateEnrolledDateTimePicker);
+            this.Controls.Add(this.EncoderTextBox);
+            this.Controls.Add(this.IDNumberTextBox);
+            this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.SubjectChoosedDataGridView);
+            this.Controls.Add(this.pictureBox2);
             this.Name = "StudentEnrollmentEntry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentEnrollmentEntryForm";
             this.Load += new System.EventHandler(this.StudentEnrollmentEntry_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StudentEnrollmentEntry_KeyPress);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectChoosedDataGridView)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox EDPCodeTextBox;
         private System.Windows.Forms.TextBox IDNumberTextBox;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView SubjectChoosedDataGridView;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker DateEnrolledDateTimePicker;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox EncoderTextBox;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label CourseLabel;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label YearLabel;
         private System.Windows.Forms.Label TotalUnitsLabel;
-        private System.Windows.Forms.Button BackButton;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.DataGridView SubjectChoosedDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn EDPCodeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubjectCodeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartTimeColumn;
@@ -405,5 +322,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DaysColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn RoomColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnitsColumn;
+        private System.Windows.Forms.TextBox EncoderTextBox;
+        private System.Windows.Forms.DateTimePicker DateEnrolledDateTimePicker;
+        private System.Windows.Forms.Button StudentEntryButton;
+        private System.Windows.Forms.Button SubjectEntryButton;
+        private System.Windows.Forms.Button SubjectScheduleEntryButton;
+        private System.Windows.Forms.Button EnrollmentButton;
     }
 }

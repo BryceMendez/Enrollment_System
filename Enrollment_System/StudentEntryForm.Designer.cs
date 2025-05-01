@@ -119,27 +119,28 @@ namespace Enrollment_System
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.SaveButton.Location = new System.Drawing.Point(135, 538);
+            this.SaveButton.Image = global::Enrollment_System.Properties.Resources.SaveButton;
+            this.SaveButton.Location = new System.Drawing.Point(135, 529);
             this.SaveButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(95, 42);
+            this.SaveButton.Size = new System.Drawing.Size(117, 39);
             this.SaveButton.TabIndex = 14;
-            this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // CancelButton
             // 
             this.CancelButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CancelButton.FlatAppearance.BorderSize = 0;
+            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.CancelButton.Location = new System.Drawing.Point(251, 538);
+            this.CancelButton.Image = global::Enrollment_System.Properties.Resources.CancelButton;
+            this.CancelButton.Location = new System.Drawing.Point(256, 529);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(95, 42);
+            this.CancelButton.Size = new System.Drawing.Size(121, 42);
             this.CancelButton.TabIndex = 15;
-            this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
@@ -154,6 +155,7 @@ namespace Enrollment_System
             this.EnrollmentButton.Size = new System.Drawing.Size(103, 24);
             this.EnrollmentButton.TabIndex = 28;
             this.EnrollmentButton.UseVisualStyleBackColor = false;
+            this.EnrollmentButton.Click += new System.EventHandler(this.EnrollmentButton_Click);
             // 
             // SubjectScheduleEntryButton
             // 
@@ -166,6 +168,7 @@ namespace Enrollment_System
             this.SubjectScheduleEntryButton.Size = new System.Drawing.Size(202, 33);
             this.SubjectScheduleEntryButton.TabIndex = 27;
             this.SubjectScheduleEntryButton.UseVisualStyleBackColor = false;
+            this.SubjectScheduleEntryButton.Click += new System.EventHandler(this.SubjectScheduleEntryButton_Click);
             // 
             // SubjectEntryButton
             // 
@@ -177,7 +180,7 @@ namespace Enrollment_System
             this.SubjectEntryButton.Size = new System.Drawing.Size(132, 33);
             this.SubjectEntryButton.TabIndex = 26;
             this.SubjectEntryButton.UseVisualStyleBackColor = false;
-            this.SubjectEntryButton.Click += new System.EventHandler(this.button2_Click);
+            this.SubjectEntryButton.Click += new System.EventHandler(this.SubjectEntryButton_Click);
             // 
             // StudentEntryButton
             // 
@@ -190,6 +193,7 @@ namespace Enrollment_System
             this.StudentEntryButton.Size = new System.Drawing.Size(157, 41);
             this.StudentEntryButton.TabIndex = 25;
             this.StudentEntryButton.UseVisualStyleBackColor = false;
+            this.StudentEntryButton.Click += new System.EventHandler(this.StudentEntryButton_Click);
             // 
             // pictureBox1
             // 
@@ -223,7 +227,6 @@ namespace Enrollment_System
             this.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "StudentEntryForm";
-            this.Load += new System.EventHandler(this.StudentEntryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
