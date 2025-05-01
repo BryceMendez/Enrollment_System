@@ -16,7 +16,11 @@ namespace Enrollment_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StudentEntryForm());
+
+            // Create the form and set StartPosition before running
+            var mainForm = new StudentEntryForm();
+            mainForm.StartPosition = FormStartPosition.CenterScreen;
+            Application.Run(mainForm);
         }
     }
 }
