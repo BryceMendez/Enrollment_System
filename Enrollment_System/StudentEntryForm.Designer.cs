@@ -155,7 +155,7 @@ namespace Enrollment_System
             this.StudentEntryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.StudentEntryButton.FlatAppearance.BorderSize = 0;
             this.StudentEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StudentEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectEntryButtonClicked1;
+            this.StudentEntryButton.Image = global::Enrollment_System.Properties.Resources.StudentEntryButtonClicked;
             this.StudentEntryButton.Location = new System.Drawing.Point(385, 37);
             this.StudentEntryButton.Name = "StudentEntryButton";
             this.StudentEntryButton.Size = new System.Drawing.Size(151, 37);
@@ -174,7 +174,7 @@ namespace Enrollment_System
             this.CancelButton.Location = new System.Drawing.Point(256, 529);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(121, 42);
+            this.CancelButton.Size = new System.Drawing.Size(121, 39);
             this.CancelButton.TabIndex = 15;
             this.CancelButton.UseVisualStyleBackColor = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);

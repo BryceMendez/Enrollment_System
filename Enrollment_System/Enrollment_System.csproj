@@ -150,5 +150,8 @@
   <ItemGroup>
     <None Include="Resources\StudentEnrollmentBackgroundImage1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StudentEntryButtonClicked.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
