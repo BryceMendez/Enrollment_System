@@ -32,6 +32,23 @@ namespace Enrollment_System
                 valuesToSearch[1] = CourseCodeComboBox.Text;
                 DataRow findRow = thisDataSet.Tables["SubjectFile"].Rows.Find(valuesToSearch);
 
+                try {                     
+                    if (SubjectCodeTextBox.Text.Equals("") ||
+                        DescriptionTextBox.Text.Equals("") ||
+                        UnitsTextBox.Text.Equals("") ||
+                        CurriculumYearTextBox.Text.Equals("") ||
+                        SubjectRequisiteTextBox.Text.Equals("") ||
+                        OfferingsComboBox.SelectedIndex == -1 ||
+                        CategoryComboBox.SelectedIndex == -1 ||
+                        CourseCodeComboBox.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Please Fill Up All Fields");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
                 if (findRow == null)
                 {
                     DataRow thisRow = thisDataSet.Tables["SubjectFile"].NewRow();

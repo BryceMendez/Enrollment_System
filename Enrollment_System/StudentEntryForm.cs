@@ -49,6 +49,7 @@ namespace Enrollment_System
                 {
                     if (IDNumberTextBox.Text.Equals("") ||
                         LastNameTextBox.Text.Equals("") ||
+                        MiddleNameTextBox.Text.Equals("") ||
                         FirstNameTextBox.Text.Equals("") ||
                         CourseTextBox.Text.Equals("") ||
                         YearTextBox.Text.Equals("") ||
@@ -65,10 +66,12 @@ namespace Enrollment_System
                         DataRow thisRow = thisDataSet.Tables["StudentFile"].NewRow();
                         thisRow["STFSTUDID"] = Convert.ToInt64(IDNumberTextBox.Text);
                         thisRow["STFSTUDLNAME"] = LastNameTextBox.Text;
+                        thisRow["STFSTUDMNAME"] = MiddleNameTextBox.Text;
                         thisRow["STFSTUDFNAME"] = FirstNameTextBox.Text;
                         thisRow["STFSTUDCOURSE"] = CourseTextBox.Text;
                         thisRow["STFSTUDYEAR"] = YearTextBox.Text;
                         thisRow["STFSTUDREMARKS"] = RemarksComboBox.Text;
+                        thisRow["STFSTUDSTATUS"] = "AC";
                         thisDataSet.Tables["StudentFile"].Rows.Add(thisRow);
                         thisAdapter.Update(thisDataSet, "StudentFile");
                         MessageBox.Show("Student Record Added!");

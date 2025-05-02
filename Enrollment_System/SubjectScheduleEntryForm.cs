@@ -15,9 +15,11 @@ namespace Enrollment_System
     //YOU CAN SCRACTH THIS SHIT CAUSE IT DOESNT WORK
     public partial class SubjectScheduleEntryForm : Form
     {
-        // SQL Server connection string
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
+        private SqlDataAdapter scheduleAdapter;
+        private DataSet enrollmentDataSet;
+        private DataTable scheduleTable;
 
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
         public SubjectScheduleEntryForm()
         {
             InitializeComponent();
@@ -25,22 +27,33 @@ namespace Enrollment_System
 
         private void SubjectScheduleEntryForm_Load(object sender, EventArgs e)
         {
-            // Time picker formatting remains the same
-            StartTimeDateTimePicker.Format = DateTimePickerFormat.Time;
-            StartTimeDateTimePicker.ShowUpDown = true;
             StartTimeDateTimePicker.Format = DateTimePickerFormat.Custom;
-            StartTimeDateTimePicker.CustomFormat = "HH:mm tt";
+            StartTimeDateTimePicker.CustomFormat = "hh:mm tt";
+            StartTimeDateTimePicker.ShowUpDown = true;
 
-            EndTimeDateTimePicker.Format = DateTimePickerFormat.Time;
-            EndTimeDateTimePicker.ShowUpDown = true;
             EndTimeDateTimePicker.Format = DateTimePickerFormat.Custom;
-            EndTimeDateTimePicker.CustomFormat = "HH:mm tt";
+            EndTimeDateTimePicker.CustomFormat = "hh:mm tt";
+            EndTimeDateTimePicker.ShowUpDown = true;
+
+            // Initialize DataSet and Adapter
+            enrollmentDataSet = new DataSet();
+            scheduleAdapter = new SqlDataAdapter("SELECT * FROM SubjectSchedFile", connectionString);
+
+            // Configure the adapter with command builder
+            SqlCommandBuilder commandBuilder = new SqlCommandBuilder(scheduleAdapter);
+            scheduleAdapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+
+            // Fill the DataSet
+            scheduleAdapter.Fill(enrollmentDataSet, "SubjectSchedFile");
+            scheduleTable = enrollmentDataSet.Tables["SubjectSchedFile"];
         }
 
         private void SubjectCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                e.Handled = true; // Prevents the "ding" sound and form refresh
+
                 using (SqlConnection thisConnection = new SqlConnection(connectionString))
                 {
                     thisConnection.Open();
@@ -54,10 +67,13 @@ namespace Enrollment_System
                         if (result != null)
                         {
                             DescriptionLabel.Text = result.ToString();
+                            // Keep the subject code in the textbox
+                            SubjectCodeTextBox.Text = SubjectCodeTextBox.Text.Trim();
                         }
                         else
                         {
                             MessageBox.Show("Subject Code Not Found");
+                            DescriptionLabel.Text = "";
                         }
                     }
                 }
@@ -79,75 +95,74 @@ namespace Enrollment_System
 
         private void SaveButton_Click_1(object sender, EventArgs e)
         {
-            using (SqlConnection thisConnection = new SqlConnection(connectionString))
+            // Validate required fields
+            if (string.IsNullOrWhiteSpace(SubjectEdpCodeTextBox.Text) ||
+                string.IsNullOrWhiteSpace(SubjectCodeTextBox.Text) ||
+                string.IsNullOrWhiteSpace(DaysTextBox.Text) ||
+                string.IsNullOrWhiteSpace(RoomTextBox.Text) ||
+                string.IsNullOrWhiteSpace(SectionTextBox.Text) ||
+                string.IsNullOrWhiteSpace(MaxSizeTextBox.Text) ||
+                string.IsNullOrWhiteSpace(ClassSizeTextBox.Text) ||
+                string.IsNullOrWhiteSpace(SchoolYearTextBox.Text))
             {
-                // Check for duplicate schedule
-                string checkSql = "SELECT COUNT(*) FROM SUBJECTSCHEDFILE WHERE SSFEDPCODE = @edpCode";
-                thisConnection.Open();
+                MessageBox.Show("Please fill in all required fields");
+                return;
+            }
 
-                using (SqlCommand checkCommand = new SqlCommand(checkSql, thisConnection))
+            // Validate class size
+            if (int.TryParse(ClassSizeTextBox.Text, out int classSize) &&
+                int.TryParse(MaxSizeTextBox.Text, out int maxSize))
+            {
+                if (classSize > maxSize)
                 {
-                    checkCommand.Parameters.AddWithValue("@edpCode", SubjectEdpCodeTextBox.Text.Trim());
-                    int count = (int)checkCommand.ExecuteScalar();
+                    MessageBox.Show("Class size cannot exceed maximum size!");
+                    return;
+                }
+            }
 
-                    if (count > 0)
-                    {
-                        MessageBox.Show("SUBJECT SCHEDULE ALREADY EXISTS...");
-                        return;
-                    }
+            try
+            {
+                // Check for duplicate EDP code
+                DataRow[] existingRows = scheduleTable.Select($"SSFEDPCODE = '{SubjectEdpCodeTextBox.Text.Trim()}'");
+                if (existingRows.Length > 0)
+                {
+                    MessageBox.Show("Subject schedule with this EDP code already exists!");
+                    return;
                 }
 
-                // Insert new schedule
-                try
-                {
-                    string insertSql = @"INSERT INTO SUBJECTSCHEDFILE 
-                                    (SSFEDPCODE, SSFSUBJCODE, SSFSTARTTIME, SSFENDTIME, 
-                                     SSFDAYS, SSFROOM, SSFSECTION, SSFSCHOOLYEAR, 
-                                     SSFMAXSIZE, SSFCLASSSIZE) 
-                                    VALUES 
-                                    (@edpCode, @subjCode, @startTime, @endTime, 
-                                     @days, @room, @section, @schoolYear, 
-                                     @maxSize, @classSize)";
+                // Create new row
+                DataRow newRow = scheduleTable.NewRow();
+                newRow["SSFEDPCODE"] = SubjectEdpCodeTextBox.Text.Trim();
+                newRow["SSFSUBJCODE"] = SubjectCodeTextBox.Text.Trim();
+                newRow["SSFSTARTTIME"] = StartTimeDateTimePicker.Value.TimeOfDay; // Stores as TimeSpan
+                newRow["SSFENDTIME"] = EndTimeDateTimePicker.Value.TimeOfDay;    // Stores as TimeSpan
+                newRow["SSFXM"] = StartTimeDateTimePicker.Value.ToString("tt");
+                newRow["SSFDAYS"] = DaysTextBox.Text.Trim();
+                newRow["SSFROOM"] = RoomTextBox.Text.Trim();
+                newRow["SSFSECTION"] = SectionTextBox.Text.Trim();
+                newRow["SSFSCHOOLYEAR"] = SchoolYearTextBox.Text.Trim();
+                newRow["SSFMAXSIZE"] = MaxSizeTextBox.Text.Trim();
+                newRow["SSFCLASSSIZE"] = ClassSizeTextBox.Text.Trim();
+                newRow["SSFSTATUS"] = "AC"; // Static status
 
-                    using (SqlCommand insertCommand = new SqlCommand(insertSql, thisConnection))
-                    {
-                        // Convert times to TimeSpan
-                        TimeSpan startTime = StartTimeDateTimePicker.Value.TimeOfDay;
-                        TimeSpan endTime = EndTimeDateTimePicker.Value.TimeOfDay;
+                // Add the row to the table
+                scheduleTable.Rows.Add(newRow);
 
-                        // Add parameters
-                        insertCommand.Parameters.AddWithValue("@edpCode", SubjectEdpCodeTextBox.Text);
-                        insertCommand.Parameters.AddWithValue("@subjCode", SubjectCodeTextBox.Text);
-                        insertCommand.Parameters.AddWithValue("@startTime", startTime);
-                        insertCommand.Parameters.AddWithValue("@endTime", endTime);
-                        insertCommand.Parameters.AddWithValue("@days", DaysTextBox.Text);
-                        insertCommand.Parameters.AddWithValue("@room", RoomTextBox.Text);
-                        insertCommand.Parameters.AddWithValue("@section", SectionTextBox.Text);
-                        insertCommand.Parameters.AddWithValue("@schoolYear", SchoolYearTextBox.Text);
-                        insertCommand.Parameters.AddWithValue("@maxSize", 50);
-                        insertCommand.Parameters.AddWithValue("@classSize", 0);
+                // Update the database
+                scheduleAdapter.Update(enrollmentDataSet, "SubjectSchedFile");
 
-                        int rowsAffected = insertCommand.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("SUBJECT SCHEDULE ADDED!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to add schedule");
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                }
+                MessageBox.Show("Subject schedule added successfully!");
+                ClearButton_Click_1(sender, e); // Clear the form
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving schedule: {ex.Message}");
             }
         }
 
         private void ClearButton_Click_1(object sender, EventArgs e)
         {
+            // Clear all fields except MaxSize and ClassSize
             SubjectEdpCodeTextBox.Text = "";
             SubjectCodeTextBox.Text = "";
             DescriptionLabel.Text = "";
@@ -155,6 +170,12 @@ namespace Enrollment_System
             SectionTextBox.Text = "";
             RoomTextBox.Text = "";
             SchoolYearTextBox.Text = "";
+            MaxSizeTextBox.Text = "";
+            ClassSizeTextBox.Text = "";
+
+            // Reset time pickers to current time
+            StartTimeDateTimePicker.Value = DateTime.Now;
+            EndTimeDateTimePicker.Value = DateTime.Now;
         }
 
         private void SubjectScheduleEntryButton_Click(object sender, EventArgs e)
