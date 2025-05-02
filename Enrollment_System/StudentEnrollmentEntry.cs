@@ -12,7 +12,7 @@ namespace Enrollment_System
 {
     public partial class StudentEnrollmentEntry : Form 
     {
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Han Song\OneDrive\Documents\Malalay.mdf"";Integrated Security=True;Connect Timeout=30";
 
 
         public StudentEnrollmentEntry()
@@ -30,15 +30,6 @@ namespace Enrollment_System
         private void EDPCodeTextBox_TextChanged(object sender, EventArgs e) { }
         private void StudentEnrollmentEntry_KeyPress(object sender, KeyPressEventArgs e) { }
         private void IDNumberTextBox_TextChanged(object sender, EventArgs e) { }
-        // ----------------------------------------------------
-
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            MenuForm mainMenu = new MenuForm();
-            mainMenu.Show();
-            this.Hide();
-        }
-
 
         private void EDPCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -309,6 +300,7 @@ namespace Enrollment_System
                 }
             }
         }
+        
 
         private void SubjectScheduleEntryButton_Click(object sender, EventArgs e)
         {
@@ -340,6 +332,229 @@ namespace Enrollment_System
             studentEnroll.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
             studentEnroll.Show();
             this.Hide();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SubjectChoosedDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            double totalUnits = 0;
+            foreach (DataGridViewRow row in SubjectChoosedDataGridView.Rows)
+            {
+                if (row.Cells["UnitsColumn"].Value != null && double.TryParse(row.Cells["UnitsColumn"].Value.ToString(), out double cellValue))
+                {
+                    totalUnits += cellValue;
+                }
+            }
+            TotalUnitsLabel.Text = totalUnits.ToString("0.0");
+        }
+
+        private void SubjectChoosedDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            double totalUnits = 0;
+            foreach (DataGridViewRow row in SubjectChoosedDataGridView.Rows)
+            {
+                if (row.Cells["UnitsColumn"].Value != null && double.TryParse(row.Cells["UnitsColumn"].Value.ToString(), out double cellValue))
+                {
+                    totalUnits += cellValue;
+                }
+            }
+            TotalUnitsLabel.Text = totalUnits.ToString("0.0");
+        }
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            // UI Validation
+            int numRows = SubjectChoosedDataGridView.Rows.Count;
+
+            bool hasSubjects = numRows > 0 && !SubjectChoosedDataGridView.Rows[0].IsNewRow;
+            if (numRows > 1) hasSubjects = true;
+
+            if (!hasSubjects)
+            {
+                MessageBox.Show("YOU HAVEN'T CHOSEN A SUBJECT YET...", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(IDNumberTextBox.Text) || string.IsNullOrWhiteSpace(NameLabel.Text) || string.IsNullOrWhiteSpace(CourseLabel.Text) || string.IsNullOrWhiteSpace(YearLabel.Text))
+            {
+                MessageBox.Show("STUDENT INFO INCOMPLETE... Please look up student ID first.", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(EncoderTextBox.Text))
+            {
+                MessageBox.Show("PLEASE FILL YOUR NAME AS THE ENCODER...", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                EncoderTextBox.Focus();
+                return;
+            }
+            if (!float.TryParse(TotalUnitsLabel.Text, out float totalUnitsValue) || totalUnitsValue <= 0)
+            {
+                MessageBox.Show("Cannot enroll with zero or invalid total units.", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+
+            string studentId = IDNumberTextBox.Text.Trim();
+
+            //Database Operations
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlTransaction transaction = null;
+
+                try
+                {
+                    conn.Open();
+                    transaction = conn.BeginTransaction();
+
+                    //checking if student is enrolled naba
+                    string checkEnrollSql = "SELECT COUNT(*) FROM ENROLLMENTHEADERFILE WHERE ENRHFSTUDID = @StudentID";
+                    int enrollmentCount = 0;
+                    using (SqlCommand checkCmd = new SqlCommand(checkEnrollSql, conn, transaction))
+                    {
+                        checkCmd.Parameters.AddWithValue("@StudentID", studentId);
+                        enrollmentCount = (int)checkCmd.ExecuteScalar();
+                    }
+
+                    if (enrollmentCount > 0)
+                    {
+                        MessageBox.Show("Student is Already Enrolled for this term/period.", "Already Enrolled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        transaction.Rollback();
+                        return; 
+                    }
+
+                    //get student status
+                    string getStatusSql = "SELECT STFSTUDSTATUS FROM STUDENTFILE WHERE STFSTUDID = @StudentID";
+                    string studentStatus = null;
+                    using (SqlCommand statusCmd = new SqlCommand(getStatusSql, conn, transaction))
+                    {
+                        statusCmd.Parameters.AddWithValue("@StudentID", studentId);
+                        object result = statusCmd.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            studentStatus = result.ToString();
+                        }
+                    }
+
+                    if (string.IsNullOrWhiteSpace(studentStatus))
+                    {
+                        MessageBox.Show($"Could not find status for student ID '{studentId}'. Cannot enroll.", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        transaction.Rollback();
+                        return; // Exit
+                    }
+                    string headerSql = @"INSERT INTO ENROLLMENTHEADERFILE
+                                     (ENRHFSTUDID, ENRHFSTUDDATEENROLL, ENRHFSTUDSCHLYR,
+                                      ENRHFSTUDENCODER, ENRHFSTUDTOTALUNITS, ENRHFSTUDSTATUS)
+                                     VALUES
+                                     (@StudentID, @EnrollDate, @SchoolYear,
+                                      @Encoder, @TotalUnits, @Status)";
+                    using (SqlCommand headerCmd = new SqlCommand(headerSql, conn, transaction))
+                    {
+                        headerCmd.Parameters.AddWithValue("@StudentID", studentId);
+                        headerCmd.Parameters.AddWithValue("@EnrollDate", DateEnrolledDateTimePicker.Value.Date); // Use .Date for DATE type, full Value for DATETIME
+                        headerCmd.Parameters.AddWithValue("@SchoolYear", YearLabel.Text); // Assumes YearLabel holds School Year
+                        headerCmd.Parameters.AddWithValue("@Encoder", EncoderTextBox.Text.Trim());
+                        headerCmd.Parameters.AddWithValue("@TotalUnits", totalUnitsValue); // Use parsed float value
+                        headerCmd.Parameters.AddWithValue("@Status", studentStatus);
+
+                        headerCmd.ExecuteNonQuery(); // Execute header insert
+                    }
+
+
+                    // Insert Detail Records and Update Class Sizes
+                    string detailSql = @"INSERT INTO ENROLLMENTDETAILFILE
+                                     (ENRDFSTUDID, ENRDFSTUDSUBJCDE, ENRDFSTUDEDPCODE, ENRDFSTUDSTATUS)
+                                     VALUES
+                                     (@StudentID, @SubjectCode, @EDPCode, @Status)";
+                    using (SqlCommand detailCmd = new SqlCommand(detailSql, conn, transaction))
+                    {
+                        detailCmd.Parameters.AddWithValue("@StudentID", studentId);
+                        detailCmd.Parameters.AddWithValue("@Status", studentStatus);
+                        SqlParameter subjectCodeParam = detailCmd.Parameters.Add("@SubjectCode", SqlDbType.VarChar);
+                        SqlParameter edpCodeParam = detailCmd.Parameters.Add("@EDPCode", SqlDbType.VarChar);
+
+
+                        foreach (DataGridViewRow rw in SubjectChoosedDataGridView.Rows)
+                        {
+                            if (rw.IsNewRow) continue;
+
+                            string edpCode = rw.Cells["EDPCodeColumn"].Value?.ToString();
+                            string subjCode = rw.Cells["SubjectCodeColumn"].Value?.ToString();
+
+                            if (!string.IsNullOrWhiteSpace(edpCode) && !string.IsNullOrWhiteSpace(subjCode))
+                            {
+                                subjectCodeParam.Value = subjCode;
+                                edpCodeParam.Value = edpCode;
+
+                                detailCmd.ExecuteNonQuery(); 
+                                UpdateClassSize(edpCode, conn, transaction);
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Missing EDP Code or Subject Code in grid row {rw.Index}. Enrollment cancelled.", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                transaction.Rollback();
+                                return; // Exit
+                            }
+                        }
+                    }
+
+
+                    //Commit Transaction
+                    transaction.Commit(); // If tanan operations succeeed, make changes permanent
+                    MessageBox.Show("STUDENT ENROLLED SUCCESSFULLY!", "Enrollment Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                  
+
+                } // End Try block for transaction
+                catch (SqlException sqlEx)
+                {
+                    MessageBox.Show($"Database Error during enrollment: {sqlEx.Message}\nError Code: {sqlEx.Number}\nEnrollment cancelled.", "Enrollment Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try { transaction?.Rollback(); } catch { /* Ignore rollback failure */ }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An unexpected error occurred during enrollment: {ex.Message}\nEnrollment cancelled.", "Enrollment Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try { transaction?.Rollback(); } catch { /* Ignore rollback failure */ }
+                }
+            }
+        } 
+        private void UpdateClassSize(string edpCode, SqlConnection connection, SqlTransaction transaction)
+        {
+            // Assumes connection is already open and transaction is active
+            string updateSql = "UPDATE SUBJECTSCHEDFILE SET SSFCLASSSIZE = SSFCLASSSIZE + 1 WHERE SSFEDPCODE = @EDPCode";
+            using (SqlCommand updateCommand = new SqlCommand(updateSql, connection, transaction)) // Use passed connection & transaction
+            {
+                // Use named parameter for SQL Server
+                updateCommand.Parameters.AddWithValue("@EDPCode", edpCode);
+                updateCommand.ExecuteNonQuery(); // Execute within the existing transaction
+            }
+        }
+
+        //Clears form
+        private void ClearForm()
+        {
+            IDNumberTextBox.Clear();
+            NameLabel.Text = "";
+            CourseLabel.Text = "";
+            YearLabel.Text = "";
+            EDPCodeTextBox.Clear();
+            TotalUnitsLabel.Text = "0.0";
+            EncoderTextBox.Clear();
+
+            if (SubjectChoosedDataGridView != null)
+            {
+                SubjectChoosedDataGridView.RowsAdded -= SubjectChoosedDataGridView_RowsAdded;
+                SubjectChoosedDataGridView.Rows.Clear();
+                SubjectChoosedDataGridView.RowsAdded += SubjectChoosedDataGridView_RowsAdded;
+            }
+            if (DateEnrolledDateTimePicker != null)
+            {
+                DateEnrolledDateTimePicker.Value = DateTime.Now;
+            }
+        }
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            ClearForm();
         }
     }
 }

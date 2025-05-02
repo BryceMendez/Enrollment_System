@@ -24,7 +24,7 @@ namespace Enrollment_System
         private void SaveButton_Click(object sender, EventArgs e)
         {
 
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Han Song\OneDrive\Documents\Malalay.mdf"";Integrated Security=True;Connect Timeout=30";
             SqlConnection myConnection = new SqlConnection(connectionString);
             string sql = "SELECT * FROM STUDENTFILE";
             myConnection.Open();
@@ -149,6 +149,11 @@ namespace Enrollment_System
             studentEnroll.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
             studentEnroll.Show();
             this.Hide();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

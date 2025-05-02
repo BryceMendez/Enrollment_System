@@ -130,6 +130,8 @@
             this.SubjectChoosedDataGridView.Size = new System.Drawing.Size(738, 202);
             this.SubjectChoosedDataGridView.TabIndex = 2;
             this.SubjectChoosedDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SubjectChoosedDataGridView_CellContentClick);
+            this.SubjectChoosedDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.SubjectChoosedDataGridView_CellValueChanged);
+            this.SubjectChoosedDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.SubjectChoosedDataGridView_RowsAdded);
             // 
             // EDPCodeColumn
             // 
@@ -245,6 +247,7 @@
             this.CancelButton.Size = new System.Drawing.Size(115, 42);
             this.CancelButton.TabIndex = 34;
             this.CancelButton.UseVisualStyleBackColor = false;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SaveButton
             // 
@@ -259,6 +262,7 @@
             this.SaveButton.Size = new System.Drawing.Size(115, 41);
             this.SaveButton.TabIndex = 33;
             this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // pictureBox2
             // 
@@ -268,6 +272,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(1095, 639);
             this.pictureBox2.TabIndex = 35;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // StudentEnrollmentEntry
             // 

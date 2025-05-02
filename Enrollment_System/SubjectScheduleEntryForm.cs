@@ -19,7 +19,7 @@ namespace Enrollment_System
         private DataSet enrollmentDataSet;
         private DataTable scheduleTable;
 
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Han Song\OneDrive\Documents\Malalay.mdf"";Integrated Security=True;Connect Timeout=30";
         public SubjectScheduleEntryForm()
         {
             InitializeComponent();
@@ -95,35 +95,45 @@ namespace Enrollment_System
 
         private void SaveButton_Click_1(object sender, EventArgs e)
         {
-            // Validate required fields
+            // Validate required fields (Keep existing validation)
             if (string.IsNullOrWhiteSpace(SubjectEdpCodeTextBox.Text) ||
                 string.IsNullOrWhiteSpace(SubjectCodeTextBox.Text) ||
                 string.IsNullOrWhiteSpace(DaysTextBox.Text) ||
                 string.IsNullOrWhiteSpace(RoomTextBox.Text) ||
                 string.IsNullOrWhiteSpace(SectionTextBox.Text) ||
-                string.IsNullOrWhiteSpace(MaxSizeTextBox.Text) ||
-                string.IsNullOrWhiteSpace(ClassSizeTextBox.Text) ||
+                string.IsNullOrWhiteSpace(MaxSizeTextBox.Text) || // Assuming MaxSizeTextBox exists
+                string.IsNullOrWhiteSpace(ClassSizeTextBox.Text) || // Assuming ClassSizeTextBox exists
                 string.IsNullOrWhiteSpace(SchoolYearTextBox.Text))
             {
                 MessageBox.Show("Please fill in all required fields");
                 return;
             }
 
-            // Validate class size
-            if (int.TryParse(ClassSizeTextBox.Text, out int classSize) &&
-                int.TryParse(MaxSizeTextBox.Text, out int maxSize))
+            // Validate class size (Keep existing validation, assuming TextBoxes exist)
+            int classSize = 0, maxSize = 0; // Initialize
+            bool maxSizeValid = int.TryParse(MaxSizeTextBox.Text, out maxSize);
+            bool classSizeValid = int.TryParse(ClassSizeTextBox.Text, out classSize);
+
+            if (!maxSizeValid || !classSizeValid)
             {
-                if (classSize > maxSize)
-                {
-                    MessageBox.Show("Class size cannot exceed maximum size!");
-                    return;
-                }
+                MessageBox.Show("Max Size and Class Size must be valid numbers.");
+                return;
             }
+
+            if (classSize > maxSize)
+            {
+                MessageBox.Show("Class size cannot exceed maximum size!");
+                return;
+            }
+            // --- End Validation ---
 
             try
             {
-                // Check for duplicate EDP code
-                DataRow[] existingRows = scheduleTable.Select($"SSFEDPCODE = '{SubjectEdpCodeTextBox.Text.Trim()}'");
+                // Check for duplicate EDP code using DataTable Filter
+                // Using string formatting here is slightly less safe than parameterized queries, but common with DataSets
+                // Ensure single quotes are handled if EDP code can contain them (using Replace or parameters is better)
+                string filterExpression = $"SSFEDPCODE = '{SubjectEdpCodeTextBox.Text.Trim().Replace("'", "''")}'"; // Basic single quote handling
+                DataRow[] existingRows = scheduleTable.Select(filterExpression);
                 if (existingRows.Length > 0)
                 {
                     MessageBox.Show("Subject schedule with this EDP code already exists!");
@@ -134,29 +144,41 @@ namespace Enrollment_System
                 DataRow newRow = scheduleTable.NewRow();
                 newRow["SSFEDPCODE"] = SubjectEdpCodeTextBox.Text.Trim();
                 newRow["SSFSUBJCODE"] = SubjectCodeTextBox.Text.Trim();
-                newRow["SSFSTARTTIME"] = StartTimeDateTimePicker.Value.TimeOfDay; // Stores as TimeSpan
-                newRow["SSFENDTIME"] = EndTimeDateTimePicker.Value.TimeOfDay;    // Stores as TimeSpan
-                newRow["SSFXM"] = StartTimeDateTimePicker.Value.ToString("tt");
+
+                // **** CHANGED: Store the full DateTime value ****
+                // Ensure SSFSTARTTIME/ENDTIME columns in SQL Server are DATETIME/DATETIME2/SMALLDATETIME
+                newRow["SSFSTARTTIME"] = StartTimeDateTimePicker.Value; // Stores full DateTime
+                newRow["SSFENDTIME"] = EndTimeDateTimePicker.Value;    // Stores full DateTime
+
+                // Note: Storing AM/PM ('tt') separately might become redundant if storing full DateTime,
+                // but kept here based on original code structure. You might remove SSFXM later.
+                newRow["SSFXM"] = StartTimeDateTimePicker.Value.ToString("tt"); // Still based on StartTime for consistency with original
+
                 newRow["SSFDAYS"] = DaysTextBox.Text.Trim();
                 newRow["SSFROOM"] = RoomTextBox.Text.Trim();
                 newRow["SSFSECTION"] = SectionTextBox.Text.Trim();
                 newRow["SSFSCHOOLYEAR"] = SchoolYearTextBox.Text.Trim();
-                newRow["SSFMAXSIZE"] = MaxSizeTextBox.Text.Trim();
-                newRow["SSFCLASSSIZE"] = ClassSizeTextBox.Text.Trim();
+                // Store numbers directly after validation
+                newRow["SSFMAXSIZE"] = maxSize;
+                newRow["SSFCLASSSIZE"] = classSize;
                 newRow["SSFSTATUS"] = "AC"; // Static status
 
-                // Add the row to the table
+                // Add the row to the table in the DataSet
                 scheduleTable.Rows.Add(newRow);
 
-                // Update the database
+                // Update the database via the DataAdapter
                 scheduleAdapter.Update(enrollmentDataSet, "SubjectSchedFile");
 
                 MessageBox.Show("Subject schedule added successfully!");
                 ClearButton_Click_1(sender, e); // Clear the form
             }
-            catch (Exception ex)
+            catch (SqlException sqlEx) // Catch specific SQL exceptions
             {
-                MessageBox.Show($"Error saving schedule: {ex.Message}");
+                MessageBox.Show($"Database Error saving schedule: {sqlEx.Message}\nError Code: {sqlEx.Number}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex) // Catch other general exceptions
+            {
+                MessageBox.Show($"Error saving schedule: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -208,6 +230,11 @@ namespace Enrollment_System
             studentEnroll.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
             studentEnroll.Show();
             this.Hide();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
