@@ -236,6 +236,11 @@ namespace Enrollment_System
         {
 
         }
+
+        private void TimeEndLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

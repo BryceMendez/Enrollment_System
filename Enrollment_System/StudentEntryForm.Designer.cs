@@ -40,7 +40,6 @@ namespace Enrollment_System
             this.StudentEntryLabel = new System.Windows.Forms.Label();
             this.YearLabel = new System.Windows.Forms.Label();
             this.RemarksLabel = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.CourseLabel = new System.Windows.Forms.Label();
             this.LastNameLabel = new System.Windows.Forms.Label();
             this.MiddleInitialLabel = new System.Windows.Forms.Label();
@@ -156,18 +155,6 @@ namespace Enrollment_System
             this.RemarksLabel.Size = new System.Drawing.Size(82, 20);
             this.RemarksLabel.TabIndex = 35;
             this.RemarksLabel.Text = "Remarks:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
-            this.label6.Location = new System.Drawing.Point(525, 309);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 20);
-            this.label6.TabIndex = 34;
-            this.label6.Text = "Year:";
             // 
             // CourseLabel
             // 
@@ -331,7 +318,6 @@ namespace Enrollment_System
             this.Controls.Add(this.StudentEntryLabel);
             this.Controls.Add(this.YearLabel);
             this.Controls.Add(this.RemarksLabel);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.CourseLabel);
             this.Controls.Add(this.LastNameLabel);
             this.Controls.Add(this.MiddleInitialLabel);
@@ -381,7 +367,6 @@ namespace Enrollment_System
         private Label MiddleInitialLabel;
         private Label LastNameLabel;
         private Label CourseLabel;
-        private Label label6;
         private Label RemarksLabel;
         private Label YearLabel;
         private Label StudentEntryLabel;

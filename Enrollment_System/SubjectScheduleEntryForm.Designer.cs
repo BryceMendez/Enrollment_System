@@ -48,7 +48,6 @@
             this.DaysLabel = new System.Windows.Forms.Label();
             this.TimeEndLabel = new System.Windows.Forms.Label();
             this.TimeStartLabel = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.SubjectDescriptionLabel = new System.Windows.Forms.Label();
             this.SubjectCodeLabel = new System.Windows.Forms.Label();
             this.SubjectEdpCodeLabel = new System.Windows.Forms.Label();
@@ -242,11 +241,12 @@
             this.TimeEndLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimeEndLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TimeEndLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
-            this.TimeEndLabel.Location = new System.Drawing.Point(271, 327);
+            this.TimeEndLabel.Location = new System.Drawing.Point(272, 329);
             this.TimeEndLabel.Name = "TimeEndLabel";
             this.TimeEndLabel.Size = new System.Drawing.Size(82, 18);
             this.TimeEndLabel.TabIndex = 47;
             this.TimeEndLabel.Text = "Time End:";
+            this.TimeEndLabel.Click += new System.EventHandler(this.TimeEndLabel_Click);
             // 
             // TimeStartLabel
             // 
@@ -259,18 +259,6 @@
             this.TimeStartLabel.Size = new System.Drawing.Size(89, 18);
             this.TimeStartLabel.TabIndex = 46;
             this.TimeStartLabel.Text = "Time Start:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
-            this.label4.Location = new System.Drawing.Point(271, 327);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 20);
-            this.label4.TabIndex = 45;
-            this.label4.Text = "Time End:";
             // 
             // SubjectDescriptionLabel
             // 
@@ -414,7 +402,6 @@
             this.Controls.Add(this.DaysLabel);
             this.Controls.Add(this.TimeEndLabel);
             this.Controls.Add(this.TimeStartLabel);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.SubjectDescriptionLabel);
             this.Controls.Add(this.SubjectCodeLabel);
             this.Controls.Add(this.SubjectEdpCodeLabel);
@@ -469,7 +456,6 @@
         private System.Windows.Forms.Label SubjectEdpCodeLabel;
         private System.Windows.Forms.Label SubjectCodeLabel;
         private System.Windows.Forms.Label SubjectDescriptionLabel;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label TimeStartLabel;
         private System.Windows.Forms.Label TimeEndLabel;
         private System.Windows.Forms.Label DaysLabel;
