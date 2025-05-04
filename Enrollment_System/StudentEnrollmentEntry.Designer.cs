@@ -386,7 +386,7 @@
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SaveButton.Image = global::Enrollment_System.Properties.Resources.SaveButton;
+            this.SaveButton.Image = global::Enrollment_System.Properties.Resources.EnrollButton;
             this.SaveButton.Location = new System.Drawing.Point(533, 115);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(115, 41);

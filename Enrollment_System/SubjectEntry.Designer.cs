@@ -325,7 +325,6 @@
             this.CourseCodeLabel.Size = new System.Drawing.Size(110, 18);
             this.CourseCodeLabel.TabIndex = 46;
             this.CourseCodeLabel.Text = "Course Code:";
-            this.CourseCodeLabel.Click += new System.EventHandler(this.label6_Click);
             // 
             // CategoryLabel
             // 
@@ -476,7 +475,6 @@
             this.SubjectEntryPictureBox.Size = new System.Drawing.Size(1115, 644);
             this.SubjectEntryPictureBox.TabIndex = 33;
             this.SubjectEntryPictureBox.TabStop = false;
-            this.SubjectEntryPictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // SubjectEntry
             // 

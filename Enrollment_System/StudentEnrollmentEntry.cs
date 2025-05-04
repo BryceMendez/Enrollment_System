@@ -393,16 +393,11 @@ namespace Enrollment_System
                 MessageBox.Show("Cannot enroll with zero or invalid total units.", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-
-
             string studentId = IDNumberTextBox.Text.Trim();
-
             //Database Operations
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlTransaction transaction = null;
-
                 try
                 {
                     conn.Open();
@@ -473,8 +468,6 @@ namespace Enrollment_System
                         detailCmd.Parameters.AddWithValue("@Status", studentStatus);
                         SqlParameter subjectCodeParam = detailCmd.Parameters.Add("@SubjectCode", SqlDbType.VarChar);
                         SqlParameter edpCodeParam = detailCmd.Parameters.Add("@EDPCode", SqlDbType.VarChar);
-
-
                         foreach (DataGridViewRow rw in SubjectChoosedDataGridView.Rows)
                         {
                             if (rw.IsNewRow) continue;
@@ -498,12 +491,9 @@ namespace Enrollment_System
                             }
                         }
                     }
-
-
                     //Commit Transaction
                     transaction.Commit(); // If tanan operations succeeed, make changes permanent
                     MessageBox.Show("STUDENT ENROLLED SUCCESSFULLY!", "Enrollment Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                  
 
                 } // End Try block for transaction
                 catch (SqlException sqlEx)

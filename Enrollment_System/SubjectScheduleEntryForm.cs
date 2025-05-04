@@ -12,7 +12,6 @@ using System.Windows.Forms;
 
 namespace Enrollment_System
 {
-    //YOU CAN SCRACTH THIS SHIT CAUSE IT DOESNT WORK
     public partial class SubjectScheduleEntryForm : Form
     {
         private SqlDataAdapter scheduleAdapter;
@@ -230,16 +229,6 @@ namespace Enrollment_System
             studentEnroll.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
             studentEnroll.Show();
             this.Hide();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TimeEndLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

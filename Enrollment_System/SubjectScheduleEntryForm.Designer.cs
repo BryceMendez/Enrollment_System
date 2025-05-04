@@ -246,7 +246,6 @@
             this.TimeEndLabel.Size = new System.Drawing.Size(82, 18);
             this.TimeEndLabel.TabIndex = 47;
             this.TimeEndLabel.Text = "Time End:";
-            this.TimeEndLabel.Click += new System.EventHandler(this.TimeEndLabel_Click);
             // 
             // TimeStartLabel
             // 
@@ -385,7 +384,6 @@
             this.SubjectScheduleEntryPictureBox.Size = new System.Drawing.Size(1102, 638);
             this.SubjectScheduleEntryPictureBox.TabIndex = 32;
             this.SubjectScheduleEntryPictureBox.TabStop = false;
-            this.SubjectScheduleEntryPictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // SubjectScheduleEntryForm
             // 

@@ -284,15 +284,5 @@ namespace Enrollment_System
             studentEnroll.Show();
             this.Hide();
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
