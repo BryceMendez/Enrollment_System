@@ -37,14 +37,23 @@ namespace Enrollment_System
             this.CourseTextBox = new System.Windows.Forms.TextBox();
             this.YearTextBox = new System.Windows.Forms.TextBox();
             this.RemarksComboBox = new System.Windows.Forms.ComboBox();
+            this.StudentEntryLabel = new System.Windows.Forms.Label();
+            this.YearLabel = new System.Windows.Forms.Label();
+            this.RemarksLabel = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.CourseLabel = new System.Windows.Forms.Label();
+            this.LastNameLabel = new System.Windows.Forms.Label();
+            this.MiddleInitialLabel = new System.Windows.Forms.Label();
+            this.FirstNameLabel = new System.Windows.Forms.Label();
+            this.IdNumberLabel = new System.Windows.Forms.Label();
             this.EnrollmentButton = new System.Windows.Forms.Button();
             this.SubjectScheduleEntryButton = new System.Windows.Forms.Button();
             this.SubjectEntryButton = new System.Windows.Forms.Button();
             this.StudentEntryButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.StudentEntryPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentEntryPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // IDNumberTextBox
@@ -112,13 +121,121 @@ namespace Enrollment_System
             this.RemarksComboBox.TabIndex = 13;
             this.RemarksComboBox.Text = "- Choose -";
             // 
+            // StudentEntryLabel
+            // 
+            this.StudentEntryLabel.AutoSize = true;
+            this.StudentEntryLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StudentEntryLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.StudentEntryLabel.Image = global::Enrollment_System.Properties.Resources.LightBlueBackgroundImage;
+            this.StudentEntryLabel.Location = new System.Drawing.Point(138, 120);
+            this.StudentEntryLabel.Name = "StudentEntryLabel";
+            this.StudentEntryLabel.Size = new System.Drawing.Size(470, 75);
+            this.StudentEntryLabel.TabIndex = 37;
+            this.StudentEntryLabel.Text = "STUDENT ENTRY";
+            // 
+            // YearLabel
+            // 
+            this.YearLabel.AutoSize = true;
+            this.YearLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YearLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.YearLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.YearLabel.Location = new System.Drawing.Point(525, 309);
+            this.YearLabel.Name = "YearLabel";
+            this.YearLabel.Size = new System.Drawing.Size(50, 20);
+            this.YearLabel.TabIndex = 36;
+            this.YearLabel.Text = "Year:";
+            // 
+            // RemarksLabel
+            // 
+            this.RemarksLabel.AutoSize = true;
+            this.RemarksLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RemarksLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.RemarksLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.RemarksLabel.Location = new System.Drawing.Point(525, 379);
+            this.RemarksLabel.Name = "RemarksLabel";
+            this.RemarksLabel.Size = new System.Drawing.Size(82, 20);
+            this.RemarksLabel.TabIndex = 35;
+            this.RemarksLabel.Text = "Remarks:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label6.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.label6.Location = new System.Drawing.Point(525, 309);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 20);
+            this.label6.TabIndex = 34;
+            this.label6.Text = "Year:";
+            // 
+            // CourseLabel
+            // 
+            this.CourseLabel.AutoSize = true;
+            this.CourseLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CourseLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CourseLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.CourseLabel.Location = new System.Drawing.Point(525, 238);
+            this.CourseLabel.Name = "CourseLabel";
+            this.CourseLabel.Size = new System.Drawing.Size(70, 20);
+            this.CourseLabel.TabIndex = 33;
+            this.CourseLabel.Text = "Course:";
+            // 
+            // LastNameLabel
+            // 
+            this.LastNameLabel.AutoSize = true;
+            this.LastNameLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LastNameLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LastNameLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.LastNameLabel.Location = new System.Drawing.Point(166, 455);
+            this.LastNameLabel.Name = "LastNameLabel";
+            this.LastNameLabel.Size = new System.Drawing.Size(97, 20);
+            this.LastNameLabel.TabIndex = 32;
+            this.LastNameLabel.Text = "Last Name:";
+            // 
+            // MiddleInitialLabel
+            // 
+            this.MiddleInitialLabel.AutoSize = true;
+            this.MiddleInitialLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MiddleInitialLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MiddleInitialLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.MiddleInitialLabel.Location = new System.Drawing.Point(166, 386);
+            this.MiddleInitialLabel.Name = "MiddleInitialLabel";
+            this.MiddleInitialLabel.Size = new System.Drawing.Size(118, 20);
+            this.MiddleInitialLabel.TabIndex = 31;
+            this.MiddleInitialLabel.Text = "Middle Initial:";
+            // 
+            // FirstNameLabel
+            // 
+            this.FirstNameLabel.AutoSize = true;
+            this.FirstNameLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FirstNameLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.FirstNameLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.FirstNameLabel.Location = new System.Drawing.Point(166, 309);
+            this.FirstNameLabel.Name = "FirstNameLabel";
+            this.FirstNameLabel.Size = new System.Drawing.Size(100, 20);
+            this.FirstNameLabel.TabIndex = 30;
+            this.FirstNameLabel.Text = "First Name:";
+            // 
+            // IdNumberLabel
+            // 
+            this.IdNumberLabel.AutoSize = true;
+            this.IdNumberLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IdNumberLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.IdNumberLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.IdNumberLabel.Location = new System.Drawing.Point(166, 238);
+            this.IdNumberLabel.Name = "IdNumberLabel";
+            this.IdNumberLabel.Size = new System.Drawing.Size(100, 20);
+            this.IdNumberLabel.TabIndex = 29;
+            this.IdNumberLabel.Text = "ID Number:";
+            // 
             // EnrollmentButton
             // 
             this.EnrollmentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.EnrollmentButton.FlatAppearance.BorderSize = 0;
             this.EnrollmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EnrollmentButton.Image = global::Enrollment_System.Properties.Resources.EnrollmentButtonNotClicked;
-            this.EnrollmentButton.Location = new System.Drawing.Point(935, 41);
+            this.EnrollmentButton.Location = new System.Drawing.Point(935, 27);
             this.EnrollmentButton.Name = "EnrollmentButton";
             this.EnrollmentButton.Size = new System.Drawing.Size(103, 24);
             this.EnrollmentButton.TabIndex = 28;
@@ -131,7 +248,7 @@ namespace Enrollment_System
             this.SubjectScheduleEntryButton.FlatAppearance.BorderSize = 0;
             this.SubjectScheduleEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubjectScheduleEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectScheduleEntryButtonNotClicked;
-            this.SubjectScheduleEntryButton.Location = new System.Drawing.Point(707, 37);
+            this.SubjectScheduleEntryButton.Location = new System.Drawing.Point(709, 21);
             this.SubjectScheduleEntryButton.Name = "SubjectScheduleEntryButton";
             this.SubjectScheduleEntryButton.Size = new System.Drawing.Size(202, 33);
             this.SubjectScheduleEntryButton.TabIndex = 27;
@@ -143,7 +260,7 @@ namespace Enrollment_System
             this.SubjectEntryButton.FlatAppearance.BorderSize = 0;
             this.SubjectEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubjectEntryButton.Image = global::Enrollment_System.Properties.Resources.SubjectEntryButtonNotClicked;
-            this.SubjectEntryButton.Location = new System.Drawing.Point(559, 37);
+            this.SubjectEntryButton.Location = new System.Drawing.Point(571, 23);
             this.SubjectEntryButton.Name = "SubjectEntryButton";
             this.SubjectEntryButton.Size = new System.Drawing.Size(132, 33);
             this.SubjectEntryButton.TabIndex = 26;
@@ -156,7 +273,7 @@ namespace Enrollment_System
             this.StudentEntryButton.FlatAppearance.BorderSize = 0;
             this.StudentEntryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StudentEntryButton.Image = global::Enrollment_System.Properties.Resources.StudentEntryButtonClicked;
-            this.StudentEntryButton.Location = new System.Drawing.Point(385, 37);
+            this.StudentEntryButton.Location = new System.Drawing.Point(400, 19);
             this.StudentEntryButton.Name = "StudentEntryButton";
             this.StudentEntryButton.Size = new System.Drawing.Size(151, 37);
             this.StudentEntryButton.TabIndex = 25;
@@ -171,7 +288,7 @@ namespace Enrollment_System
             this.CancelButton.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.CancelButton.Image = global::Enrollment_System.Properties.Resources.CancelButton;
-            this.CancelButton.Location = new System.Drawing.Point(256, 529);
+            this.CancelButton.Location = new System.Drawing.Point(265, 530);
             this.CancelButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(121, 39);
@@ -187,7 +304,7 @@ namespace Enrollment_System
             this.SaveButton.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.SaveButton.Image = global::Enrollment_System.Properties.Resources.SaveButton;
-            this.SaveButton.Location = new System.Drawing.Point(135, 529);
+            this.SaveButton.Location = new System.Drawing.Point(134, 530);
             this.SaveButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(117, 39);
@@ -195,22 +312,31 @@ namespace Enrollment_System
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // pictureBox1
+            // StudentEntryPictureBox
             // 
-            this.pictureBox1.Image = global::Enrollment_System.Properties.Resources.StudentEntryBackgroundImage;
-            this.pictureBox1.Location = new System.Drawing.Point(-3, -2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1078, 644);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.StudentEntryPictureBox.Image = global::Enrollment_System.Properties.Resources.StudentEntry;
+            this.StudentEntryPictureBox.Location = new System.Drawing.Point(-2, -1);
+            this.StudentEntryPictureBox.Name = "StudentEntryPictureBox";
+            this.StudentEntryPictureBox.Size = new System.Drawing.Size(1078, 636);
+            this.StudentEntryPictureBox.TabIndex = 18;
+            this.StudentEntryPictureBox.TabStop = false;
+            this.StudentEntryPictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // StudentEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1073, 637);
+            this.ClientSize = new System.Drawing.Size(1073, 633);
+            this.Controls.Add(this.StudentEntryLabel);
+            this.Controls.Add(this.YearLabel);
+            this.Controls.Add(this.RemarksLabel);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.CourseLabel);
+            this.Controls.Add(this.LastNameLabel);
+            this.Controls.Add(this.MiddleInitialLabel);
+            this.Controls.Add(this.FirstNameLabel);
+            this.Controls.Add(this.IdNumberLabel);
             this.Controls.Add(this.EnrollmentButton);
             this.Controls.Add(this.SubjectScheduleEntryButton);
             this.Controls.Add(this.SubjectEntryButton);
@@ -224,11 +350,12 @@ namespace Enrollment_System
             this.Controls.Add(this.LastNameTextBox);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.StudentEntryPictureBox);
             this.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "StudentEntryForm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Text = "Student Entry";
+            ((System.ComponentModel.ISupportInitialize)(this.StudentEntryPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,10 +371,19 @@ namespace Enrollment_System
         private System.Windows.Forms.ComboBox RemarksComboBox;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button CancelButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox StudentEntryPictureBox;
         private System.Windows.Forms.Button StudentEntryButton;
         private System.Windows.Forms.Button SubjectEntryButton;
         private System.Windows.Forms.Button SubjectScheduleEntryButton;
         private System.Windows.Forms.Button EnrollmentButton;
+        private Label IdNumberLabel;
+        private Label FirstNameLabel;
+        private Label MiddleInitialLabel;
+        private Label LastNameLabel;
+        private Label CourseLabel;
+        private Label label6;
+        private Label RemarksLabel;
+        private Label YearLabel;
+        private Label StudentEntryLabel;
     }
 }

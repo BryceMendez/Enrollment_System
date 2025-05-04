@@ -39,14 +39,27 @@
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.EndTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.StartTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.SubjectScheduleEntryLabel = new System.Windows.Forms.Label();
+            this.ClassSizeLabel = new System.Windows.Forms.Label();
+            this.MaxSizeLabel = new System.Windows.Forms.Label();
+            this.SchoolYearLabel = new System.Windows.Forms.Label();
+            this.RoomLabel = new System.Windows.Forms.Label();
+            this.SectionRoomLabel = new System.Windows.Forms.Label();
+            this.DaysLabel = new System.Windows.Forms.Label();
+            this.TimeEndLabel = new System.Windows.Forms.Label();
+            this.TimeStartLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.SubjectDescriptionLabel = new System.Windows.Forms.Label();
+            this.SubjectCodeLabel = new System.Windows.Forms.Label();
+            this.SubjectEdpCodeLabel = new System.Windows.Forms.Label();
             this.EnrollmentButton = new System.Windows.Forms.Button();
             this.SubjectScheduleEntryButton = new System.Windows.Forms.Button();
             this.SubjectEntryButton = new System.Windows.Forms.Button();
             this.StudentEntryButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SubjectScheduleEntryPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.SubjectScheduleEntryPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // SubjectEdpCodeTextBox
@@ -118,7 +131,7 @@
             // 
             this.DescriptionLabel.AutoSize = true;
             this.DescriptionLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DescriptionLabel.Location = new System.Drawing.Point(437, 280);
+            this.DescriptionLabel.Location = new System.Drawing.Point(437, 282);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(90, 16);
             this.DescriptionLabel.TabIndex = 15;
@@ -138,6 +151,162 @@
             this.StartTimeDateTimePicker.Name = "StartTimeDateTimePicker";
             this.StartTimeDateTimePicker.Size = new System.Drawing.Size(87, 20);
             this.StartTimeDateTimePicker.TabIndex = 19;
+            // 
+            // SubjectScheduleEntryLabel
+            // 
+            this.SubjectScheduleEntryLabel.AutoSize = true;
+            this.SubjectScheduleEntryLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubjectScheduleEntryLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SubjectScheduleEntryLabel.Image = global::Enrollment_System.Properties.Resources.LightBlueBackgroundImage;
+            this.SubjectScheduleEntryLabel.Location = new System.Drawing.Point(313, 88);
+            this.SubjectScheduleEntryLabel.Name = "SubjectScheduleEntryLabel";
+            this.SubjectScheduleEntryLabel.Size = new System.Drawing.Size(612, 61);
+            this.SubjectScheduleEntryLabel.TabIndex = 54;
+            this.SubjectScheduleEntryLabel.Text = "SUBJECT SCHEDULE ENTRY";
+            // 
+            // ClassSizeLabel
+            // 
+            this.ClassSizeLabel.AutoSize = true;
+            this.ClassSizeLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClassSizeLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClassSizeLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.ClassSizeLabel.Location = new System.Drawing.Point(666, 381);
+            this.ClassSizeLabel.Name = "ClassSizeLabel";
+            this.ClassSizeLabel.Size = new System.Drawing.Size(85, 18);
+            this.ClassSizeLabel.TabIndex = 53;
+            this.ClassSizeLabel.Text = "Class Size:";
+            // 
+            // MaxSizeLabel
+            // 
+            this.MaxSizeLabel.AutoSize = true;
+            this.MaxSizeLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaxSizeLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MaxSizeLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.MaxSizeLabel.Location = new System.Drawing.Point(666, 329);
+            this.MaxSizeLabel.Name = "MaxSizeLabel";
+            this.MaxSizeLabel.Size = new System.Drawing.Size(79, 18);
+            this.MaxSizeLabel.TabIndex = 52;
+            this.MaxSizeLabel.Text = "Max Size:";
+            // 
+            // SchoolYearLabel
+            // 
+            this.SchoolYearLabel.AutoSize = true;
+            this.SchoolYearLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SchoolYearLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SchoolYearLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.SchoolYearLabel.Location = new System.Drawing.Point(666, 280);
+            this.SchoolYearLabel.Name = "SchoolYearLabel";
+            this.SchoolYearLabel.Size = new System.Drawing.Size(99, 18);
+            this.SchoolYearLabel.TabIndex = 51;
+            this.SchoolYearLabel.Text = "School Year:";
+            // 
+            // RoomLabel
+            // 
+            this.RoomLabel.AutoSize = true;
+            this.RoomLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RoomLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.RoomLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.RoomLabel.Location = new System.Drawing.Point(666, 231);
+            this.RoomLabel.Name = "RoomLabel";
+            this.RoomLabel.Size = new System.Drawing.Size(56, 18);
+            this.RoomLabel.TabIndex = 50;
+            this.RoomLabel.Text = "Room:";
+            // 
+            // SectionRoomLabel
+            // 
+            this.SectionRoomLabel.AutoSize = true;
+            this.SectionRoomLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SectionRoomLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SectionRoomLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.SectionRoomLabel.Location = new System.Drawing.Point(666, 177);
+            this.SectionRoomLabel.Name = "SectionRoomLabel";
+            this.SectionRoomLabel.Size = new System.Drawing.Size(115, 18);
+            this.SectionRoomLabel.TabIndex = 49;
+            this.SectionRoomLabel.Text = "Section Room:";
+            // 
+            // DaysLabel
+            // 
+            this.DaysLabel.AutoSize = true;
+            this.DaysLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DaysLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.DaysLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.DaysLabel.Location = new System.Drawing.Point(271, 433);
+            this.DaysLabel.Name = "DaysLabel";
+            this.DaysLabel.Size = new System.Drawing.Size(47, 18);
+            this.DaysLabel.TabIndex = 48;
+            this.DaysLabel.Text = "Days:";
+            // 
+            // TimeEndLabel
+            // 
+            this.TimeEndLabel.AutoSize = true;
+            this.TimeEndLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimeEndLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.TimeEndLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.TimeEndLabel.Location = new System.Drawing.Point(271, 327);
+            this.TimeEndLabel.Name = "TimeEndLabel";
+            this.TimeEndLabel.Size = new System.Drawing.Size(82, 18);
+            this.TimeEndLabel.TabIndex = 47;
+            this.TimeEndLabel.Text = "Time End:";
+            // 
+            // TimeStartLabel
+            // 
+            this.TimeStartLabel.AutoSize = true;
+            this.TimeStartLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TimeStartLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.TimeStartLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.TimeStartLabel.Location = new System.Drawing.Point(271, 381);
+            this.TimeStartLabel.Name = "TimeStartLabel";
+            this.TimeStartLabel.Size = new System.Drawing.Size(89, 18);
+            this.TimeStartLabel.TabIndex = 46;
+            this.TimeStartLabel.Text = "Time Start:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.label4.Location = new System.Drawing.Point(271, 327);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 20);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Time End:";
+            // 
+            // SubjectDescriptionLabel
+            // 
+            this.SubjectDescriptionLabel.AutoSize = true;
+            this.SubjectDescriptionLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubjectDescriptionLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SubjectDescriptionLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.SubjectDescriptionLabel.Location = new System.Drawing.Point(271, 280);
+            this.SubjectDescriptionLabel.Name = "SubjectDescriptionLabel";
+            this.SubjectDescriptionLabel.Size = new System.Drawing.Size(97, 18);
+            this.SubjectDescriptionLabel.TabIndex = 44;
+            this.SubjectDescriptionLabel.Text = "Description:";
+            // 
+            // SubjectCodeLabel
+            // 
+            this.SubjectCodeLabel.AutoSize = true;
+            this.SubjectCodeLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubjectCodeLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SubjectCodeLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.SubjectCodeLabel.Location = new System.Drawing.Point(271, 231);
+            this.SubjectCodeLabel.Name = "SubjectCodeLabel";
+            this.SubjectCodeLabel.Size = new System.Drawing.Size(113, 18);
+            this.SubjectCodeLabel.TabIndex = 43;
+            this.SubjectCodeLabel.Text = "Subject Code:";
+            // 
+            // SubjectEdpCodeLabel
+            // 
+            this.SubjectEdpCodeLabel.AutoSize = true;
+            this.SubjectEdpCodeLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubjectEdpCodeLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SubjectEdpCodeLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.SubjectEdpCodeLabel.Location = new System.Drawing.Point(272, 177);
+            this.SubjectEdpCodeLabel.Name = "SubjectEdpCodeLabel";
+            this.SubjectEdpCodeLabel.Size = new System.Drawing.Size(146, 18);
+            this.SubjectEdpCodeLabel.TabIndex = 42;
+            this.SubjectEdpCodeLabel.Text = "Subject EDP Code:";
             // 
             // EnrollmentButton
             // 
@@ -220,15 +389,15 @@
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click_1);
             // 
-            // pictureBox1
+            // SubjectScheduleEntryPictureBox
             // 
-            this.pictureBox1.Image = global::Enrollment_System.Properties.Resources.SubjectScheduleEntryBackgroundImage2;
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1102, 638);
-            this.pictureBox1.TabIndex = 32;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.SubjectScheduleEntryPictureBox.Image = global::Enrollment_System.Properties.Resources.SubjectScheduleEntry;
+            this.SubjectScheduleEntryPictureBox.Location = new System.Drawing.Point(-1, -1);
+            this.SubjectScheduleEntryPictureBox.Name = "SubjectScheduleEntryPictureBox";
+            this.SubjectScheduleEntryPictureBox.Size = new System.Drawing.Size(1102, 638);
+            this.SubjectScheduleEntryPictureBox.TabIndex = 32;
+            this.SubjectScheduleEntryPictureBox.TabStop = false;
+            this.SubjectScheduleEntryPictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // SubjectScheduleEntryForm
             // 
@@ -236,6 +405,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1100, 630);
+            this.Controls.Add(this.SubjectScheduleEntryLabel);
+            this.Controls.Add(this.ClassSizeLabel);
+            this.Controls.Add(this.MaxSizeLabel);
+            this.Controls.Add(this.SchoolYearLabel);
+            this.Controls.Add(this.RoomLabel);
+            this.Controls.Add(this.SectionRoomLabel);
+            this.Controls.Add(this.DaysLabel);
+            this.Controls.Add(this.TimeEndLabel);
+            this.Controls.Add(this.TimeStartLabel);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.SubjectDescriptionLabel);
+            this.Controls.Add(this.SubjectCodeLabel);
+            this.Controls.Add(this.SubjectEdpCodeLabel);
             this.Controls.Add(this.EnrollmentButton);
             this.Controls.Add(this.SubjectScheduleEntryButton);
             this.Controls.Add(this.SubjectEntryButton);
@@ -253,12 +435,12 @@
             this.Controls.Add(this.DescriptionLabel);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.SubjectScheduleEntryPictureBox);
             this.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.Name = "SubjectScheduleEntryForm";
-            this.Text = "SubjectScheduleEntry";
+            this.Text = "Subject Schedule Entry";
             this.Load += new System.EventHandler(this.SubjectScheduleEntryForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SubjectScheduleEntryPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,10 +461,23 @@
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.DateTimePicker EndTimeDateTimePicker;
         private System.Windows.Forms.DateTimePicker StartTimeDateTimePicker;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox SubjectScheduleEntryPictureBox;
         private System.Windows.Forms.Button StudentEntryButton;
         private System.Windows.Forms.Button SubjectEntryButton;
         private System.Windows.Forms.Button SubjectScheduleEntryButton;
         private System.Windows.Forms.Button EnrollmentButton;
+        private System.Windows.Forms.Label SubjectEdpCodeLabel;
+        private System.Windows.Forms.Label SubjectCodeLabel;
+        private System.Windows.Forms.Label SubjectDescriptionLabel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label TimeStartLabel;
+        private System.Windows.Forms.Label TimeEndLabel;
+        private System.Windows.Forms.Label DaysLabel;
+        private System.Windows.Forms.Label SectionRoomLabel;
+        private System.Windows.Forms.Label RoomLabel;
+        private System.Windows.Forms.Label SchoolYearLabel;
+        private System.Windows.Forms.Label MaxSizeLabel;
+        private System.Windows.Forms.Label ClassSizeLabel;
+        private System.Windows.Forms.Label SubjectScheduleEntryLabel;
     }
 }

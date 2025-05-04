@@ -63,6 +63,16 @@ namespace Enrollment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BlueBackgroundImage {
+            get {
+                object obj = ResourceManager.GetObject("BlueBackgroundImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CancelButton {
             get {
                 object obj = ResourceManager.GetObject("CancelButton", resourceCulture);
@@ -93,6 +103,16 @@ namespace Enrollment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LightBlueBackgroundImage {
+            get {
+                object obj = ResourceManager.GetObject("LightBlueBackgroundImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SaveButton {
             get {
                 object obj = ResourceManager.GetObject("SaveButton", resourceCulture);
@@ -103,9 +123,9 @@ namespace Enrollment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap StudentEnrollmentBackgroundImage {
+        internal static System.Drawing.Bitmap StudentEnrollment {
             get {
-                object obj = ResourceManager.GetObject("StudentEnrollmentBackgroundImage", resourceCulture);
+                object obj = ResourceManager.GetObject("StudentEnrollment", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +133,9 @@ namespace Enrollment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap StudentEntryBackgroundImage {
+        internal static System.Drawing.Bitmap StudentEntry {
             get {
-                object obj = ResourceManager.GetObject("StudentEntryBackgroundImage", resourceCulture);
+                object obj = ResourceManager.GetObject("StudentEntry", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +163,9 @@ namespace Enrollment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SubjectEntryBackgroundImage {
+        internal static System.Drawing.Bitmap SubjectEntry {
             get {
-                object obj = ResourceManager.GetObject("SubjectEntryBackgroundImage", resourceCulture);
+                object obj = ResourceManager.GetObject("SubjectEntry", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,6 +186,16 @@ namespace Enrollment_System.Properties {
         internal static System.Drawing.Bitmap SubjectEntryButtonNotClicked {
             get {
                 object obj = ResourceManager.GetObject("SubjectEntryButtonNotClicked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SubjectScheduleEntry {
+            get {
+                object obj = ResourceManager.GetObject("SubjectScheduleEntry", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

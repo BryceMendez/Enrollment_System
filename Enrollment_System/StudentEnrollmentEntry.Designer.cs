@@ -46,15 +46,25 @@
             this.UnitsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EncoderTextBox = new System.Windows.Forms.TextBox();
             this.DateEnrolledDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.EnrollmentLabel = new System.Windows.Forms.Label();
+            this.StudentLabel = new System.Windows.Forms.Label();
+            this.EnrollmentTotalUnitsLabel = new System.Windows.Forms.Label();
+            this.DateLabel = new System.Windows.Forms.Label();
+            this.EncodedByLabel = new System.Windows.Forms.Label();
+            this.StudentYearLabel = new System.Windows.Forms.Label();
+            this.EdpCodeLabel = new System.Windows.Forms.Label();
+            this.StudentCourseLabel = new System.Windows.Forms.Label();
+            this.StudentNameLabel = new System.Windows.Forms.Label();
+            this.IdNumberLabel = new System.Windows.Forms.Label();
             this.EnrollmentButton = new System.Windows.Forms.Button();
             this.SubjectScheduleEntryButton = new System.Windows.Forms.Button();
             this.SubjectEntryButton = new System.Windows.Forms.Button();
             this.StudentEntryButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.StudentEnrollmentPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectChoosedDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentEnrollmentPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // YearLabel
@@ -183,6 +193,126 @@
             this.DateEnrolledDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.DateEnrolledDateTimePicker.TabIndex = 12;
             // 
+            // EnrollmentLabel
+            // 
+            this.EnrollmentLabel.AutoSize = true;
+            this.EnrollmentLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 45.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnrollmentLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.EnrollmentLabel.Image = global::Enrollment_System.Properties.Resources.LightBlueBackgroundImage;
+            this.EnrollmentLabel.Location = new System.Drawing.Point(178, 228);
+            this.EnrollmentLabel.Name = "EnrollmentLabel";
+            this.EnrollmentLabel.Size = new System.Drawing.Size(405, 77);
+            this.EnrollmentLabel.TabIndex = 51;
+            this.EnrollmentLabel.Text = "ENROLLMENT";
+            // 
+            // StudentLabel
+            // 
+            this.StudentLabel.AutoSize = true;
+            this.StudentLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 45.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StudentLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.StudentLabel.Image = global::Enrollment_System.Properties.Resources.LightBlueBackgroundImage;
+            this.StudentLabel.Location = new System.Drawing.Point(178, 159);
+            this.StudentLabel.Name = "StudentLabel";
+            this.StudentLabel.Size = new System.Drawing.Size(282, 77);
+            this.StudentLabel.TabIndex = 50;
+            this.StudentLabel.Text = "STUDENT";
+            // 
+            // EnrollmentTotalUnitsLabel
+            // 
+            this.EnrollmentTotalUnitsLabel.AutoSize = true;
+            this.EnrollmentTotalUnitsLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnrollmentTotalUnitsLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.EnrollmentTotalUnitsLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.EnrollmentTotalUnitsLabel.Location = new System.Drawing.Point(878, 561);
+            this.EnrollmentTotalUnitsLabel.Name = "EnrollmentTotalUnitsLabel";
+            this.EnrollmentTotalUnitsLabel.Size = new System.Drawing.Size(92, 18);
+            this.EnrollmentTotalUnitsLabel.TabIndex = 49;
+            this.EnrollmentTotalUnitsLabel.Text = "Total Units:";
+            // 
+            // DateLabel
+            // 
+            this.DateLabel.AutoSize = true;
+            this.DateLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.DateLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.DateLabel.Location = new System.Drawing.Point(580, 561);
+            this.DateLabel.Name = "DateLabel";
+            this.DateLabel.Size = new System.Drawing.Size(47, 18);
+            this.DateLabel.TabIndex = 48;
+            this.DateLabel.Text = "Date:";
+            // 
+            // EncodedByLabel
+            // 
+            this.EncodedByLabel.AutoSize = true;
+            this.EncodedByLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EncodedByLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.EncodedByLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.EncodedByLabel.Location = new System.Drawing.Point(313, 559);
+            this.EncodedByLabel.Name = "EncodedByLabel";
+            this.EncodedByLabel.Size = new System.Drawing.Size(99, 18);
+            this.EncodedByLabel.TabIndex = 47;
+            this.EncodedByLabel.Text = "Encoded By:";
+            // 
+            // StudentYearLabel
+            // 
+            this.StudentYearLabel.AutoSize = true;
+            this.StudentYearLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StudentYearLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.StudentYearLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.StudentYearLabel.Location = new System.Drawing.Point(900, 228);
+            this.StudentYearLabel.Name = "StudentYearLabel";
+            this.StudentYearLabel.Size = new System.Drawing.Size(45, 18);
+            this.StudentYearLabel.TabIndex = 46;
+            this.StudentYearLabel.Text = "Year:";
+            // 
+            // EdpCodeLabel
+            // 
+            this.EdpCodeLabel.AutoSize = true;
+            this.EdpCodeLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EdpCodeLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.EdpCodeLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.EdpCodeLabel.Location = new System.Drawing.Point(688, 281);
+            this.EdpCodeLabel.Name = "EdpCodeLabel";
+            this.EdpCodeLabel.Size = new System.Drawing.Size(86, 18);
+            this.EdpCodeLabel.TabIndex = 45;
+            this.EdpCodeLabel.Text = "EDP Code:";
+            // 
+            // StudentCourseLabel
+            // 
+            this.StudentCourseLabel.AutoSize = true;
+            this.StudentCourseLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StudentCourseLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.StudentCourseLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.StudentCourseLabel.Location = new System.Drawing.Point(688, 228);
+            this.StudentCourseLabel.Name = "StudentCourseLabel";
+            this.StudentCourseLabel.Size = new System.Drawing.Size(65, 18);
+            this.StudentCourseLabel.TabIndex = 44;
+            this.StudentCourseLabel.Text = "Course:";
+            // 
+            // StudentNameLabel
+            // 
+            this.StudentNameLabel.AutoSize = true;
+            this.StudentNameLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StudentNameLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.StudentNameLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.StudentNameLabel.Location = new System.Drawing.Point(688, 181);
+            this.StudentNameLabel.Name = "StudentNameLabel";
+            this.StudentNameLabel.Size = new System.Drawing.Size(55, 18);
+            this.StudentNameLabel.TabIndex = 43;
+            this.StudentNameLabel.Text = "Name:";
+            // 
+            // IdNumberLabel
+            // 
+            this.IdNumberLabel.AutoSize = true;
+            this.IdNumberLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IdNumberLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.IdNumberLabel.Image = global::Enrollment_System.Properties.Resources.BlueBackgroundImage;
+            this.IdNumberLabel.Location = new System.Drawing.Point(688, 131);
+            this.IdNumberLabel.Name = "IdNumberLabel";
+            this.IdNumberLabel.Size = new System.Drawing.Size(92, 18);
+            this.IdNumberLabel.TabIndex = 42;
+            this.IdNumberLabel.Text = "ID Number:";
+            // 
             // EnrollmentButton
             // 
             this.EnrollmentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -264,15 +394,15 @@
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // pictureBox2
+            // StudentEnrollmentPictureBox
             // 
-            this.pictureBox2.Image = global::Enrollment_System.Properties.Resources.StudentEnrollmentBackgroundImage;
-            this.pictureBox2.Location = new System.Drawing.Point(-1, -2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1095, 639);
-            this.pictureBox2.TabIndex = 35;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.StudentEnrollmentPictureBox.Image = global::Enrollment_System.Properties.Resources.StudentEnrollment;
+            this.StudentEnrollmentPictureBox.Location = new System.Drawing.Point(-1, -2);
+            this.StudentEnrollmentPictureBox.Name = "StudentEnrollmentPictureBox";
+            this.StudentEnrollmentPictureBox.Size = new System.Drawing.Size(1095, 639);
+            this.StudentEnrollmentPictureBox.TabIndex = 35;
+            this.StudentEnrollmentPictureBox.TabStop = false;
+            this.StudentEnrollmentPictureBox.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // StudentEnrollmentEntry
             // 
@@ -281,6 +411,16 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1091, 629);
+            this.Controls.Add(this.EnrollmentLabel);
+            this.Controls.Add(this.StudentLabel);
+            this.Controls.Add(this.EnrollmentTotalUnitsLabel);
+            this.Controls.Add(this.DateLabel);
+            this.Controls.Add(this.EncodedByLabel);
+            this.Controls.Add(this.StudentYearLabel);
+            this.Controls.Add(this.EdpCodeLabel);
+            this.Controls.Add(this.StudentCourseLabel);
+            this.Controls.Add(this.StudentNameLabel);
+            this.Controls.Add(this.IdNumberLabel);
             this.Controls.Add(this.EnrollmentButton);
             this.Controls.Add(this.SubjectScheduleEntryButton);
             this.Controls.Add(this.SubjectEntryButton);
@@ -296,14 +436,14 @@
             this.Controls.Add(this.IDNumberTextBox);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.SubjectChoosedDataGridView);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.StudentEnrollmentPictureBox);
             this.Name = "StudentEnrollmentEntry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StudentEnrollmentEntryForm";
+            this.Text = "Student Enrollment Entry Form";
             this.Load += new System.EventHandler(this.StudentEnrollmentEntry_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StudentEnrollmentEntry_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.SubjectChoosedDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentEnrollmentPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,7 +458,7 @@
         private System.Windows.Forms.Label TotalUnitsLabel;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button CancelButton;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox StudentEnrollmentPictureBox;
         private System.Windows.Forms.DataGridView SubjectChoosedDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn EDPCodeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubjectCodeColumn;
@@ -333,5 +473,15 @@
         private System.Windows.Forms.Button SubjectEntryButton;
         private System.Windows.Forms.Button SubjectScheduleEntryButton;
         private System.Windows.Forms.Button EnrollmentButton;
+        private System.Windows.Forms.Label IdNumberLabel;
+        private System.Windows.Forms.Label StudentNameLabel;
+        private System.Windows.Forms.Label StudentCourseLabel;
+        private System.Windows.Forms.Label EdpCodeLabel;
+        private System.Windows.Forms.Label StudentYearLabel;
+        private System.Windows.Forms.Label EncodedByLabel;
+        private System.Windows.Forms.Label DateLabel;
+        private System.Windows.Forms.Label EnrollmentTotalUnitsLabel;
+        private System.Windows.Forms.Label StudentLabel;
+        private System.Windows.Forms.Label EnrollmentLabel;
     }
 }

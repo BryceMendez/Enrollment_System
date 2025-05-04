@@ -130,9 +130,6 @@
     <None Include="Resources\EnrollmentButtonClicked.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\StudentEntryBackgroundImage.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\SubjectEntryButtonClicked1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -145,13 +142,25 @@
     <None Include="Resources\SubjectScheduleEntryButtonClicked1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SubjectEntryBackgroundImage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\StudentEnrollmentBackgroundImage1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\StudentEntryButtonClicked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlueBackgroundImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LightBlueBackgroundImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StudentEntry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectEntry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubjectScheduleEntry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StudentEnrollment.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

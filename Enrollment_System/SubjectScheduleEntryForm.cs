@@ -19,7 +19,7 @@ namespace Enrollment_System
         private DataSet enrollmentDataSet;
         private DataTable scheduleTable;
 
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Han Song\OneDrive\Documents\Malalay.mdf"";Integrated Security=True;Connect Timeout=30";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
         public SubjectScheduleEntryForm()
         {
             InitializeComponent();
