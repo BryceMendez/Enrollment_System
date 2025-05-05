@@ -384,6 +384,7 @@
             this.SubjectScheduleEntryPictureBox.Size = new System.Drawing.Size(1102, 638);
             this.SubjectScheduleEntryPictureBox.TabIndex = 32;
             this.SubjectScheduleEntryPictureBox.TabStop = false;
+            this.SubjectScheduleEntryPictureBox.Click += new System.EventHandler(this.SubjectScheduleEntryPictureBox_Click);
             // 
             // SubjectScheduleEntryForm
             // 

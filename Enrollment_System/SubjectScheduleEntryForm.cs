@@ -18,7 +18,7 @@ namespace Enrollment_System
         private DataSet enrollmentDataSet;
         private DataTable scheduleTable;
 
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
         public SubjectScheduleEntryForm()
         {
             InitializeComponent();
@@ -229,6 +229,11 @@ namespace Enrollment_System
             studentEnroll.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
             studentEnroll.Show();
             this.Hide();
+        }
+
+        private void SubjectScheduleEntryPictureBox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
