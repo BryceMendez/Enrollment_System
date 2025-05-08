@@ -18,7 +18,7 @@ namespace Enrollment_System
         private DataSet enrollmentDataSet;
         private DataTable scheduleTable;
 
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
         public SubjectScheduleEntryForm()
         {
             InitializeComponent();
@@ -87,114 +87,168 @@ namespace Enrollment_System
             this.Hide();
         }
 
-        private void SubjectScheduleEntryForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void SaveButton_Click_1(object sender, EventArgs e)
         {
-            // Validate required fields (Keep existing validation)
-            if (string.IsNullOrWhiteSpace(SubjectEdpCodeTextBox.Text) ||
-                string.IsNullOrWhiteSpace(SubjectCodeTextBox.Text) ||
-                string.IsNullOrWhiteSpace(DaysComboBox.Text) ||
-                string.IsNullOrWhiteSpace(RoomTextBox.Text) ||
+            // --- 1. Basic Empty Field Validation ---
+            if (string.IsNullOrWhiteSpace(SubjectEdpCodeTextBox.Text))
+            {
+                MessageBox.Show("EDP Code cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                SubjectEdpCodeTextBox.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(SubjectCodeTextBox.Text) || string.IsNullOrWhiteSpace(DescriptionLabel.Text) || DescriptionLabel.Text == "Subject Code Not Found")
+            {
+                MessageBox.Show("Valid Subject Code and Description are required.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                SubjectCodeTextBox.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(DaysTextBox.Text))
+            {
+                MessageBox.Show("Days field cannot be empty. Please enter days (e.g., M,W,F).", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DaysTextBox.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(RoomTextBox.Text) ||
                 string.IsNullOrWhiteSpace(SectionTextBox.Text) ||
-                string.IsNullOrWhiteSpace(MaxSizeTextBox.Text) || // Assuming MaxSizeTextBox exists
-                string.IsNullOrWhiteSpace(ClassSizeTextBox.Text) || // Assuming ClassSizeTextBox exists
                 string.IsNullOrWhiteSpace(SchoolYearTextBox.Text))
             {
-                MessageBox.Show("Please fill in all required fields");
+                MessageBox.Show("Room, Section, and School Year cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (string.IsNullOrWhiteSpace(RoomTextBox.Text)) RoomTextBox.Focus();
+                else if (string.IsNullOrWhiteSpace(SectionTextBox.Text)) SectionTextBox.Focus();
+                else SchoolYearTextBox.Focus();
                 return;
             }
 
-            // Validate class size (Keep existing validation, assuming TextBoxes exist)
-            int classSize = 0, maxSize = 0; // Initialize
-            bool maxSizeValid = int.TryParse(MaxSizeTextBox.Text, out maxSize);
-            bool classSizeValid = int.TryParse(ClassSizeTextBox.Text, out classSize);
+            // --- 2. DaysTextBox Input Processing and Robust Validation ---
+            string rawDaysInput = DaysTextBox.Text.Trim();
+            string processedDaysForStorage;
+            List<string> dayTokens = rawDaysInput.Split(',')
+                                             .Select(day => day.Trim().ToUpperInvariant()) // Convert to uppercase
+                                             .Where(day => !string.IsNullOrEmpty(day))
+                                             .ToList();
 
-            if (!maxSizeValid || !classSizeValid)
+            if (!dayTokens.Any())
             {
-                MessageBox.Show("Max Size and Class Size must be valid numbers.");
+                MessageBox.Show("Days field is invalid. Please enter valid day codes (e.g., M,W,F or T,TH), separated by commas.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DaysTextBox.Focus();
+                return;
+            }
+            var validDayCodesSet = new HashSet<string> { "M", "T", "W", "TH", "F", "S" };
+
+            foreach (string token in dayTokens)
+            {
+                if (!validDayCodesSet.Contains(token))
+                {
+                    MessageBox.Show($"Invalid day code '{token}' found. Please use recognized day abbreviations (e.g., M, T, W, TH, F, S), separated by commas.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    DaysTextBox.Focus();
+                    return;
+                }
+            }
+            List<string> distinctDayTokens = dayTokens.Distinct().ToList();
+            var dayOrder = new Dictionary<string, int>
+            {
+                { "M", 1 }, { "T", 2 }, { "W", 3 }, { "TH", 4 }, { "F", 5 }, { "S", 6 }
+            };
+
+
+            distinctDayTokens.Sort((d1, d2) =>
+            {
+                int order1 = dayOrder.TryGetValue(d1, out int o1) ? o1 : int.MaxValue;
+                int order2 = dayOrder.TryGetValue(d2, out int o2) ? o2 : int.MaxValue;
+                return order1.CompareTo(order2);
+            });
+
+
+            processedDaysForStorage = string.Concat(distinctDayTokens); // sorts for data base,["M", "TH", "F"] becomes "MTHF"
+
+            if (string.IsNullOrWhiteSpace(MaxSizeTextBox.Text))
+            {
+                MessageBox.Show("Max Size cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MaxSizeTextBox.Focus();
+                return;
+            }
+
+            if (!int.TryParse(MaxSizeTextBox.Text, out int maxSize) || maxSize < 0)
+            {
+                MessageBox.Show("Max Size must be a valid non-negative number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MaxSizeTextBox.Focus();
+                return;
+            }
+            if (!int.TryParse(ClassSizeTextBox.Text, out int classSize) || classSize < 0)
+            {
+                MessageBox.Show("Class Size must be a valid non-negative number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ClassSizeTextBox.Focus();
                 return;
             }
 
             if (classSize > maxSize)
             {
-                MessageBox.Show("Class size cannot exceed maximum size!");
+                MessageBox.Show("Class size cannot exceed maximum size!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ClassSizeTextBox.Focus();
                 return;
             }
-            // --- End Validation ---
+            if (EndTimeDateTimePicker.Value <= StartTimeDateTimePicker.Value)
+            {
+                MessageBox.Show("End Time must be after Start Time.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                EndTimeDateTimePicker.Focus();
+                return;
+            }
 
             try
             {
-                // Check for duplicate EDP code using DataTable Filter
-                // Using string formatting here is slightly less safe than parameterized queries, but common with DataSets
-                // Ensure single quotes are handled if EDP code can contain them (using Replace or parameters is better)
-                string filterExpression = $"SSFEDPCODE = '{SubjectEdpCodeTextBox.Text.Trim().Replace("'", "''")}'"; // Basic single quote handling
-                DataRow[] existingRows = scheduleTable.Select(filterExpression);
-                if (existingRows.Length > 0)
+                string filterExpression = $"SSFEDPCODE = '{SubjectEdpCodeTextBox.Text.Trim().Replace("'", "''")}'";
+                DataRow[] existingRowsByEdpCode = scheduleTable.Select(filterExpression);
+                if (existingRowsByEdpCode.Length > 0)
                 {
-                    MessageBox.Show("Subject schedule with this EDP code already exists!");
+                    MessageBox.Show("A subject schedule with this EDP code already exists.", "Duplicate EDP Code", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    SubjectEdpCodeTextBox.Focus();
                     return;
                 }
 
-                // Create new row
                 DataRow newRow = scheduleTable.NewRow();
                 newRow["SSFEDPCODE"] = SubjectEdpCodeTextBox.Text.Trim();
                 newRow["SSFSUBJCODE"] = SubjectCodeTextBox.Text.Trim();
+                newRow["SSFSTARTTIME"] = StartTimeDateTimePicker.Value;
+                newRow["SSFENDTIME"] = EndTimeDateTimePicker.Value;
+                newRow["SSFXM"] = StartTimeDateTimePicker.Value.ToString("tt");
 
-                // **** CHANGED: Store the full DateTime value ****
-                // Ensure SSFSTARTTIME/ENDTIME columns in SQL Server are DATETIME/DATETIME2/SMALLDATETIME
-                newRow["SSFSTARTTIME"] = StartTimeDateTimePicker.Value; // Stores full DateTime
-                newRow["SSFENDTIME"] = EndTimeDateTimePicker.Value;    // Stores full DateTime
+                newRow["SSFDAYS"] = processedDaysForStorage;
 
-                // Note: Storing AM/PM ('tt') separately might become redundant if storing full DateTime,
-                // but kept here based on original code structure. You might remove SSFXM later.
-                newRow["SSFXM"] = StartTimeDateTimePicker.Value.ToString("tt"); // Still based on StartTime for consistency with original
-
-                newRow["SSFDAYS"] = DaysComboBox.Text.Trim();
                 newRow["SSFROOM"] = RoomTextBox.Text.Trim();
                 newRow["SSFSECTION"] = SectionTextBox.Text.Trim();
                 newRow["SSFSCHOOLYEAR"] = SchoolYearTextBox.Text.Trim();
-                // Store numbers directly after validation
                 newRow["SSFMAXSIZE"] = maxSize;
                 newRow["SSFCLASSSIZE"] = classSize;
-                newRow["SSFSTATUS"] = "AC"; // Static status
+                newRow["SSFSTATUS"] = "AC";
 
-                // Add the row to the table in the DataSet
                 scheduleTable.Rows.Add(newRow);
-
-                // Update the database via the DataAdapter
                 scheduleAdapter.Update(enrollmentDataSet, "SubjectSchedFile");
 
-                MessageBox.Show("Subject schedule added successfully!");
-                ClearButton_Click_1(sender, e); // Clear the form
+                MessageBox.Show("Subject schedule added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearButton_Click_1(sender, e);
             }
-            catch (SqlException sqlEx) // Catch specific SQL exceptions
+            catch (SqlException sqlEx)
             {
                 MessageBox.Show($"Database Error saving schedule: {sqlEx.Message}\nError Code: {sqlEx.Number}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex) // Catch other general exceptions
+            catch (Exception ex)
             {
-                MessageBox.Show($"Error saving schedule: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An unexpected error occurred while saving the schedule: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void ClearButton_Click_1(object sender, EventArgs e)
         {
-            // Clear all fields except MaxSize and ClassSize
             SubjectEdpCodeTextBox.Text = "";
             SubjectCodeTextBox.Text = "";
             DescriptionLabel.Text = "";
-            DaysComboBox.Text = "";
+            DaysTextBox.Text = "";
             SectionTextBox.Text = "";
             RoomTextBox.Text = "";
             SchoolYearTextBox.Text = "";
             MaxSizeTextBox.Text = "";
             ClassSizeTextBox.Text = "";
-
-            // Reset time pickers to current time
             StartTimeDateTimePicker.Value = DateTime.Now;
             EndTimeDateTimePicker.Value = DateTime.Now;
         }
@@ -232,6 +286,14 @@ namespace Enrollment_System
         }
 
         private void SubjectScheduleEntryPictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+      
+        
+
+        private void DaysTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

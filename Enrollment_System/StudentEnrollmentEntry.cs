@@ -13,7 +13,7 @@ namespace Enrollment_System
     public partial class StudentEnrollmentEntry : Form
     {
 
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
         //connection string nimo brais
         // string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;"; // Alternate from merge conflict
 
@@ -220,14 +220,25 @@ namespace Enrollment_System
             return (start1Time < end2Time && end1Time > start2Time);
         }
 
-        bool HasDaysConflict(string day1, string day2)
+        bool HasDaysConflict(string days1, string days2)
         {
-            // If either day is empty, no conflict
-            if (string.IsNullOrEmpty(day1)) return false;
-            if (string.IsNullOrEmpty(day2)) return false;
+            // 1. Handle null or empty strings - no conflict if one has no specified days
+            if (string.IsNullOrWhiteSpace(days1) || string.IsNullOrWhiteSpace(days2))
+            {
+                return false;
+            }
 
-            // Direct comparison (ComboBox ensures consistent format/case)
-            return day1 == day2;
+            // 2. Normalize the strings (uppercase) for case-insensitive comparison.
+            //    The strings from the database (SSFDAYS) and the grid should already be in a
+            //    consistent format (e.g., "MWF", "TTH") if your SubjectScheduleEntryForm
+            //    processes them correctly before saving.
+            string d1Upper = days1.ToUpperInvariant(); // No Trim() needed if data is clean
+            string d2Upper = days2.ToUpperInvariant(); // No Trim() needed if data is clean
+
+            // 3. Check if any character (day) in the first string exists in the second string.
+            bool conflict = d1Upper.Any(dayChar => d2Upper.Contains(dayChar));
+
+            return conflict;
         }
 
         private void IDNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -570,6 +581,16 @@ namespace Enrollment_System
         {
             SubjectChoosedDataGridView.Columns["StartTimeColumn"].DefaultCellStyle.Format = "HH:mm";
             SubjectChoosedDataGridView.Columns["EndTimeColumn"].DefaultCellStyle.Format = "HH:mm";
+        }
+
+        private void StudentEnrollmentPictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StudentLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -308,6 +308,7 @@ namespace Enrollment_System
             this.StudentEntryPictureBox.Size = new System.Drawing.Size(1078, 636);
             this.StudentEntryPictureBox.TabIndex = 18;
             this.StudentEntryPictureBox.TabStop = false;
+            this.StudentEntryPictureBox.Click += new System.EventHandler(this.StudentEntryPictureBox_Click);
             // 
             // StudentEntryForm
             // 

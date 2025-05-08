@@ -57,7 +57,7 @@
             this.ClearButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.SubjectScheduleEntryPictureBox = new System.Windows.Forms.PictureBox();
-            this.DaysComboBox = new System.Windows.Forms.ComboBox();
+            this.DaysTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectScheduleEntryPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -378,21 +378,14 @@
             this.SubjectScheduleEntryPictureBox.TabStop = false;
             this.SubjectScheduleEntryPictureBox.Click += new System.EventHandler(this.SubjectScheduleEntryPictureBox_Click);
             // 
-            // DaysComboBox
+            // DaysTextBox
             // 
-            this.DaysComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.DaysComboBox.FormattingEnabled = true;
-            this.DaysComboBox.Items.AddRange(new object[] {
-            "Mon",
-            "Tue",
-            "Wen",
-            "Thu",
-            "Fri",
-            "Sat"});
-            this.DaysComboBox.Location = new System.Drawing.Point(440, 430);
-            this.DaysComboBox.Name = "DaysComboBox";
-            this.DaysComboBox.Size = new System.Drawing.Size(121, 21);
-            this.DaysComboBox.TabIndex = 55;
+            this.DaysTextBox.Location = new System.Drawing.Point(440, 433);
+            this.DaysTextBox.Multiline = true;
+            this.DaysTextBox.Name = "DaysTextBox";
+            this.DaysTextBox.Size = new System.Drawing.Size(128, 23);
+            this.DaysTextBox.TabIndex = 55;
+            this.DaysTextBox.TextChanged += new System.EventHandler(this.DaysTextBox_TextChanged);
             // 
             // SubjectScheduleEntryForm
             // 
@@ -400,7 +393,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1100, 630);
-            this.Controls.Add(this.DaysComboBox);
+            this.Controls.Add(this.DaysTextBox);
             this.Controls.Add(this.SubjectScheduleEntryLabel);
             this.Controls.Add(this.ClassSizeLabel);
             this.Controls.Add(this.MaxSizeLabel);
@@ -471,6 +464,6 @@
         private System.Windows.Forms.Label MaxSizeLabel;
         private System.Windows.Forms.Label ClassSizeLabel;
         private System.Windows.Forms.Label SubjectScheduleEntryLabel;
-        private System.Windows.Forms.ComboBox DaysComboBox;
+        private System.Windows.Forms.TextBox DaysTextBox;
     }
 }
