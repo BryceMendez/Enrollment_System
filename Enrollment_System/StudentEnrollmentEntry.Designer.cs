@@ -100,7 +100,6 @@
             this.EDPCodeTextBox.Name = "EDPCodeTextBox";
             this.EDPCodeTextBox.Size = new System.Drawing.Size(137, 20);
             this.EDPCodeTextBox.TabIndex = 9;
-            this.EDPCodeTextBox.TextChanged += new System.EventHandler(this.EDPCodeTextBox_TextChanged);
             this.EDPCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EDPCodeTextBox_KeyPress);
             // 
             // IDNumberTextBox
@@ -109,7 +108,6 @@
             this.IDNumberTextBox.Name = "IDNumberTextBox";
             this.IDNumberTextBox.Size = new System.Drawing.Size(137, 20);
             this.IDNumberTextBox.TabIndex = 5;
-            this.IDNumberTextBox.TextChanged += new System.EventHandler(this.IDNumberTextBox_TextChanged);
             this.IDNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IDNumberTextBox_KeyPress);
             // 
             // TotalUnitsLabel
@@ -139,7 +137,6 @@
             this.SubjectChoosedDataGridView.Name = "SubjectChoosedDataGridView";
             this.SubjectChoosedDataGridView.Size = new System.Drawing.Size(738, 202);
             this.SubjectChoosedDataGridView.TabIndex = 2;
-            this.SubjectChoosedDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SubjectChoosedDataGridView_CellContentClick);
             this.SubjectChoosedDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.SubjectChoosedDataGridView_CellValueChanged);
             this.SubjectChoosedDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.SubjectChoosedDataGridView_RowsAdded);
             // 
@@ -402,7 +399,6 @@
             this.StudentEnrollmentPictureBox.Size = new System.Drawing.Size(1095, 639);
             this.StudentEnrollmentPictureBox.TabIndex = 35;
             this.StudentEnrollmentPictureBox.TabStop = false;
-            this.StudentEnrollmentPictureBox.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // StudentEnrollmentEntry
             // 
@@ -441,7 +437,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Enrollment Entry Form";
             this.Load += new System.EventHandler(this.StudentEnrollmentEntry_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StudentEnrollmentEntry_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.SubjectChoosedDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StudentEnrollmentPictureBox)).EndInit();
             this.ResumeLayout(false);

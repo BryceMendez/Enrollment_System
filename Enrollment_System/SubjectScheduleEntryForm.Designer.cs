@@ -30,7 +30,6 @@
         {
             this.SubjectEdpCodeTextBox = new System.Windows.Forms.TextBox();
             this.SubjectCodeTextBox = new System.Windows.Forms.TextBox();
-            this.DaysTextBox = new System.Windows.Forms.TextBox();
             this.SectionTextBox = new System.Windows.Forms.TextBox();
             this.RoomTextBox = new System.Windows.Forms.TextBox();
             this.SchoolYearTextBox = new System.Windows.Forms.TextBox();
@@ -58,6 +57,7 @@
             this.ClearButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.SubjectScheduleEntryPictureBox = new System.Windows.Forms.PictureBox();
+            this.DaysComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectScheduleEntryPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,14 +77,6 @@
             this.SubjectCodeTextBox.Size = new System.Drawing.Size(128, 25);
             this.SubjectCodeTextBox.TabIndex = 1;
             this.SubjectCodeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SubjectCodeTextBox_KeyPress);
-            // 
-            // DaysTextBox
-            // 
-            this.DaysTextBox.Location = new System.Drawing.Point(440, 426);
-            this.DaysTextBox.Multiline = true;
-            this.DaysTextBox.Name = "DaysTextBox";
-            this.DaysTextBox.Size = new System.Drawing.Size(125, 27);
-            this.DaysTextBox.TabIndex = 5;
             // 
             // SectionTextBox
             // 
@@ -386,12 +378,29 @@
             this.SubjectScheduleEntryPictureBox.TabStop = false;
             this.SubjectScheduleEntryPictureBox.Click += new System.EventHandler(this.SubjectScheduleEntryPictureBox_Click);
             // 
+            // DaysComboBox
+            // 
+            this.DaysComboBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.DaysComboBox.FormattingEnabled = true;
+            this.DaysComboBox.Items.AddRange(new object[] {
+            "Mon",
+            "Tue",
+            "Wen",
+            "Thu",
+            "Fri",
+            "Sat"});
+            this.DaysComboBox.Location = new System.Drawing.Point(440, 430);
+            this.DaysComboBox.Name = "DaysComboBox";
+            this.DaysComboBox.Size = new System.Drawing.Size(121, 21);
+            this.DaysComboBox.TabIndex = 55;
+            // 
             // SubjectScheduleEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1100, 630);
+            this.Controls.Add(this.DaysComboBox);
             this.Controls.Add(this.SubjectScheduleEntryLabel);
             this.Controls.Add(this.ClassSizeLabel);
             this.Controls.Add(this.MaxSizeLabel);
@@ -416,7 +425,6 @@
             this.Controls.Add(this.EndTimeDateTimePicker);
             this.Controls.Add(this.StartTimeDateTimePicker);
             this.Controls.Add(this.SubjectEdpCodeTextBox);
-            this.Controls.Add(this.DaysTextBox);
             this.Controls.Add(this.SubjectCodeTextBox);
             this.Controls.Add(this.DescriptionLabel);
             this.Controls.Add(this.ClearButton);
@@ -436,7 +444,6 @@
 
         private System.Windows.Forms.TextBox SubjectEdpCodeTextBox;
         private System.Windows.Forms.TextBox SubjectCodeTextBox;
-        private System.Windows.Forms.TextBox DaysTextBox;
         private System.Windows.Forms.TextBox SectionTextBox;
         private System.Windows.Forms.TextBox RoomTextBox;
         private System.Windows.Forms.TextBox SchoolYearTextBox;
@@ -464,5 +471,6 @@
         private System.Windows.Forms.Label MaxSizeLabel;
         private System.Windows.Forms.Label ClassSizeLabel;
         private System.Windows.Forms.Label SubjectScheduleEntryLabel;
+        private System.Windows.Forms.ComboBox DaysComboBox;
     }
 }

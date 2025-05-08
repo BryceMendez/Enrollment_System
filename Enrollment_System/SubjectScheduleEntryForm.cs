@@ -18,7 +18,7 @@ namespace Enrollment_System
         private DataSet enrollmentDataSet;
         private DataTable scheduleTable;
 
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
         public SubjectScheduleEntryForm()
         {
             InitializeComponent();
@@ -97,7 +97,7 @@ namespace Enrollment_System
             // Validate required fields (Keep existing validation)
             if (string.IsNullOrWhiteSpace(SubjectEdpCodeTextBox.Text) ||
                 string.IsNullOrWhiteSpace(SubjectCodeTextBox.Text) ||
-                string.IsNullOrWhiteSpace(DaysTextBox.Text) ||
+                string.IsNullOrWhiteSpace(DaysComboBox.Text) ||
                 string.IsNullOrWhiteSpace(RoomTextBox.Text) ||
                 string.IsNullOrWhiteSpace(SectionTextBox.Text) ||
                 string.IsNullOrWhiteSpace(MaxSizeTextBox.Text) || // Assuming MaxSizeTextBox exists
@@ -153,7 +153,7 @@ namespace Enrollment_System
                 // but kept here based on original code structure. You might remove SSFXM later.
                 newRow["SSFXM"] = StartTimeDateTimePicker.Value.ToString("tt"); // Still based on StartTime for consistency with original
 
-                newRow["SSFDAYS"] = DaysTextBox.Text.Trim();
+                newRow["SSFDAYS"] = DaysComboBox.Text.Trim();
                 newRow["SSFROOM"] = RoomTextBox.Text.Trim();
                 newRow["SSFSECTION"] = SectionTextBox.Text.Trim();
                 newRow["SSFSCHOOLYEAR"] = SchoolYearTextBox.Text.Trim();
@@ -187,7 +187,7 @@ namespace Enrollment_System
             SubjectEdpCodeTextBox.Text = "";
             SubjectCodeTextBox.Text = "";
             DescriptionLabel.Text = "";
-            DaysTextBox.Text = "";
+            DaysComboBox.Text = "";
             SectionTextBox.Text = "";
             RoomTextBox.Text = "";
             SchoolYearTextBox.Text = "";

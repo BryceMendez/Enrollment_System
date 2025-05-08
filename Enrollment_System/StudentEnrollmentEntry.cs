@@ -13,7 +13,7 @@ namespace Enrollment_System
     public partial class StudentEnrollmentEntry : Form
     {
 
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
         //connection string nimo brais
         // string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;"; // Alternate from merge conflict
 
@@ -22,16 +22,6 @@ namespace Enrollment_System
         {
             InitializeComponent();
         }
-
-       
-        private void label5_Click(object sender, EventArgs e) { }
-        private void label6_Click(object sender, EventArgs e) { }
-        private void SubjectChoosedDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-        private void StudentEnrollmentEntry_Load(object sender, EventArgs e) { }
-        private void EDPCodeTextBox_TextChanged(object sender, EventArgs e) { }
-        private void StudentEnrollmentEntry_KeyPress(object sender, KeyPressEventArgs e) { }
-        private void IDNumberTextBox_TextChanged(object sender, EventArgs e) { }
-        private void pictureBox2_Click(object sender, EventArgs e) { }
 
         private void EDPCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -230,30 +220,14 @@ namespace Enrollment_System
             return (start1Time < end2Time && end1Time > start2Time);
         }
 
-        bool HasDaysConflict(string days1, string days2)
+        bool HasDaysConflict(string day1, string day2)
         {
-            if (string.IsNullOrWhiteSpace(days1) || string.IsNullOrWhiteSpace(days2))
-            {
-                return false;
-            }
-            string d1Upper = days1.ToUpperInvariant().Trim();
-            string d2Upper = days2.ToUpperInvariant().Trim();
+            // If either day is empty, no conflict
+            if (string.IsNullOrEmpty(day1)) return false;
+            if (string.IsNullOrEmpty(day2)) return false;
 
-            // Define the day groups
-            const string mwfChars = "MWF";
-            const string tthsChars = "THS"; // H=Thursday, S=Saturday
-
-            // Check if each schedule belongs to the MWF group or TTHS group
-            bool d1IsMwfGroup = d1Upper.Any(c => mwfChars.Contains(c));
-            bool d1IsTthsGroup = d1Upper.Any(c => tthsChars.Contains(c));
-
-            bool d2IsMwfGroup = d2Upper.Any(c => mwfChars.Contains(c));
-            bool d2IsTthsGroup = d2Upper.Any(c => tthsChars.Contains(c));
-
-            // Conflict exists if BOTH are MWF-based OR BOTH are TTHS-based
-            bool conflict = (d1IsMwfGroup && d2IsMwfGroup) || (d1IsTthsGroup && d2IsTthsGroup);
-
-            return conflict;
+            // Direct comparison (ComboBox ensures consistent format/case)
+            return day1 == day2;
         }
 
         private void IDNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -592,5 +566,10 @@ namespace Enrollment_System
 
         }
 
+        private void StudentEnrollmentEntry_Load(object sender, EventArgs e)
+        {
+            SubjectChoosedDataGridView.Columns["StartTimeColumn"].DefaultCellStyle.Format = "HH:mm";
+            SubjectChoosedDataGridView.Columns["EndTimeColumn"].DefaultCellStyle.Format = "HH:mm";
+        }
     }
 }
