@@ -120,17 +120,17 @@ namespace Enrollment_System
                 return;
             }
 
-            // --- 2. DaysTextBox Input Processing and Robust Validation ---
+            // DaysTextBox Input Validation
             string rawDaysInput = DaysTextBox.Text.Trim();
             string processedDaysForStorage;
             List<string> dayTokens = rawDaysInput.Split(',')
-                                             .Select(day => day.Trim().ToUpperInvariant()) // Convert to uppercase
+                                             .Select(day => day.Trim().ToUpperInvariant())
                                              .Where(day => !string.IsNullOrEmpty(day))
                                              .ToList();
 
             if (!dayTokens.Any())
             {
-                MessageBox.Show("Days field is invalid. Please enter valid day codes (e.g., M,W,F or T,TH), separated by commas.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Days field is invalid. Please enter valid day codes ( M,W,F or T,TH), separated by commas.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 DaysTextBox.Focus();
                 return;
             }
@@ -140,7 +140,7 @@ namespace Enrollment_System
             {
                 if (!validDayCodesSet.Contains(token))
                 {
-                    MessageBox.Show($"Invalid day code '{token}' found. Please use recognized day abbreviations (e.g., M, T, W, TH, F, S), separated by commas.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show($"Invalid day code '{token}' found. Please use recognized day abbreviations ( M, T, W, TH, F, S), separated by commas.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     DaysTextBox.Focus();
                     return;
                 }

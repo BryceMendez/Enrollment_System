@@ -14,9 +14,8 @@ namespace Enrollment_System
     {
 
         string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
-        //connection string nimo brais
-        // string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;"; // Alternate from merge conflict
-
+        // string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
+        //pls gamita ni:>
 
         public StudentEnrollmentEntry()
         {
@@ -35,7 +34,6 @@ namespace Enrollment_System
                     return;
                 }
 
-                //Check if EDP code already in DataGridView
                 bool alreadyAdded = false;
                 foreach (DataGridViewRow rw in SubjectChoosedDataGridView.Rows)
                 {
@@ -54,7 +52,6 @@ namespace Enrollment_System
                     return;
                 }
 
-                //Fetch Subject Schedule and Details from Database
                 string subjectCode = null;
                 DateTime startTime = DateTime.MinValue;
                 DateTime endTime = DateTime.MinValue;
@@ -62,7 +59,7 @@ namespace Enrollment_System
                 string room = null;
                 double units = 0.0;
                 int maxSize = 0;
-                int classSize = -1; // Use -1 to distinguish from 0
+                int classSize = -1;
                 bool scheduleFound = false;
 
                 string combinedSql = @"
@@ -86,25 +83,21 @@ namespace Enrollment_System
                         {
                             scheduleFound = true;
                             subjectCode = reader["SSFSUBJCODE"] as string;
-                            // Safely read DateTime values
                             startTime = reader["SSFSTARTTIME"] as DateTime? ?? DateTime.MinValue;
                             endTime = reader["SSFENDTIME"] as DateTime? ?? DateTime.MinValue;
                             days = reader["SSFDAYS"] as string;
                             room = reader["SSFROOM"] as string;
-                            // Safely read numeric values
                             maxSize = reader["SSFMAXSIZE"] != DBNull.Value ? Convert.ToInt32(reader["SSFMAXSIZE"]) : 0;
                             classSize = reader["SSFCLASSSIZE"] != DBNull.Value ? Convert.ToInt32(reader["SSFCLASSSIZE"]) : -1;
                             units = reader["SFSUBJUNITS"] != DBNull.Value ? Convert.ToDouble(reader["SFSUBJUNITS"]) : 0.0;
 
-                            // Basic data integrity check
                             if (string.IsNullOrWhiteSpace(subjectCode))
                             {
                                 MessageBox.Show($"Schedule found for EDP Code '{edpCodeInput}', but linked Subject Code is missing.", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                scheduleFound = false; // Treat as not found if critical data missing
+                                scheduleFound = false;
                             }
                             if (startTime == DateTime.MinValue || endTime == DateTime.MinValue || string.IsNullOrWhiteSpace(days))
                             {
-                                // Optional: Warn about missing schedule details, but might still proceed
                                 Console.WriteLine($"Warning: Missing schedule details (time/days) for EDP Code '{edpCodeInput}'.");
                             }
                         }
@@ -125,7 +118,6 @@ namespace Enrollment_System
                     }
                 }
 
-                // Perform Validations 
                 if (!scheduleFound)
                 {
                     MessageBox.Show("EDP Code Not Found.", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -139,7 +131,6 @@ namespace Enrollment_System
                     return;
                 }
 
-                // Unit limit check
                 double currentTotalUnits = 0.0;
                 double.TryParse(TotalUnitsLabel.Text, out currentTotalUnits);
                 if (units > 0 && (currentTotalUnits + units) > 24.0)
@@ -148,6 +139,7 @@ namespace Enrollment_System
                     EDPCodeTextBox.SelectAll();
                     return;
                 }
+
                 bool conflictFound = false;
                 foreach (DataGridViewRow rw in SubjectChoosedDataGridView.Rows)
                 {
@@ -167,7 +159,8 @@ namespace Enrollment_System
                             existingEndTime = dtEnd;
                         else if (DateTime.TryParse(rw.Cells["EndTimeColumn"].Value?.ToString(), out DateTime parsedDtEnd))
                             existingEndTime = parsedDtEnd;
-                        if (existingStartTime != DateTime.MinValue && existingEndTime != DateTime.MinValue)
+
+                        if (existingStartTime != DateTime.MinValue && existingEndTime != DateTime.MinValue && !string.IsNullOrWhiteSpace(existingDays))
                         {
                             if (HasDaysConflict(days, existingDays))
                             {
@@ -183,7 +176,7 @@ namespace Enrollment_System
                     {
                         Console.WriteLine($"Error parsing grid data for conflict check in row {rw.Index}: {parseEx.Message}");
                     }
-                } 
+                }
 
                 if (conflictFound)
                 {
@@ -192,7 +185,6 @@ namespace Enrollment_System
                     return;
                 }
 
-                // Add Subject to DataGridView
                 int index = SubjectChoosedDataGridView.Rows.Add();
                 DataGridViewRow newRow = SubjectChoosedDataGridView.Rows[index];
 
@@ -204,7 +196,6 @@ namespace Enrollment_System
                 newRow.Cells["RoomColumn"].Value = room;
                 newRow.Cells["UnitsColumn"].Value = units;
 
-                //Clear Input and Set Focus
                 EDPCodeTextBox.Clear();
                 EDPCodeTextBox.Focus();
             }
@@ -222,23 +213,14 @@ namespace Enrollment_System
 
         bool HasDaysConflict(string days1, string days2)
         {
-            // 1. Handle null or empty strings - no conflict if one has no specified days
             if (string.IsNullOrWhiteSpace(days1) || string.IsNullOrWhiteSpace(days2))
             {
                 return false;
             }
+            string d1Upper = days1.ToUpperInvariant();
+            string d2Upper = days2.ToUpperInvariant();
 
-            // 2. Normalize the strings (uppercase) for case-insensitive comparison.
-            //    The strings from the database (SSFDAYS) and the grid should already be in a
-            //    consistent format (e.g., "MWF", "TTH") if your SubjectScheduleEntryForm
-            //    processes them correctly before saving.
-            string d1Upper = days1.ToUpperInvariant(); // No Trim() needed if data is clean
-            string d2Upper = days2.ToUpperInvariant(); // No Trim() needed if data is clean
-
-            // 3. Check if any character (day) in the first string exists in the second string.
-            bool conflict = d1Upper.Any(dayChar => d2Upper.Contains(dayChar));
-
-            return conflict;
+            return d1Upper.Any(dayChar => d2Upper.Contains(dayChar));
         }
 
         private void IDNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -249,11 +231,9 @@ namespace Enrollment_System
                 string studentId = IDNumberTextBox.Text.Trim();
                 if (string.IsNullOrWhiteSpace(studentId)) { return; }
 
-                // Clear previous student info before searching
                 NameLabel.Text = "";
                 CourseLabel.Text = "";
                 YearLabel.Text = "";
-
 
                 using (SqlConnection studConnection = new SqlConnection(connectionString))
                 {
@@ -273,7 +253,6 @@ namespace Enrollment_System
                             if (studDataReader.Read())
                             {
                                 found = true;
-
                                 string lname = studDataReader["STFSTUDLNAME"]?.ToString() ?? "";
                                 string fname = studDataReader["STFSTUDFNAME"]?.ToString() ?? "";
                                 string mname = studDataReader["STFSTUDMNAME"]?.ToString() ?? "";
@@ -281,15 +260,13 @@ namespace Enrollment_System
                                 string year = studDataReader["STFSTUDYEAR"]?.ToString() ?? "";
 
                                 string name = $"{lname}, {fname}";
-                                if (!string.IsNullOrWhiteSpace(mname))
+                                if (!string.IsNullOrWhiteSpace(mname) && mname.Length > 0)
                                 {
-                                    name += $" {mname.Substring(0, 1)}."; // Add middle initial if present
+                                    name += $" {mname.Substring(0, 1)}.";
                                 }
-
                                 NameLabel.Text = name;
                                 CourseLabel.Text = course;
                                 YearLabel.Text = year;
-
                             }
                             if (!found)
                             {
@@ -313,7 +290,6 @@ namespace Enrollment_System
             }
         }
 
-        // Navigation Button Clicks 
         private void SubjectScheduleEntryButton_Click(object sender, EventArgs e)
         {
             SubjectScheduleEntryForm subjectScheduleEntryForm = new SubjectScheduleEntryForm();
@@ -345,7 +321,6 @@ namespace Enrollment_System
             this.Hide();
         }
 
-        // --- Update Total Units When Grid Changes ---
         private void SubjectChoosedDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             UpdateTotalUnits();
@@ -353,14 +328,12 @@ namespace Enrollment_System
 
         private void SubjectChoosedDataGridView_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            UpdateTotalUnits(); // Also update when rows are removed
+            UpdateTotalUnits();
         }
-
 
         private void SubjectChoosedDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            // Update only if the "UnitsColumn" changed
-            if (e.RowIndex >= 0 && e.ColumnIndex == SubjectChoosedDataGridView.Columns["UnitsColumn"].Index)
+            if (e.RowIndex >= 0 && SubjectChoosedDataGridView.Columns[e.ColumnIndex].Name == "UnitsColumn")
             {
                 UpdateTotalUnits();
             }
@@ -371,20 +344,17 @@ namespace Enrollment_System
             double totalUnits = 0;
             foreach (DataGridViewRow row in SubjectChoosedDataGridView.Rows)
             {
-                if (row.IsNewRow) continue; // Skip the template row
-
+                if (row.IsNewRow) continue;
                 if (row.Cells["UnitsColumn"].Value != null && double.TryParse(row.Cells["UnitsColumn"].Value.ToString(), out double cellValue))
                 {
                     totalUnits += cellValue;
                 }
             }
-            TotalUnitsLabel.Text = totalUnits.ToString("0.0"); // Format to one decimal place
+            TotalUnitsLabel.Text = totalUnits.ToString("0.0");
         }
 
-        // --- Save Button Logic ---
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            //  UI Validation 
             bool hasSubjects = SubjectChoosedDataGridView.Rows.Cast<DataGridViewRow>().Any(r => !r.IsNewRow);
             if (!hasSubjects)
             {
@@ -422,7 +392,7 @@ namespace Enrollment_System
                     conn.Open();
                     transaction = conn.BeginTransaction();
 
-                    string checkEnrollSql = "SELECT COUNT(*) FROM ENROLLMENTHEADERFILE WHERE ENRHFSTUDID = @StudentID";
+                    string checkEnrollSql = "SELECT COUNT(*) FROM ENROLLMENTHEADERFILE WHERE ENRHFSTUDID = @StudentID"; 
                     int enrollmentCount = 0;
                     using (SqlCommand checkCmd = new SqlCommand(checkEnrollSql, conn, transaction))
                     {
@@ -433,57 +403,60 @@ namespace Enrollment_System
                     if (enrollmentCount > 0)
                     {
                         MessageBox.Show("This student appears to be already enrolled for this term/period.", "Already Enrolled", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        transaction.Rollback();//already enrolled
-                        return;
-                    }
-                    string getStatusSql = "SELECT STFSTUDSTATUS FROM STUDENTFILE WHERE STFSTUDID = @StudentID";
-                    string studentStatus = null;
-                    using (SqlCommand statusCmd = new SqlCommand(getStatusSql, conn, transaction))
-                    {
-                        statusCmd.Parameters.AddWithValue("@StudentID", studentId);
-                        object result = statusCmd.ExecuteScalar();
-                        studentStatus = result?.ToString();
-                    }
-
-                    if (string.IsNullOrWhiteSpace(studentStatus))
-                    {
-                        MessageBox.Show($"Could not retrieve status for student ID '{studentId}'. Cannot complete enrollment.", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         transaction.Rollback();
                         return;
                     }
 
-                    // Insert into Header Table
+                    string stfStudentStatus = null;
+                    string getStatusSql = "SELECT STFSTUDSTATUS FROM STUDENTFILE WHERE STFSTUDID = @StudentID";
+                    using (SqlCommand statusCmd = new SqlCommand(getStatusSql, conn, transaction))
+                    {
+                        statusCmd.Parameters.AddWithValue("@StudentID", studentId);
+                        object result = statusCmd.ExecuteScalar();
+                        stfStudentStatus = result?.ToString();
+                    }
+
+                    if (string.IsNullOrWhiteSpace(stfStudentStatus))
+                    {
+                        MessageBox.Show($"Could not retrieve original status for student ID '{studentId}'. Cannot complete enrollment.", "Enrollment Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        transaction.Rollback();
+                        return;
+                    }
+
                     string headerSql = @"INSERT INTO ENROLLMENTHEADERFILE
                                          (ENRHFSTUDID, ENRHFSTUDDATEENROLL, ENRHFSTUDSCHLYR,
                                           ENRHFSTUDENCODER, ENRHFSTUDTOTALUNITS, ENRHFSTUDSTATUS)
                                          VALUES
                                          (@StudentID, @EnrollDate, @SchoolYear,
-                                          @Encoder, @TotalUnits, @Status)";
+                                          @Encoder, @TotalUnits, @EnrollmentStatus)";
                     using (SqlCommand headerCmd = new SqlCommand(headerSql, conn, transaction))
                     {
                         headerCmd.Parameters.AddWithValue("@StudentID", studentId);
-                        headerCmd.Parameters.AddWithValue("@EnrollDate", DateEnrolledDateTimePicker.Value.Date);
+                        // MODIFIED: Store full DateTime
+                        headerCmd.Parameters.AddWithValue("@EnrollDate", DateEnrolledDateTimePicker.Value);
                         headerCmd.Parameters.AddWithValue("@SchoolYear", YearLabel.Text);
                         headerCmd.Parameters.AddWithValue("@Encoder", EncoderTextBox.Text.Trim());
                         headerCmd.Parameters.AddWithValue("@TotalUnits", totalUnitsValue);
-                        headerCmd.Parameters.AddWithValue("@Status", studentStatus);
+                        // MODIFIED: Set status to "EN" for new enrollment
+                        headerCmd.Parameters.AddWithValue("@EnrollmentStatus", "EN");
                         headerCmd.ExecuteNonQuery();
                     }
 
                     string detailSql = @"INSERT INTO ENROLLMENTDETAILFILE
                                          (ENRDFSTUDID, ENRDFSTUDSUBJCDE, ENRDFSTUDEDPCODE, ENRDFSTUDSTATUS)
                                          VALUES
-                                         (@StudentID, @SubjectCode, @EDPCode, @Status)";
+                                         (@StudentID, @SubjectCode, @EDPCode, @EnrollmentStatus)";
                     using (SqlCommand detailCmd = new SqlCommand(detailSql, conn, transaction))
                     {
                         detailCmd.Parameters.AddWithValue("@StudentID", studentId);
-                        detailCmd.Parameters.AddWithValue("@Status", studentStatus);
+                        //Modifiied it to EN rather than AC/IN
+                        detailCmd.Parameters.AddWithValue("@EnrollmentStatus", "EN");//<<<---- hir
                         SqlParameter subjectCodeParam = detailCmd.Parameters.Add("@SubjectCode", SqlDbType.VarChar);
                         SqlParameter edpCodeParam = detailCmd.Parameters.Add("@EDPCode", SqlDbType.VarChar);
 
                         foreach (DataGridViewRow rw in SubjectChoosedDataGridView.Rows)
                         {
-                            if (rw.IsNewRow) continue; 
+                            if (rw.IsNewRow) continue;
 
                             string edpCode = rw.Cells["EDPCodeColumn"].Value?.ToString();
                             string subjCode = rw.Cells["SubjectCodeColumn"].Value?.ToString();
@@ -492,8 +465,7 @@ namespace Enrollment_System
                             {
                                 subjectCodeParam.Value = subjCode;
                                 edpCodeParam.Value = edpCode;
-
-                                detailCmd.ExecuteNonQuery(); 
+                                detailCmd.ExecuteNonQuery();
                                 UpdateClassSize(edpCode, conn, transaction);
                             }
                             else
@@ -506,9 +478,7 @@ namespace Enrollment_System
                     }
                     transaction.Commit();
                     MessageBox.Show("Student enrolled successfully!", "Enrollment Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     ClearForm();
-
                 }
                 catch (SqlException sqlEx)
                 {
@@ -523,8 +493,6 @@ namespace Enrollment_System
             }
         }
 
-
-        //class size increment 
         private void UpdateClassSize(string edpCode, SqlConnection connection, SqlTransaction transaction)
         {
             string updateSql = "UPDATE SUBJECTSCHEDFILE SET SSFCLASSSIZE = ISNULL(SSFCLASSSIZE, 0) + 1 WHERE SSFEDPCODE = @EDPCode";
@@ -534,26 +502,24 @@ namespace Enrollment_System
                 int rowsAffected = updateCommand.ExecuteNonQuery();
                 if (rowsAffected == 0)
                 {
-                    throw new InvalidOperationException($"Failed to update class size for EDP Code '{edpCode}'. Record may no longer exist.");
+                    throw new InvalidOperationException($"Failed to update class size for EDP Code '{edpCode}'. Record may no longer exist or was not found.");
                 }
             }
         }
 
-        // Cancel Button / Clear Form
         private void CancelButton_Click(object sender, EventArgs e)
         {
             ClearForm();
         }
-        
-        //clearForm method
+
         private void ClearForm()
         {
             IDNumberTextBox.Clear();
-            NameLabel.Text = ""; // Use Text property for Labels
+            NameLabel.Text = "";
             CourseLabel.Text = "";
             YearLabel.Text = "";
             EDPCodeTextBox.Clear();
-            TotalUnitsLabel.Text = "0.0"; // Reset units display
+            TotalUnitsLabel.Text = "0.0";
             EncoderTextBox.Clear();
 
             if (SubjectChoosedDataGridView != null)
@@ -561,9 +527,7 @@ namespace Enrollment_System
                 SubjectChoosedDataGridView.RowsAdded -= SubjectChoosedDataGridView_RowsAdded;
                 SubjectChoosedDataGridView.RowsRemoved -= SubjectChoosedDataGridView_RowsRemoved;
                 SubjectChoosedDataGridView.CellValueChanged -= SubjectChoosedDataGridView_CellValueChanged;
-
                 SubjectChoosedDataGridView.Rows.Clear();
-
                 SubjectChoosedDataGridView.RowsAdded += SubjectChoosedDataGridView_RowsAdded;
                 SubjectChoosedDataGridView.RowsRemoved += SubjectChoosedDataGridView_RowsRemoved;
                 SubjectChoosedDataGridView.CellValueChanged += SubjectChoosedDataGridView_CellValueChanged;
@@ -574,23 +538,20 @@ namespace Enrollment_System
                 DateEnrolledDateTimePicker.Value = DateTime.Now;
             }
             IDNumberTextBox.Focus();
-
         }
 
         private void StudentEnrollmentEntry_Load(object sender, EventArgs e)
         {
-            SubjectChoosedDataGridView.Columns["StartTimeColumn"].DefaultCellStyle.Format = "HH:mm";
-            SubjectChoosedDataGridView.Columns["EndTimeColumn"].DefaultCellStyle.Format = "HH:mm";
+            // Set display format for time columns in the DataGridView
+            if (SubjectChoosedDataGridView.Columns["StartTimeColumn"] != null)
+                SubjectChoosedDataGridView.Columns["StartTimeColumn"].DefaultCellStyle.Format = "HH:mm";
+            if (SubjectChoosedDataGridView.Columns["EndTimeColumn"] != null)
+                SubjectChoosedDataGridView.Columns["EndTimeColumn"].DefaultCellStyle.Format = "HH:mm";
         }
 
-        private void StudentEnrollmentPictureBox_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void StudentLabel_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void StudentEnrollmentPictureBox_Click(object sender, EventArgs e) { }
+        private void StudentLabel_Click(object sender, EventArgs e) { }
+        
     }
 }
