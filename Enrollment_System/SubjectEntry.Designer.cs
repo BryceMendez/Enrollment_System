@@ -475,7 +475,6 @@
             this.SubjectEntryPictureBox.Size = new System.Drawing.Size(1115, 644);
             this.SubjectEntryPictureBox.TabIndex = 33;
             this.SubjectEntryPictureBox.TabStop = false;
-            this.SubjectEntryPictureBox.Click += new System.EventHandler(this.SubjectEntryPictureBox_Click);
             // 
             // SubjectEntry
             // 

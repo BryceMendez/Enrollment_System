@@ -12,11 +12,8 @@ namespace Enrollment_System
 {
     public partial class StudentEnrollmentEntry : Form
     {
-
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
-        // string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
-        //pls gamita ni:>
-
+        //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30;";
         public StudentEnrollmentEntry()
         {
             InitializeComponent();
@@ -200,7 +197,6 @@ namespace Enrollment_System
                 EDPCodeTextBox.Focus();
             }
         }
-
         bool HasTimeConflict(DateTime start1, DateTime end1, DateTime start2, DateTime end2)
         {
             TimeSpan start1Time = start1.TimeOfDay;
@@ -210,7 +206,6 @@ namespace Enrollment_System
 
             return (start1Time < end2Time && end1Time > start2Time);
         }
-
         bool HasDaysConflict(string days1, string days2)
         {
             if (string.IsNullOrWhiteSpace(days1) || string.IsNullOrWhiteSpace(days2))
@@ -222,7 +217,6 @@ namespace Enrollment_System
 
             return d1Upper.Any(dayChar => d2Upper.Contains(dayChar));
         }
-
         private void IDNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -289,7 +283,6 @@ namespace Enrollment_System
                 }
             }
         }
-
         private void SubjectScheduleEntryButton_Click(object sender, EventArgs e)
         {
             SubjectScheduleEntryForm subjectScheduleEntryForm = new SubjectScheduleEntryForm();
@@ -492,7 +485,6 @@ namespace Enrollment_System
                 }
             }
         }
-
         private void UpdateClassSize(string edpCode, SqlConnection connection, SqlTransaction transaction)
         {
             string updateSql = "UPDATE SUBJECTSCHEDFILE SET SSFCLASSSIZE = ISNULL(SSFCLASSSIZE, 0) + 1 WHERE SSFEDPCODE = @EDPCode";
@@ -506,12 +498,10 @@ namespace Enrollment_System
                 }
             }
         }
-
         private void CancelButton_Click(object sender, EventArgs e)
         {
             ClearForm();
         }
-
         private void ClearForm()
         {
             IDNumberTextBox.Clear();
@@ -521,7 +511,6 @@ namespace Enrollment_System
             EDPCodeTextBox.Clear();
             TotalUnitsLabel.Text = "0.0";
             EncoderTextBox.Clear();
-
             if (SubjectChoosedDataGridView != null)
             {
                 SubjectChoosedDataGridView.RowsAdded -= SubjectChoosedDataGridView_RowsAdded;
@@ -532,14 +521,12 @@ namespace Enrollment_System
                 SubjectChoosedDataGridView.RowsRemoved += SubjectChoosedDataGridView_RowsRemoved;
                 SubjectChoosedDataGridView.CellValueChanged += SubjectChoosedDataGridView_CellValueChanged;
             }
-
             if (DateEnrolledDateTimePicker != null)
             {
                 DateEnrolledDateTimePicker.Value = DateTime.Now;
             }
             IDNumberTextBox.Focus();
         }
-
         private void StudentEnrollmentEntry_Load(object sender, EventArgs e)
         {
             // Set display format for time columns in the DataGridView
@@ -548,10 +535,5 @@ namespace Enrollment_System
             if (SubjectChoosedDataGridView.Columns["EndTimeColumn"] != null)
                 SubjectChoosedDataGridView.Columns["EndTimeColumn"].DefaultCellStyle.Format = "HH:mm";
         }
-
-
-        private void StudentEnrollmentPictureBox_Click(object sender, EventArgs e) { }
-        private void StudentLabel_Click(object sender, EventArgs e) { }
-        
     }
 }

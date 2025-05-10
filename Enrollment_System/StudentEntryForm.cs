@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Configuration; // Required for App.config
+using System.Configuration;
 using System.Data;
-using System.Data.SqlClient; // Required for SQL Server
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Enrollment_System
 {
     public partial class StudentEntryForm : Form
     {
-
         public StudentEntryForm()
         {
             InitializeComponent();
@@ -23,7 +22,8 @@ namespace Enrollment_System
         //SAVE BUTTON
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+            //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30";
             SqlConnection myConnection = new SqlConnection(connectionString);
             string sql = "SELECT * FROM STUDENTFILE";
             myConnection.Open();
@@ -86,13 +86,11 @@ namespace Enrollment_System
                 MessageBox.Show("Student ID Already Exists...");
             }
         }
-
         //CANCEL BUTTON
         private void CancelButton_Click(object sender, EventArgs e)
         {
             ClearForm();
         }
-
         //CLEAR FORM
         private void ClearForm()
         {
@@ -103,61 +101,39 @@ namespace Enrollment_System
             CourseTextBox.Clear();
             YearTextBox.Clear();
             if (RemarksComboBox.Items.Count > 0)
-                RemarksComboBox.SelectedIndex = 0; // Reset to the first item
+                RemarksComboBox.SelectedIndex = 0;
             else
-                RemarksComboBox.SelectedIndex = -1; // Or clear selection if list is empty
+                RemarksComboBox.SelectedIndex = -1;
 
-            IDNumberTextBox.Focus(); // Set focus back to the first field
+            IDNumberTextBox.Focus();
         }
-
-        //BACK BUTTON
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            MenuForm mainMenu = new MenuForm();
-            mainMenu.Show();
-            this.Hide();
-        }
-
         private void StudentEntryButton_Click(object sender, EventArgs e)
         {
             StudentEntryForm studentEntryForm = new StudentEntryForm();
-            studentEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            studentEntryForm.StartPosition = FormStartPosition.CenterScreen;
             studentEntryForm.Show();
             this.Hide();
         }
-
         private void SubjectScheduleEntryButton_Click(object sender, EventArgs e)
         {
             SubjectScheduleEntryForm subjectScheduleEntryForm = new SubjectScheduleEntryForm();
-            subjectScheduleEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            subjectScheduleEntryForm.StartPosition = FormStartPosition.CenterScreen;
             subjectScheduleEntryForm.Show();
             this.Hide();
         }
-
         private void SubjectEntryButton_Click(object sender, EventArgs e)
         {
             SubjectEntry subjectEntryForm = new SubjectEntry();
-            subjectEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            subjectEntryForm.StartPosition = FormStartPosition.CenterScreen;
             subjectEntryForm.Show();
             this.Hide();
         }
-
         private void EnrollmentButton_Click(object sender, EventArgs e)
         {
             StudentEnrollmentEntry studentEnroll = new StudentEnrollmentEntry();
-            studentEnroll.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            studentEnroll.StartPosition = FormStartPosition.CenterScreen;
             studentEnroll.Show();
             this.Hide();
-        }
-
-        private void StudentEntryLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void StudentEntryPictureBox_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

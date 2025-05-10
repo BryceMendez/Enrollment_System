@@ -17,13 +17,12 @@ namespace Enrollment_System
         private SqlDataAdapter scheduleAdapter;
         private DataSet enrollmentDataSet;
         private DataTable scheduleTable;
-
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+        //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30";
         public SubjectScheduleEntryForm()
         {
             InitializeComponent();
         }
-
         private void SubjectScheduleEntryForm_Load(object sender, EventArgs e)
         {
             StartTimeDateTimePicker.Format = DateTimePickerFormat.Custom;
@@ -34,15 +33,12 @@ namespace Enrollment_System
             EndTimeDateTimePicker.CustomFormat = "hh:mm tt";
             EndTimeDateTimePicker.ShowUpDown = true;
 
-            // Initialize DataSet and Adapter
             enrollmentDataSet = new DataSet();
             scheduleAdapter = new SqlDataAdapter("SELECT * FROM SubjectSchedFile", connectionString);
 
-            // Configure the adapter with command builder
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(scheduleAdapter);
             scheduleAdapter.MissingSchemaAction = MissingSchemaAction.AddWithKey;
 
-            // Fill the DataSet
             scheduleAdapter.Fill(enrollmentDataSet, "SubjectSchedFile");
             scheduleTable = enrollmentDataSet.Tables["SubjectSchedFile"];
         }
@@ -51,8 +47,7 @@ namespace Enrollment_System
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                e.Handled = true; // Prevents the "ding" sound and form refresh
-
+                e.Handled = true;
                 using (SqlConnection thisConnection = new SqlConnection(connectionString))
                 {
                     thisConnection.Open();
@@ -66,7 +61,6 @@ namespace Enrollment_System
                         if (result != null)
                         {
                             DescriptionLabel.Text = result.ToString();
-                            // Keep the subject code in the textbox
                             SubjectCodeTextBox.Text = SubjectCodeTextBox.Text.Trim();
                         }
                         else
@@ -78,19 +72,9 @@ namespace Enrollment_System
                 }
             }
         }
-
-        // The rest of your methods remain the same (BackButton, ClearButton, FormClosing)
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            MenuForm menuForm = new MenuForm();
-            menuForm.Show();
-            this.Hide();
-        }
-
-
         private void SaveButton_Click_1(object sender, EventArgs e)
         {
-            // --- 1. Basic Empty Field Validation ---
+            // Basic Empty Field Validation
             if (string.IsNullOrWhiteSpace(SubjectEdpCodeTextBox.Text))
             {
                 MessageBox.Show("EDP Code cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -119,7 +103,6 @@ namespace Enrollment_System
                 else SchoolYearTextBox.Focus();
                 return;
             }
-
             // DaysTextBox Input Validation
             string rawDaysInput = DaysTextBox.Text.Trim();
             string processedDaysForStorage;
@@ -127,7 +110,6 @@ namespace Enrollment_System
                                              .Select(day => day.Trim().ToUpperInvariant())
                                              .Where(day => !string.IsNullOrEmpty(day))
                                              .ToList();
-
             if (!dayTokens.Any())
             {
                 MessageBox.Show("Days field is invalid. Please enter valid day codes ( M,W,F or T,TH), separated by commas.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -135,7 +117,6 @@ namespace Enrollment_System
                 return;
             }
             var validDayCodesSet = new HashSet<string> { "M", "T", "W", "TH", "F", "S" };
-
             foreach (string token in dayTokens)
             {
                 if (!validDayCodesSet.Contains(token))
@@ -150,25 +131,19 @@ namespace Enrollment_System
             {
                 { "M", 1 }, { "T", 2 }, { "W", 3 }, { "TH", 4 }, { "F", 5 }, { "S", 6 }
             };
-
-
             distinctDayTokens.Sort((d1, d2) =>
             {
                 int order1 = dayOrder.TryGetValue(d1, out int o1) ? o1 : int.MaxValue;
                 int order2 = dayOrder.TryGetValue(d2, out int o2) ? o2 : int.MaxValue;
                 return order1.CompareTo(order2);
             });
-
-
-            processedDaysForStorage = string.Concat(distinctDayTokens); // sorts for data base,["M", "TH", "F"] becomes "MTHF"
-
+            processedDaysForStorage = string.Concat(distinctDayTokens);
             if (string.IsNullOrWhiteSpace(MaxSizeTextBox.Text))
             {
                 MessageBox.Show("Max Size cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 MaxSizeTextBox.Focus();
                 return;
             }
-
             if (!int.TryParse(MaxSizeTextBox.Text, out int maxSize) || maxSize < 0)
             {
                 MessageBox.Show("Max Size must be a valid non-negative number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -181,7 +156,6 @@ namespace Enrollment_System
                 ClassSizeTextBox.Focus();
                 return;
             }
-
             if (classSize > maxSize)
             {
                 MessageBox.Show("Class size cannot exceed maximum size!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -194,7 +168,6 @@ namespace Enrollment_System
                 EndTimeDateTimePicker.Focus();
                 return;
             }
-
             try
             {
                 string filterExpression = $"SSFEDPCODE = '{SubjectEdpCodeTextBox.Text.Trim().Replace("'", "''")}'";
@@ -205,16 +178,13 @@ namespace Enrollment_System
                     SubjectEdpCodeTextBox.Focus();
                     return;
                 }
-
                 DataRow newRow = scheduleTable.NewRow();
                 newRow["SSFEDPCODE"] = SubjectEdpCodeTextBox.Text.Trim();
                 newRow["SSFSUBJCODE"] = SubjectCodeTextBox.Text.Trim();
                 newRow["SSFSTARTTIME"] = StartTimeDateTimePicker.Value;
                 newRow["SSFENDTIME"] = EndTimeDateTimePicker.Value;
                 newRow["SSFXM"] = StartTimeDateTimePicker.Value.ToString("tt");
-
                 newRow["SSFDAYS"] = processedDaysForStorage;
-
                 newRow["SSFROOM"] = RoomTextBox.Text.Trim();
                 newRow["SSFSECTION"] = SectionTextBox.Text.Trim();
                 newRow["SSFSCHOOLYEAR"] = SchoolYearTextBox.Text.Trim();
@@ -224,7 +194,6 @@ namespace Enrollment_System
 
                 scheduleTable.Rows.Add(newRow);
                 scheduleAdapter.Update(enrollmentDataSet, "SubjectSchedFile");
-
                 MessageBox.Show("Subject schedule added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearButton_Click_1(sender, e);
             }
@@ -237,7 +206,6 @@ namespace Enrollment_System
                 MessageBox.Show($"An unexpected error occurred while saving the schedule: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void ClearButton_Click_1(object sender, EventArgs e)
         {
             SubjectEdpCodeTextBox.Text = "";
@@ -252,50 +220,33 @@ namespace Enrollment_System
             StartTimeDateTimePicker.Value = DateTime.Now;
             EndTimeDateTimePicker.Value = DateTime.Now;
         }
-
         private void SubjectScheduleEntryButton_Click(object sender, EventArgs e)
         {
             SubjectScheduleEntryForm subjectScheduleEntryForm = new SubjectScheduleEntryForm();
-            subjectScheduleEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            subjectScheduleEntryForm.StartPosition = FormStartPosition.CenterScreen;
             subjectScheduleEntryForm.Show();
             this.Hide();
         }
-
         private void SubjectEntryButton_Click(object sender, EventArgs e)
         {
             SubjectEntry subjectEntryForm = new SubjectEntry();
-            subjectEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            subjectEntryForm.StartPosition = FormStartPosition.CenterScreen;
             subjectEntryForm.Show();
             this.Hide();
         }
-
         private void StudentEntryButton_Click(object sender, EventArgs e)
         {
             StudentEntryForm studentEntryForm = new StudentEntryForm();
-            studentEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            studentEntryForm.StartPosition = FormStartPosition.CenterScreen;
             studentEntryForm.Show();
             this.Hide();
         }
-
         private void EnrollmentButton_Click(object sender, EventArgs e)
         {
             StudentEnrollmentEntry studentEnroll = new StudentEnrollmentEntry();
-            studentEnroll.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            studentEnroll.StartPosition = FormStartPosition.CenterScreen;
             studentEnroll.Show();
             this.Hide();
-        }
-
-        private void SubjectScheduleEntryPictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-      
-        
-
-        private void DaysTextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

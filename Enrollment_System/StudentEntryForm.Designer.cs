@@ -131,7 +131,6 @@ namespace Enrollment_System
             this.StudentEntryLabel.Size = new System.Drawing.Size(470, 75);
             this.StudentEntryLabel.TabIndex = 37;
             this.StudentEntryLabel.Text = "STUDENT ENTRY";
-            this.StudentEntryLabel.Click += new System.EventHandler(this.StudentEntryLabel_Click);
             // 
             // YearLabel
             // 
@@ -308,7 +307,6 @@ namespace Enrollment_System
             this.StudentEntryPictureBox.Size = new System.Drawing.Size(1078, 636);
             this.StudentEntryPictureBox.TabIndex = 18;
             this.StudentEntryPictureBox.TabStop = false;
-            this.StudentEntryPictureBox.Click += new System.EventHandler(this.StudentEntryPictureBox_Click);
             // 
             // StudentEntryForm
             // 

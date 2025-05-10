@@ -376,7 +376,6 @@
             this.SubjectScheduleEntryPictureBox.Size = new System.Drawing.Size(1102, 638);
             this.SubjectScheduleEntryPictureBox.TabIndex = 32;
             this.SubjectScheduleEntryPictureBox.TabStop = false;
-            this.SubjectScheduleEntryPictureBox.Click += new System.EventHandler(this.SubjectScheduleEntryPictureBox_Click);
             // 
             // DaysTextBox
             // 
@@ -385,7 +384,6 @@
             this.DaysTextBox.Name = "DaysTextBox";
             this.DaysTextBox.Size = new System.Drawing.Size(128, 23);
             this.DaysTextBox.TabIndex = 55;
-            this.DaysTextBox.TextChanged += new System.EventHandler(this.DaysTextBox_TextChanged);
             // 
             // SubjectScheduleEntryForm
             // 

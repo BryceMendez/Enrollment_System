@@ -213,7 +213,6 @@
             this.StudentLabel.Size = new System.Drawing.Size(282, 77);
             this.StudentLabel.TabIndex = 50;
             this.StudentLabel.Text = "STUDENT";
-            this.StudentLabel.Click += new System.EventHandler(this.StudentLabel_Click);
             // 
             // EnrollmentTotalUnitsLabel
             // 
@@ -400,7 +399,6 @@
             this.StudentEnrollmentPictureBox.Size = new System.Drawing.Size(1095, 639);
             this.StudentEnrollmentPictureBox.TabIndex = 35;
             this.StudentEnrollmentPictureBox.TabStop = false;
-            this.StudentEnrollmentPictureBox.Click += new System.EventHandler(this.StudentEnrollmentPictureBox_Click);
             // 
             // StudentEnrollmentEntry
             // 

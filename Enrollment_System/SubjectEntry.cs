@@ -9,24 +9,21 @@ namespace Enrollment_System
     {
         private object subjectAdapter;
         private object mainDataSet;
-
         public SubjectEntry()
         {
             InitializeComponent();
         }
-
         //SAVE BUTTON
         private void SaveButton_Click_1(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+            //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30";
             using (SqlConnection thisConnection = new SqlConnection(connectionString))
             {
                 SqlDataAdapter subjectAdapter = null;
                 DataSet mainDataSet = new DataSet();
                 DataTable subjectTable = null;
-
                 DataRow findRow = null;
-
                 try
                 {
 
@@ -60,7 +57,6 @@ namespace Enrollment_System
 
                         return;
                     }
-
                     short unitsValue;
                     if (!short.TryParse(UnitsTextBox.Text, out unitsValue))
                     {
@@ -77,14 +73,13 @@ namespace Enrollment_System
                         MessageBox.Show("Please select a valid Category.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-
                     // Save Logic
                     if (findRow == null) 
                     {
                         DataRow newSubjectRow = subjectTable.NewRow();
                         newSubjectRow["SFSUBJCODE"] = SubjectCodeTextBox.Text.Trim();
                         newSubjectRow["SFSUBJDESC"] = DescriptionTextBox.Text.Trim();
-                        newSubjectRow["SFSUBJUNITS"] = unitsValue; // Use the parsed short value
+                        newSubjectRow["SFSUBJUNITS"] = unitsValue;
                         newSubjectRow["SFSUBJREGOFRNG"] = OfferingsComboBox.Text.Substring(0, 1);
                         newSubjectRow["SFSUBJCATEGORY"] = CategoryComboBox.Text.Substring(0, 3);
                         newSubjectRow["SFSUBJSTATUS"] = "AC";
@@ -92,7 +87,7 @@ namespace Enrollment_System
                         newSubjectRow["SFSUBJCURRCODE"] = CurriculumYearTextBox.Text.Trim();
 
                         subjectTable.Rows.Add(newSubjectRow);
-                        subjectAdapter.Update(mainDataSet, "SubjectFile"); // Saves SubjectFile changes 
+                        subjectAdapter.Update(mainDataSet, "SubjectFile");
 
                         bool requisiteSaved = false;
                         if (!string.IsNullOrWhiteSpace(SubjectRequisiteTextBox.Text) &&
@@ -137,7 +132,6 @@ namespace Enrollment_System
                                 }
                             }
                         }
-
                         // Final Success Message
                         string successMessage = "Entries Recorded!"; // Original message
                         if (requisiteSaved)
@@ -177,7 +171,6 @@ namespace Enrollment_System
                 }   
             }
         }
-
         //CLEAR BUTTON
         private void CancelButton_Click_1(object sender, EventArgs e)
         {
@@ -194,21 +187,13 @@ namespace Enrollment_System
             SubjectRequisiteTextBox.Text = "";
             SubjectDataGridView.Rows.Clear();
         }
-
-        //BACK BUTTON
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            MenuForm mainMenu = new MenuForm();
-            mainMenu.Show();
-            this.Hide();
-        }
-
         //REQUISITE TEXT BOX
         private void SubjectRequisiteTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+                //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30";
                 using (SqlConnection thisConnection = new SqlConnection(connectionString))
                 {
                     thisConnection.Open();
@@ -252,42 +237,33 @@ namespace Enrollment_System
                 }
             }
         }
-
         private void StudentEntryButton_Click(object sender, EventArgs e)
         {
             StudentEntryForm studentEntryForm = new StudentEntryForm();
-            studentEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            studentEntryForm.StartPosition = FormStartPosition.CenterScreen;
             studentEntryForm.Show();
             this.Hide();
         }
-
         private void SubjectScheduleEntryButton_Click(object sender, EventArgs e)
         {
             SubjectScheduleEntryForm subjectScheduleEntryForm = new SubjectScheduleEntryForm();
-            subjectScheduleEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            subjectScheduleEntryForm.StartPosition = FormStartPosition.CenterScreen;
             subjectScheduleEntryForm.Show();
             this.Hide();
         }
-
         private void SubjectEntryButton_Click(object sender, EventArgs e)
         {
             SubjectEntry subjectEntryForm = new SubjectEntry();
-            subjectEntryForm.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            subjectEntryForm.StartPosition = FormStartPosition.CenterScreen;
             subjectEntryForm.Show();
             this.Hide();
         }
-
         private void EnrollmentButton_Click(object sender, EventArgs e)
         {
             StudentEnrollmentEntry studentEnroll = new StudentEnrollmentEntry();
-            studentEnroll.StartPosition = FormStartPosition.CenterScreen; // Centers on screen
+            studentEnroll.StartPosition = FormStartPosition.CenterScreen;
             studentEnroll.Show();
             this.Hide();
-        }
-
-        private void SubjectEntryPictureBox_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
