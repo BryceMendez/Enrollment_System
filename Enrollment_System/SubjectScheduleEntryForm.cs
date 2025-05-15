@@ -17,14 +17,21 @@ namespace Enrollment_System
         private SqlDataAdapter scheduleAdapter;
         private DataSet enrollmentDataSet;
         private DataTable scheduleTable;
-        //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
+       // string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30";
+        
+        
         public SubjectScheduleEntryForm()
         {
             InitializeComponent();
         }
         private void SubjectScheduleEntryForm_Load(object sender, EventArgs e)
         {
+            //for the 00:00 time sa pag load
+            DateTime todayAtMidnight = DateTime.Today;
+            StartTimeDateTimePicker.Value = todayAtMidnight;
+            EndTimeDateTimePicker.Value = todayAtMidnight.AddHours(1);
+
             StartTimeDateTimePicker.Format = DateTimePickerFormat.Custom;
             StartTimeDateTimePicker.CustomFormat = "hh:mm tt";
             StartTimeDateTimePicker.ShowUpDown = true;
@@ -127,6 +134,15 @@ namespace Enrollment_System
                 }
             }
             List<string> distinctDayTokens = dayTokens.Distinct().ToList();
+
+            //For Maximum of only 3 days cuz of the varchar length being only 3. change if maka kuhag further instructions
+            if (distinctDayTokens.Count > 3)
+            {
+                MessageBox.Show("You can select a maximum of 3 distinct days for a schedule.", "Input Error - Too Many Days", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DaysTextBox.Focus();
+                return;
+            }
+
             var dayOrder = new Dictionary<string, int>
             {
                 { "M", 1 }, { "T", 2 }, { "W", 3 }, { "TH", 4 }, { "F", 5 }, { "S", 6 }
@@ -217,8 +233,9 @@ namespace Enrollment_System
             SchoolYearTextBox.Text = "";
             MaxSizeTextBox.Text = "";
             ClassSizeTextBox.Text = "";
-            StartTimeDateTimePicker.Value = DateTime.Now;
-            EndTimeDateTimePicker.Value = DateTime.Now;
+            DateTime todayAtMidnight = DateTime.Today;
+            StartTimeDateTimePicker.Value = todayAtMidnight;
+            EndTimeDateTimePicker.Value = todayAtMidnight.AddHours(1);
         }
         private void SubjectScheduleEntryButton_Click(object sender, EventArgs e)
         {
@@ -247,6 +264,11 @@ namespace Enrollment_System
             studentEnroll.StartPosition = FormStartPosition.CenterScreen;
             studentEnroll.Show();
             this.Hide();
+        }
+
+        private void SubjectScheduleEntryPictureBox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
