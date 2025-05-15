@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CourseCodeComboBox = new System.Windows.Forms.ComboBox();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.OfferingsComboBox = new System.Windows.Forms.ComboBox();
@@ -43,10 +44,6 @@
             this.CoRequisiteRadioButton = new System.Windows.Forms.RadioButton();
             this.PreRequisiteRadioButton = new System.Windows.Forms.RadioButton();
             this.SubjectDataGridView = new System.Windows.Forms.DataGridView();
-            this.SubjectCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CoPreColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubjectRequisiteTextBox = new System.Windows.Forms.TextBox();
             this.RequisiteSubjectCodeLabel = new System.Windows.Forms.Label();
             this.EntryLabel = new System.Windows.Forms.Label();
@@ -66,6 +63,10 @@
             this.ClearButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.SubjectEntryPictureBox = new System.Windows.Forms.PictureBox();
+            this.SubjectCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CoPreColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RequisiteInformationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectEntryPictureBox)).BeginInit();
@@ -160,7 +161,7 @@
             // 
             this.CoRequisiteRadioButton.AutoSize = true;
             this.CoRequisiteRadioButton.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CoRequisiteRadioButton.Location = new System.Drawing.Point(497, 36);
+            this.CoRequisiteRadioButton.Location = new System.Drawing.Point(491, 22);
             this.CoRequisiteRadioButton.Name = "CoRequisiteRadioButton";
             this.CoRequisiteRadioButton.Size = new System.Drawing.Size(96, 21);
             this.CoRequisiteRadioButton.TabIndex = 9;
@@ -172,7 +173,7 @@
             // 
             this.PreRequisiteRadioButton.AutoSize = true;
             this.PreRequisiteRadioButton.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreRequisiteRadioButton.Location = new System.Drawing.Point(497, 9);
+            this.PreRequisiteRadioButton.Location = new System.Drawing.Point(370, 22);
             this.PreRequisiteRadioButton.Name = "PreRequisiteRadioButton";
             this.PreRequisiteRadioButton.Size = new System.Drawing.Size(96, 21);
             this.PreRequisiteRadioButton.TabIndex = 8;
@@ -198,6 +199,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.SubjectDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.SubjectDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.SubjectDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SubjectCodeColumn,
             this.DescriptionColumn,
@@ -205,13 +207,13 @@
             this.CoPreColumn});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ButtonHighlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.SubjectDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
-            this.SubjectDataGridView.Location = new System.Drawing.Point(70, 77);
+            this.SubjectDataGridView.Location = new System.Drawing.Point(24, 61);
             this.SubjectDataGridView.Margin = new System.Windows.Forms.Padding(5);
             this.SubjectDataGridView.Name = "SubjectDataGridView";
             this.SubjectDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -225,32 +227,14 @@
             this.SubjectDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.SubjectDataGridView.RowHeadersWidth = 60;
             this.SubjectDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.SubjectDataGridView.Size = new System.Drawing.Size(461, 87);
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SubjectDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.SubjectDataGridView.Size = new System.Drawing.Size(563, 116);
             this.SubjectDataGridView.TabIndex = 12;
-            // 
-            // SubjectCodeColumn
-            // 
-            this.SubjectCodeColumn.HeaderText = "Subject Code";
-            this.SubjectCodeColumn.Name = "SubjectCodeColumn";
-            // 
-            // DescriptionColumn
-            // 
-            this.DescriptionColumn.HeaderText = "Description";
-            this.DescriptionColumn.Name = "DescriptionColumn";
-            // 
-            // UnitsColumn
-            // 
-            this.UnitsColumn.HeaderText = "Units";
-            this.UnitsColumn.Name = "UnitsColumn";
-            // 
-            // CoPreColumn
-            // 
-            this.CoPreColumn.HeaderText = "Co/Pre-Requisite";
-            this.CoPreColumn.Name = "CoPreColumn";
             // 
             // SubjectRequisiteTextBox
             // 
-            this.SubjectRequisiteTextBox.Location = new System.Drawing.Point(108, 29);
+            this.SubjectRequisiteTextBox.Location = new System.Drawing.Point(108, 21);
             this.SubjectRequisiteTextBox.Name = "SubjectRequisiteTextBox";
             this.SubjectRequisiteTextBox.Size = new System.Drawing.Size(136, 22);
             this.SubjectRequisiteTextBox.TabIndex = 11;
@@ -260,7 +244,7 @@
             // 
             this.RequisiteSubjectCodeLabel.AutoSize = true;
             this.RequisiteSubjectCodeLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RequisiteSubjectCodeLabel.Location = new System.Drawing.Point(21, 34);
+            this.RequisiteSubjectCodeLabel.Location = new System.Drawing.Point(21, 24);
             this.RequisiteSubjectCodeLabel.Name = "RequisiteSubjectCodeLabel";
             this.RequisiteSubjectCodeLabel.Size = new System.Drawing.Size(81, 17);
             this.RequisiteSubjectCodeLabel.TabIndex = 7;
@@ -476,6 +460,30 @@
             this.SubjectEntryPictureBox.TabIndex = 33;
             this.SubjectEntryPictureBox.TabStop = false;
             // 
+            // SubjectCodeColumn
+            // 
+            this.SubjectCodeColumn.HeaderText = "Subject Code";
+            this.SubjectCodeColumn.Name = "SubjectCodeColumn";
+            // 
+            // DescriptionColumn
+            // 
+            this.DescriptionColumn.HeaderText = "Description";
+            this.DescriptionColumn.Name = "DescriptionColumn";
+            this.DescriptionColumn.Width = 190;
+            // 
+            // UnitsColumn
+            // 
+            this.UnitsColumn.HeaderText = "Units";
+            this.UnitsColumn.Name = "UnitsColumn";
+            this.UnitsColumn.Width = 60;
+            // 
+            // CoPreColumn
+            // 
+            this.CoPreColumn.HeaderText = "Co/Pre-Requisite";
+            this.CoPreColumn.Name = "CoPreColumn";
+            this.CoPreColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CoPreColumn.Width = 150;
+            // 
             // SubjectEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -534,10 +542,6 @@
         private System.Windows.Forms.DataGridView SubjectDataGridView;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button ClearButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SubjectCodeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitsColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CoPreColumn;
         private System.Windows.Forms.PictureBox SubjectEntryPictureBox;
         private System.Windows.Forms.Button StudentEntryButton;
         private System.Windows.Forms.Button SubjectEntryButton;
@@ -553,5 +557,9 @@
         private System.Windows.Forms.Label SubjectInformationLabel;
         private System.Windows.Forms.Label SubjectLabel;
         private System.Windows.Forms.Label EntryLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubjectCodeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitsColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CoPreColumn;
     }
 }

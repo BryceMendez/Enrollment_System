@@ -121,12 +121,12 @@
             // DescriptionLabel
             // 
             this.DescriptionLabel.AutoSize = true;
-            this.DescriptionLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DescriptionLabel.Location = new System.Drawing.Point(437, 282);
+            this.DescriptionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.DescriptionLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DescriptionLabel.Location = new System.Drawing.Point(374, 283);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(90, 16);
+            this.DescriptionLabel.Size = new System.Drawing.Size(0, 15);
             this.DescriptionLabel.TabIndex = 15;
-            this.DescriptionLabel.Text = "Description here";
             // 
             // EndTimeDateTimePicker
             // 

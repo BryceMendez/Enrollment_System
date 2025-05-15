@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Enrollment_System
 {
@@ -26,7 +27,6 @@ namespace Enrollment_System
                 DataRow findRow = null;
                 try
                 {
-
                     string subjectSql = "SELECT * FROM SubjectFile";
                     subjectAdapter = new SqlDataAdapter(subjectSql, thisConnection);
                     SqlCommandBuilder subjectCmdBuilder = new SqlCommandBuilder(subjectAdapter);
@@ -54,9 +54,9 @@ namespace Enrollment_System
                         CourseCodeComboBox.SelectedIndex == -1)
                     {
                         MessageBox.Show("Please Fill Up All Required Subject Fields", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
                         return;
                     }
+
                     short unitsValue;
                     if (!short.TryParse(UnitsTextBox.Text, out unitsValue))
                     {
@@ -73,8 +73,9 @@ namespace Enrollment_System
                         MessageBox.Show("Please select a valid Category.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
+
                     // Save Logic
-                    if (findRow == null) 
+                    if (findRow == null)
                     {
                         DataRow newSubjectRow = subjectTable.NewRow();
                         newSubjectRow["SFSUBJCODE"] = SubjectCodeTextBox.Text.Trim();
@@ -90,7 +91,10 @@ namespace Enrollment_System
                         subjectAdapter.Update(mainDataSet, "SubjectFile");
 
                         bool requisiteSaved = false;
-                        if (!string.IsNullOrWhiteSpace(SubjectRequisiteTextBox.Text) &&
+                        int savedRequisiteCount = 0;
+
+                        // MODIFIED SECTION - Now processes all rows in SubjectDataGridView
+                        if (SubjectDataGridView.Rows.Count > 0 &&
                             (PreRequisiteRadioButton.Checked || CoRequisiteRadioButton.Checked))
                         {
                             string requisiteSql = "SELECT * FROM SubjectPreqFile";
@@ -104,71 +108,92 @@ namespace Enrollment_System
                                     DataSet requisiteDataSet = new DataSet();
                                     requisiteAdapter.Fill(requisiteDataSet, "SubjectPreqFile");
                                     DataTable requisiteTable = requisiteDataSet.Tables["SubjectPreqFile"];
-                                    string reqFilter = $"SUBJCODE = '{SubjectCodeTextBox.Text.Trim().Replace("'", "''")}' AND SUBJPRECODE = '{SubjectRequisiteTextBox.Text.Trim().Replace("'", "''")}'";
-                                    if (requisiteTable.Select(reqFilter).Length > 0)
-                                    {
-                                        MessageBox.Show($"Requisite '{SubjectRequisiteTextBox.Text.Trim()}' already exists for subject '{SubjectCodeTextBox.Text.Trim()}'. Requisite not saved again.", "Duplicate Requisite", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                    else
-                                    {
-                                        DataRow requisiteRow = requisiteTable.NewRow();
-                                        //ascertains thaat column names are in subjpreqfile
-                                        requisiteRow["SUBJCODE"] = SubjectCodeTextBox.Text.Trim();    // Main subject code
-                                        requisiteRow["SUBJPRECODE"] = SubjectRequisiteTextBox.Text.Trim(); // Requisite subject code
-                                        requisiteRow["SUBJCATEGORY"] = PreRequisiteRadioButton.Checked ? "PR" : "CO"; // sets cagory
 
+                                    foreach (DataGridViewRow row in SubjectDataGridView.Rows)
+                                    {
+                                        if (row.IsNewRow) continue;
+
+                                        string reqSubjectCode = row.Cells["SubjectCodeColumn"].Value?.ToString();
+                                        if (string.IsNullOrWhiteSpace(reqSubjectCode)) continue;
+
+                                        // Determine if this is Pre or Co requisite from the row
+                                        string reqType = "PR"; // Default to Pre-Requisite
+                                        if (row.Cells["CoPreColumn"].Value?.ToString() == "Co-Requisite")
+                                        {
+                                            reqType = "CO";
+                                        }
+
+                                        string reqFilter = $"SUBJCODE = '{SubjectCodeTextBox.Text.Trim().Replace("'", "''")}' " +
+                                                        $"AND SUBJPRECODE = '{reqSubjectCode.Replace("'", "''")}'";
+
+                                        if (requisiteTable.Select(reqFilter).Length > 0)
+                                        {
+                                            // Skip duplicates
+                                            continue;
+                                        }
+
+                                        DataRow requisiteRow = requisiteTable.NewRow();
+                                        requisiteRow["SUBJCODE"] = SubjectCodeTextBox.Text.Trim();
+                                        requisiteRow["SUBJPRECODE"] = reqSubjectCode;
+                                        requisiteRow["SUBJCATEGORY"] = reqType;
                                         requisiteTable.Rows.Add(requisiteRow);
-                                        requisiteAdapter.Update(requisiteDataSet, "SubjectPreqFile"); 
+                                        savedRequisiteCount++;
                                         requisiteSaved = true;
+                                    }
+
+                                    if (requisiteSaved)
+                                    {
+                                        requisiteAdapter.Update(requisiteDataSet, "SubjectPreqFile");
                                     }
                                 }
                                 catch (SqlException sqlExReq)
                                 {
-                                    MessageBox.Show($"Database Error saving requisite: {sqlExReq.Message}\nError Code: {sqlExReq.Number}\n\n(Main subject was saved successfully)", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show($"Database Error saving requisites: {sqlExReq.Message}\nError Code: {sqlExReq.Number}\n\n(Main subject was saved successfully)", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                                 catch (Exception exReq)
                                 {
-                                    MessageBox.Show($"Error saving requisite: {exReq.Message}\n\n(Main subject was saved successfully)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show($"Error saving requisites: {exReq.Message}\n\n(Main subject was saved successfully)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                         }
+
                         // Final Success Message
-                        string successMessage = "Entries Recorded!"; // Original message
+                        string successMessage = "Subject Recorded Successfully!";
                         if (requisiteSaved)
                         {
-                            successMessage = "Subject Recorded Successfully!\nRequisite Information also Saved.";
+                            successMessage += $"\n{savedRequisiteCount} requisite(s) saved.";
                         }
                         MessageBox.Show(successMessage, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Duplicate Subject Code and Course Code combination already exists.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning); // Modified message for clarity
+                        MessageBox.Show("Duplicate Subject Code and Course Code combination already exists.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 catch (FormatException formatEx)
                 {
                     MessageBox.Show($"Data Format Error: {formatEx.Message}\nPlease check numeric input for Units.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                catch (ArgumentOutOfRangeException argEx) // Catch substring errors
+                catch (ArgumentOutOfRangeException argEx)
                 {
                     MessageBox.Show($"Data Error: {argEx.Message}\nPlease ensure Offering and Category are selected.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                catch (SqlException sqlEx) // catch main SQL errors
+                catch (SqlException sqlEx)
                 {
                     MessageBox.Show($"Database Error: {sqlEx.Message}\nError Code: {sqlEx.Number}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                catch (Exception ex)//catch unsusepected errosr
+                catch (Exception ex)
                 {
                     MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                finally 
+                finally
                 {
                     if (thisConnection != null && thisConnection.State == ConnectionState.Open)
                     {
                         thisConnection.Close();
                     }
                     subjectAdapter?.Dispose();
-                }   
+                }
             }
         }
         //CLEAR BUTTON
@@ -192,51 +217,76 @@ namespace Enrollment_System
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\VS\Databases\EnrollmentSystem\Malalay.mdf;Integrated Security=True;Connect Timeout=30";
                 string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Bryce Mendez\Documents\MENDEZ.mdf"";Integrated Security=True;Connect Timeout=30";
+
+                string requisiteCode = SubjectRequisiteTextBox.Text.Trim();
+
+                // Check for duplicate in existing rows
+                bool alreadyExists = false;
+                foreach (DataGridViewRow row in SubjectDataGridView.Rows)
+                {
+                    if (row.IsNewRow) continue;
+                    if (row.Cells["SubjectCodeColumn"].Value?.ToString() == requisiteCode)
+                    {
+                        alreadyExists = true;
+                        break;
+                    }
+                }
+
+                if (alreadyExists)
+                {
+                    MessageBox.Show("This subject is already added as a requisite.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    SubjectRequisiteTextBox.SelectAll();
+                    return;
+                }
+
                 using (SqlConnection thisConnection = new SqlConnection(connectionString))
                 {
                     thisConnection.Open();
-                    string commandText = "SELECT * FROM SUBJECTFILE";
+                    string commandText = "SELECT * FROM SUBJECTFILE WHERE SFSUBJCODE = @SubjectCode";
                     using (SqlCommand thisCommand = new SqlCommand(commandText, thisConnection))
                     {
+                        thisCommand.Parameters.AddWithValue("@SubjectCode", requisiteCode);
                         using (SqlDataReader thisReader = thisCommand.ExecuteReader())
                         {
-                            bool found = false;
-
-                            while (thisReader.Read())
+                            if (thisReader.Read())
                             {
-                                if (thisReader["SFSUBJCODE"].ToString().Trim() == SubjectRequisiteTextBox.Text.Trim())
+                                int newRowIndex = SubjectDataGridView.Rows.Add();
+                                DataGridViewRow newRow = SubjectDataGridView.Rows[newRowIndex];
+
+                                newRow.Cells["SubjectCodeColumn"].Value = thisReader["SFSUBJCODE"].ToString();
+                                newRow.Cells["DescriptionColumn"].Value = thisReader["SFSUBJDESC"].ToString();
+                                newRow.Cells["UnitsColumn"].Value = thisReader["SFSUBJUNITS"].ToString();
+
+                                if (PreRequisiteRadioButton.Checked)
                                 {
-                                    found = true;
-
-                                    SubjectDataGridView.Rows[0].Cells["SubjectCodeColumn"].Value = thisReader["SFSUBJCODE"].ToString();
-                                    SubjectDataGridView.Rows[0].Cells["DescriptionColumn"].Value = thisReader["SFSUBJDESC"].ToString();
-                                    SubjectDataGridView.Rows[0].Cells["UnitsColumn"].Value = thisReader["SFSUBJUNITS"].ToString();
-
-                                    if (PreRequisiteRadioButton.Checked)
-                                    {
-                                        SubjectDataGridView.Rows[0].Cells["CoPreColumn"].Value = "Pre-Requisite";
-                                        if (CoRequisiteRadioButton.Checked)
-                                        {
-                                            SubjectDataGridView.Rows[0].Cells["CoPreColumn"].Value = "Co-Requisite";
-                                        }
-                                    }
-                                    break;
+                                    newRow.Cells["CoPreColumn"].Value = "Pre-Requisite";
                                 }
-                                else
-                                    continue;                          
-                            }
+                                else if (CoRequisiteRadioButton.Checked)
+                                {
+                                    newRow.Cells["CoPreColumn"].Value = "Co-Requisite";
+                                }
 
-                            if (found == false)
-                            {
-                                MessageBox.Show("Subject Not Found");
+                                SubjectRequisiteTextBox.Clear();
                             }
+                            else
+                            {
+                                MessageBox.Show("Subject Not Found", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            SubjectDataGridView.EndEdit();  // Force commit the edit
+                            SubjectDataGridView.Refresh();  // Force UI refresh
+                            SubjectDataGridView.CurrentCell = null; // Remove selection highlight
+
+                            // Optional: Auto-scroll to the new row
+                            SubjectDataGridView.FirstDisplayedScrollingRowIndex =
+                            SubjectDataGridView.RowCount - 1;
+                            SubjectDataGridView.RowTemplate.MinimumHeight = 30;
                         }
                     }
                 }
             }
         }
+
         private void StudentEntryButton_Click(object sender, EventArgs e)
         {
             StudentEntryForm studentEntryForm = new StudentEntryForm();
